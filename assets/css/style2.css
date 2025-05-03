@@ -1,0 +1,198 @@
+cardbody{
+    /* width: 1200px; */
+    /* border: 1px solid gray; */
+    margin: auto;
+    background-color: rgb(245, 243, 243);
+}
+li{
+    list-style: none;
+}
+nav{
+    background-color:#fcfbfb;
+    /* position: sticky; */
+    /* top: 0; 
+    z-index: 1000; */
+    
+
+}
+
+.nav_text a{
+ font-weight: 600;
+ font-size: large;
+ text-decoration: none;
+ color: rgb(8, 8, 8);
+ 
+}
+.nav_text a:hover{
+    /* font-weight: 700; */
+    /* font-size: x-large; */
+    color: #F95441;
+    
+}
+
+
+#logo_img{
+    width: 40px;
+    height: 40px;
+    margin-top: 3px;
+}
+.menu{
+    font-size: 20px;
+
+}
+.menu:hover{
+    color: white;
+    cursor: pointer;
+}
+.btc{
+    background-color: #F95441;
+}
+.btcn{
+    background-color: #e07265;
+}
+.btn:hover{
+    background-color: #e07265;
+    color: white;
+}
+
+.dash_bar div {
+    margin: 10px ;
+    
+}
+
+.dash_bar div a {
+    display: inline-block;
+    margin: 5px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.dash_bar div a:hover {
+    color: #F95441;
+    /* background-color: #F95441; */
+    /* border-radius: 5px; */
+    /* padding: 5px 20px; */
+    /* width: 80%; */
+    
+}
+
+.banner{
+    /* height: 450px; */
+    margin: auto;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(#FFD0CA,#e07265,#FFD0CA);
+    /* box-shadow: 4px 4px 8px gray; */
+    /* border-radius:10px; */
+    /* padding: 30px; */
+}
+.bn-img{
+    /* width: 650px;
+    height: 400px; */
+    
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+
+.title{
+    font-size: 44px;
+    color: black;
+    text-align: center;
+
+}
+
+
+footer{
+    padding: 50px;
+    background-color: #FFD0CB;
+    /* background: linear-gradient(66deg, #F95441 -5.25%, #e07265 46.76%, #F95441 98.77%);; */
+    /* background-image: url(./Images/footer-bg.jpg); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* background: fluid; */
+}
+
+
+.pdfhtml{
+    width: 350px;
+    height:450px;
+    box-shadow: 4px 4px 8px rgb(47, 46, 46);
+    text-align: start;
+    background-color:gray;
+    color: white;
+    border-radius:20px;
+}
+.btn{
+    color: white;
+}
+.dash-btn{
+    width: 100%;
+    font-weight: 500;
+    border-radius: 0;
+    color: rgb(0, 0, 0);
+    text-align: start;
+    
+    
+}
+.dash-btn:hover{
+    /* color: #cccdce; */
+    background-color: #FFD0CB;
+    color: #333;
+    
+}
+
+
+
+#message{
+    font-weight: 700;
+    font-size: xx-large;
+}
+
+.obtn{
+    padding: 0;
+    margin: 0;
+    
+}
+.obtn:hover{
+    
+    background-color: #e07265;
+    transform: scale(1.5);
+    transition: transform 0.3s ease-in-out; 
+    
+}
+.obtnp:hover{
+    
+    background-color: #e07265;
+    border-radius: 50%;
+    /* font-size: 20px; */
+    transform: scale(1.1); /* Increases size by 20% */
+    transition: transform 0.3s ease-in-out; /* Smooth animation */
+    
+}
+.obtni:hover{
+    
+    
+    transform: scale(1.1); /* Increases size by 20% */
+    transition: transform 0.3s ease-in-out; /* Smooth animation */
+    
+}
+
+
+.obtnd:hover{
+    
+    /* background-color: #e07265; */
+    color: orangered;
+    
+}
+
+.dropdown-item:active {
+    background-color: white !important; /* Change background to white */
+    color: black !important;          /* Ensure text color is readable */
+}
+
