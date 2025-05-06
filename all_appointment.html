@@ -357,9 +357,9 @@
 </div>
 <div class="container pb-4">
     <div class="container">
-        <div class=" row d-flex justify-content-end">
-            <div class="col-lg-4"><h2 >All Appointment</h2></div>
-            <div class="d-flex gap-2 mb-3 col-lg-8 align-items-center">
+        <div class=" row d-flex justify-content-center w-100 m-auto">
+            <!-- <div class="col-lg-3"><h2 >All Appointment</h2></div> -->
+            <div class="d-flex gap-2 py-4 mb-3 col align-items-center w-100 m-auto">
               
               <b><label for="filterDate" id="filterDateLabel">Today</label></b>
               <input type="date" id="filterDate" class="form-control" onchange="updateLabel()" />
@@ -376,6 +376,10 @@
               <b><label for="filterStatus" >Status</label></b>
               <select id="filterStatus" class="form-control">
                 <option value="">Status</option>
+              </select>
+              <b><label for="filterType" >Type</label></b>
+              <select id="filterType" class="form-control">
+                <option value="">Type</option>
               </select>
               <button class="btn btcn" onclick="renderAppointments()">Filter</button>
             </div>
@@ -626,6 +630,20 @@ function loadTimeFilter() {
         select.appendChild(opt);
       }
     }
+    function loadTypeFilter() {
+      const appointment_Types = {
+        "Online": "Online",
+        "Offline": "Offline",
+      };
+      let select = document.getElementById('filterType');
+      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
+      for (let key in appointment_Types) {
+        let opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = appointment_Types[key];
+        select.appendChild(opt);
+      }
+    }
     
     // Render Appointment Table
     function renderAppointments() {
@@ -633,6 +651,7 @@ function loadTimeFilter() {
       const selectedDoctor = document.getElementById('filterDoctor').value;
       const selectedTime = document.getElementById('filterTime').value; 
       const selectedStatus = document.getElementById('filterStatus').value;
+      const selectedType = document.getElementById('filterType').value;
     
       fetch(API)
         .then(res => res.json())
@@ -651,6 +670,9 @@ function loadTimeFilter() {
           } 
           if (selectedStatus) {
             filtered = filtered.filter(a => a.appointment_Status == selectedStatus);
+          }
+          if (selectedType) {
+            filtered = filtered.filter(a => a.appointment_Types == selectedType);
           }
     
           let tbody = document.getElementById('appointmentTableBody');
@@ -940,6 +962,7 @@ function loadTimeFilter() {
       loadDoctorFilter();
       loadTimeFilter();
       loadStatusFilter();
+      loadTypeFilter();
       renderAppointments();
       
       fillSelect(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
