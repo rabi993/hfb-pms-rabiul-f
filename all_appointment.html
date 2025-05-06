@@ -381,6 +381,10 @@
               <select id="filterType" class="form-control">
                 <option value="">Type</option>
               </select>
+              <b><label for="filterVersion" >Version</label></b>
+              <select id="filterVersion" class="form-control">
+                <option value="">Version</option>
+              </select>
               <button class="btn btcn" onclick="renderAppointments()">Filter</button>
             </div>
             <!-- <div class="col-lg-2 text-end">
@@ -396,6 +400,7 @@
             <tr>
               <td>Serial</td>
               <th>Patient</th>
+              <th>Version</th>
               <th>ID</th>
               <th>Doctor</th>
               <th>Type</th>
@@ -644,6 +649,20 @@ function loadTimeFilter() {
         select.appendChild(opt);
       }
     }
+    function loadVersionFilter() {
+      const appointment_Version = {
+        "New": "New",
+        "Old": "Old",
+      };
+      let select = document.getElementById('filterVersion');
+      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
+      for (let key in appointment_Version) {
+        let opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = appointment_Version[key];
+        select.appendChild(opt);
+      }
+    }
     
     // Render Appointment Table
     function renderAppointments() {
@@ -652,6 +671,7 @@ function loadTimeFilter() {
       const selectedTime = document.getElementById('filterTime').value; 
       const selectedStatus = document.getElementById('filterStatus').value;
       const selectedType = document.getElementById('filterType').value;
+      const selectedVersion = document.getElementById('filterVersion').value;
     
       fetch(API)
         .then(res => res.json())
@@ -674,6 +694,9 @@ function loadTimeFilter() {
           if (selectedType) {
             filtered = filtered.filter(a => a.appointment_Types == selectedType);
           }
+          if (selectedVersion) {
+            filtered = filtered.filter(a => a.appointment_Version == selectedVersion);
+          }
     
           let tbody = document.getElementById('appointmentTableBody');
           tbody.innerHTML = '';
@@ -682,6 +705,7 @@ function loadTimeFilter() {
               <tr>
                 <td>${index + 1}</td>
                 <td>${a.patient_name}</td>
+                <td>${a.appointment_Version}</td>
                 <td>${a.id}</td>
                 <td>${a.doctor_display}</td>
                 <td>${a.appointment_Types}</td>
@@ -963,6 +987,7 @@ function loadTimeFilter() {
       loadTimeFilter();
       loadStatusFilter();
       loadTypeFilter();
+      loadVersionFilter();
       renderAppointments();
       
       fillSelect(DOCTOR, document.querySelector('#addForm [name="doctor"]'));

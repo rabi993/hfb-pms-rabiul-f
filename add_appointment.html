@@ -419,6 +419,12 @@
                     <option value="Online">Online</option><option value="Offline">Offline</option>
                   </select>
                 </div>
+                <div class="col-md-6 mb-2"><label>Version</label>
+                  <select name="appointment_Version" class="form-select">
+                    <option value="New">New</option>
+                    <option value="Old">Old</option>
+                  </select>
+                </div>
                 <div class="col-md-6 mb-2"><label>Phone</label><input name="phone_no" class="form-control" required></div>
                 <div class="col-md-6 mb-2"><label>Appointment Date</label><input type="date" name="appointment_date" class="form-control" required></div>
                 <div class="col-md-6 mb-2"><label>Time</label><select name="time" class="form-select" required></select></div>
@@ -610,6 +616,9 @@
       showAlert(`Appointment Number ${appointment.id || 'N/A'} added successfully!`, 'success');
 
       renderAppointments();
+      setTimeout(() => {
+        location.reload();
+      }, 1500);
     })
     .catch(error => {
       showAlert(error.message || 'Something went wrong!', 'danger');
