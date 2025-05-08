@@ -400,12 +400,12 @@
             <tr>
               <td>Serial</td>
               <th>Patient</th>
+              <th>PatientID</th>
               <th>Version</th>
               <th>ID</th>
               <th>Doctor</th>
               <th>Type</th>
               <th>Phone</th>
-              <th>Date</th>
               <th>Slot</th>
               <th>Time</th>
               <th>Total</th>
@@ -705,12 +705,12 @@ function loadTimeFilter() {
               <tr>
                 <td>${index + 1}</td>
                 <td>${a.patient_name}</td>
+                <td>${a.PatientID}</td>
                 <td>${a.appointment_Version}</td>
                 <td>${a.id}</td>
                 <td>${a.doctor_display}</td>
                 <td>${a.appointment_Types}</td>
                 <td>${a.phone_no}</td>
-                <td>${a.appointment_date}</td>
                 <td>${formatTime12Hour(a.time_display)}</td>
                 <td>${formatTime12Hour(a.start_time_display)}</td>
 

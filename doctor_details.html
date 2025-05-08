@@ -406,6 +406,10 @@
                 <label for="receiveDate" class="form-label">Receive Date</label>
                 <input type="date" class="form-control" id="receiveDate" required />
               </div>
+              <div class="mb-3">
+                <label for="comment" class="form-label">Comment</label>
+                <textarea rows="3" type="text" class="form-control" id="comment" ></textarea>
+              </div>
               <button type="submit" class="btn btcn">Submit</button>
               <div id="formStatus" class="mt-3"></div>
             </form>
@@ -640,14 +644,24 @@
     document.getElementById('receiveMoneyForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
+      
+
       const doctorId = getDoctorIdFromURL();
       const receivedAmount = parseInt(document.getElementById('receivedAmount').value);
       const receiveDate = document.getElementById('receiveDate').value;
+      const comment = document.getElementById('comment').value;
+
+      // Show confirm dialog
+      const confirmSubmit = confirm(`${comment} ||  ${receivedAmount} Taka` );
+      if (!confirmSubmit) {
+        return; // Stop submission if user cancels
+      }
 
       const payload = {
         doctor: doctorId,
         received_amount: receivedAmount,
-        receive_date: receiveDate
+        receive_date: receiveDate,
+        comment: comment
       };
 
       try {
@@ -665,6 +679,7 @@
         if (response.ok) {
           statusDiv.innerHTML = `<div class="alert alert-success">Success! Entry added.</div>`;
           document.getElementById('receiveMoneyForm').reset();
+          setTimeout(() => location.reload(), 1500);
         } else {
           statusDiv.innerHTML = `<div class="alert alert-danger">Error: ${JSON.stringify(result)}</div>`;
         }
