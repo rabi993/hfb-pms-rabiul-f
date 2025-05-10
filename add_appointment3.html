@@ -658,6 +658,8 @@ document.getElementById('addForm').addEventListener('submit', async e => {
     const day = isoDate.slice(8, 10); // "08"
     const dateStr = `${year}${month}${day}`; // "250508"
 
+    console.log(dateStr);
+
 
     const res = await fetch(API);
       const appointments = await res.json();
@@ -669,16 +671,17 @@ document.getElementById('addForm').addEventListener('submit', async e => {
       }
 
     const nextAppointmentId = lastId + 1;
+    console.log(nextAppointmentId);
 
     // Construct PatientID
     const generatedPatientID = parseInt(`${dateStr}${nextAppointmentId}`);
-
+      console.log(generatedPatientID);
     // Create new patient object
     patientData = {
       name: form.patient_name.value,
       PatientID: generatedPatientID
     };
-
+    
     // POST to patient API
     const patientRes = await fetch(patientURL, {
       method: 'POST',
@@ -691,15 +694,29 @@ document.getElementById('addForm').addEventListener('submit', async e => {
     }
   }
 
-
+  
   // Prepare appointment data
   let appointmentData = getData(form);
   console.log(appointmentData);
-  appointmentData.patient_name = patientData.name;
-  appointmentData.PatientID = patientData.PatientID;
+  // appointmentData.patient_name = patientData.name;
+  // appointmentData.PatientID = patientData.PatientID;
+  if (appointmentData.appointment_Version === 'Old') {
+    const selectedOption = form.existing_patient.value;
+    if (!selectedOption) {
+      return showAlert('Please select a patient.', 'warning');
+    }
+    const existing_patient = JSON.parse(selectedOption);
+    console.log(existing_patient);
+    appointmentData.patient_name = existing_patient.name;
+    appointmentData.PatientID = existing_patient.PatientID;
+  } else {
+    // For New patient
+    appointmentData.patient_name = patientData.name;
+    appointmentData.PatientID = patientData.PatientID;
+  }
+  console.log(appointmentData.patient_name, appointmentData.PatientID);
 
-
-  delete appointmentData.existing_patient;
+  // delete appointmentData.existing_patient;
 
   // Post appointment
   fetch(API, {

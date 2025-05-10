@@ -828,7 +828,8 @@ function loadTimeFilter() {
           form.appointment_Types.value = data.appointment_Types;
           form.appointment_Status.value = data.appointment_Status;
           form.doctor.value = data.doctor;
-          form.time.value = data.time;
+          
+          // form.time.value = data.time;
           // fetch(`${DOCTOR}${data.doctor}/`)
           //   .then(res => res.json())
           //   .then(doctor => {
@@ -836,6 +837,7 @@ function loadTimeFilter() {
           //     timeSelect.innerHTML = '';
 
           //     doctor.available_time.forEach(time => {
+                
           //       const opt = document.createElement('option');
           //       opt.value = time;
           //       opt.textContent = formatTime12Hour(time);
@@ -845,6 +847,39 @@ function loadTimeFilter() {
           //       timeSelect.appendChild(opt);
           //     });
           // });
+
+                    
+          fetch(`${DOCTOR}${data.doctor}/`)
+            .then(res => res.json())
+            .then(doctor => {
+              const timeSelect = form.time;
+              timeSelect.innerHTML = '';
+
+              const selectedTime24 = toHourMinute(data.time_display || data.start_time_display);
+
+              // Step 1: Fetch all available times to get IDs
+              fetch("http://127.0.0.1:8000/doctor/availableTime/")
+                .then(res => res.json())
+                .then(allTimes => {
+                  doctor.available_time.forEach(timeStr => {
+                    const matched = allTimes.find(t => toHourMinute(t.name) === toHourMinute(timeStr));
+                    if (matched) {
+                      const opt = document.createElement('option');
+                      opt.value = matched.id; // use ID as value for form submission
+                      opt.textContent = formatTime12Hour(matched.name);
+
+                      if (toHourMinute(matched.name) === selectedTime24) {
+                        opt.selected = true;
+                        form.time.value = matched.id; // also assign to hidden/select value
+                      }
+
+                      timeSelect.appendChild(opt);
+                    }
+                  });
+                });
+            });
+
+
           
 
 
@@ -857,8 +892,34 @@ function loadTimeFilter() {
           editModal.show();
         });
     }
+function convertTo24Hour(timeStr) {
+  if (!timeStr) return null;
+  const [time, modifier] = timeStr.split(' ');
+  let [hours, minutes] = time.split(':');
 
-    
+  if (modifier === 'PM' && hours !== '12') {
+    hours = String(parseInt(hours, 10) + 12);
+  }
+  if (modifier === 'AM' && hours === '12') {
+    hours = '00';
+  }
+  return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}:00`;
+}
+function toFullTime(timeStr) {
+  // If timeStr is already in HH:MM:SS, return it as-is
+  if (timeStr.length === 8) return timeStr;
+
+  // Convert "HH:MM" → "HH:MM:00"
+  return timeStr + ":00";
+} 
+function toHourMinute(timeStr) {
+  // Assumes format is "HH:MM:SS"
+  return timeStr.slice(0, 5);
+}
+
+
+
+
     function visit(id) {
       fetch(API + id + '/')
         .then(res => res.json())
@@ -882,7 +943,8 @@ function loadTimeFilter() {
           fillSelect(DOCTOR, form.doctor, data.doctor);
 
           // fillSelect(TIME, form.time, data.time);
-          form.time.value = data.time;
+          // form.time.value = data.time;
+
           // fetch(`${DOCTOR}${data.doctor}/`)
           //   .then(res => res.json())
           //   .then(doctor => {
@@ -899,6 +961,37 @@ function loadTimeFilter() {
           //       timeSelect.appendChild(opt);
           //     });
           // });
+                    
+          fetch(`${DOCTOR}${data.doctor}/`)
+            .then(res => res.json())
+            .then(doctor => {
+              const timeSelect = form.time;
+              timeSelect.innerHTML = '';
+
+              const selectedTime24 = toHourMinute(data.time_display || data.start_time_display);
+
+              // Step 1: Fetch all available times to get IDs
+              fetch("http://127.0.0.1:8000/doctor/availableTime/")
+                .then(res => res.json())
+                .then(allTimes => {
+                  doctor.available_time.forEach(timeStr => {
+                    const matched = allTimes.find(t => toHourMinute(t.name) === toHourMinute(timeStr));
+                    if (matched) {
+                      const opt = document.createElement('option');
+                      opt.value = matched.id; // use ID as value for form submission
+                      opt.textContent = formatTime12Hour(matched.name);
+
+                      if (toHourMinute(matched.name) === selectedTime24) {
+                        opt.selected = true;
+                        form.time.value = matched.id; // also assign to hidden/select value
+                      }
+
+                      timeSelect.appendChild(opt);
+                    }
+                  });
+                });
+            });
+
     
           calculateEditTotal(); // Update total fee in edit form
     
@@ -912,6 +1005,7 @@ function loadTimeFilter() {
     document.getElementById('editForm').addEventListener('submit', e => {
       e.preventDefault();
       let data = getData(e.target);
+      console.log(data);
       let id = e.target.id.value;
       fetch(API + id + '/', {
         method: 'PUT',
@@ -945,11 +1039,59 @@ function loadTimeFilter() {
 
     
     // Delete Appointment
-    function del(id) {
-      if (confirm('Delete this appointment?')) {
-        fetch(API + id + '/', { method: 'DELETE' }).then(() => renderAppointments());
+    // function del(id) {
+      
+    //   if (confirm('Delete this appointment?')) {
+    //     fetch(API + id + '/', { method: 'DELETE' }).then(() => renderAppointments());
+    //   }
+    // }
+    async function del(id) {
+      if (!confirm('Delete this appointment?')){ 
+        
+        console.log("Cancel");
+        
+        return;
+      }
+
+
+      try {
+        console.log("Yes okay");
+        // Fetch the appointment
+        const appointmentRes = await fetch(`http://127.0.0.1:8000/appointment/list/${id}/`);
+        const appointment = await appointmentRes.json();
+        
+        console.log(appointment, appointment.appointment_Version);
+        // Proceed only if it's a "New" patient version
+        if (appointment.appointment_Version === "New") {
+          const patientRes = await fetch("http://127.0.0.1:8000/patientIDName/list/");
+          const patients = await patientRes.json();
+
+          // Normalize types: convert both to string before comparison
+          const matchedPatient = patients.find(
+            p => p.PatientID === parseInt(appointment.PatientID)
+          );
+          console.log(matchedPatient, matchedPatient.id, matchedPatient.PatientID, appointment.PatientID);
+
+          if (matchedPatient) {
+            await fetch(`http://127.0.0.1:8000/patientIDName/list/${matchedPatient.id}/`, {
+              method: 'DELETE'
+            });
+          }
+        }
+
+        // Delete the appointment
+        await fetch(`http://127.0.0.1:8000/appointment/list/${id}/`, {
+          method: 'DELETE'
+        });
+
+        // Refresh UI
+        renderAppointments();
+
+      } catch (error) {
+        console.error("Error deleting appointment or patient:", error);
       }
     }
+
     
     // Set default filter to today
     function setDefaultDate() {

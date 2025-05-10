@@ -400,78 +400,52 @@
 
     <!-- Add Modal -->
     <div class="modal fade" id="addModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content p-3">
-          <h5>Add Appointment</h5>
-          <form id="addForm">
-            <div class="row">
-              <div class="col-md-6 mb-2">
-                <label>Appointment Version</label>
-                <select name="appointment_Version" class="form-select" id="versionSelect">
-                  <option value="New">New</option>
-                  <option value="Old">Old</option>
-                </select>
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content p-3">
+            
+            <h5>Add Appointment</h5>
+            
+            <form id="addForm">
+              <div class="row">
+                <div class="col-md-6 mb-2"><label>Patient Name</label><input name="patient_name" class="form-control" required></div>
+                <div class="col-md-6 mb-2"><label>Doctor</label><select name="doctor" class="form-select" required></select></div>
+                <!-- <div class="col-md-6 mb-2"><label>Status</label>
+                  <select name="appointment_Status" class="form-select">
+                    <option value="Pending">Pending</option><option value="Running">Running</option><option value="Completed">Completed</option>
+                  </select>
+                </div> -->
+                <div class="col-md-6 mb-2"><label>Type</label>
+                  <select name="appointment_Types" class="form-select">
+                    <option value="Online">Online</option><option value="Offline">Offline</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-2"><label>Version</label>
+                  <select name="appointment_Version" class="form-select">
+                    <option value="New">New</option>
+                    <option value="Old">Old</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-2"><label>Phone</label><input name="phone_no" class="form-control" required></div>
+                <div class="col-md-6 mb-2"><label>Appointment Date</label><input type="date" name="appointment_date" class="form-control" required></div>
+                <div class="col-md-6 mb-2"><label>Time</label><select name="time" class="form-select" required></select></div>
+                <!-- <div class="col-md-6 mb-2"><label>Symptom</label><textarea name="symptom" class="form-control"></textarea></div> -->
+                <div class="col-md-4 mb-2"><label>Visit Fee</label><input name="visit_fee" type="number" class="form-control"></div>
+                <!-- <div class="col-md-4 mb-2"><label>Medicine Cost</label><input name="medicine_cost" type="number" step="0.01" class="form-control"></div>
+                <div class="col-md-4 mb-2"><label>Other Cost</label><input name="others_cost" type="number" step="0.01" class="form-control"></div> -->
+                <!-- <div class="col-md-12 mb-2 text-end">
+                  <strong id="totalFeeDisplay">Total: $0.00</strong>
+                </div> -->
+                <!-- <div class="col-md-6 mb-2"><label>Payment</label><select name="payment" class="form-select"><option value="false">Unpaid</option><option value="true">Paid</option></select></div> -->
+                <!-- <div class="col-md-6 mb-2"><label>Cancel</label><select name="cancel" class="form-select"><option value="false">No</option><option value="true">Yes</option></select></div> -->
               </div>
-    
-              <!-- New patient input fields -->
-              <div class="col-md-6 mb-2 version-new">
-                <label>Patient Name</label>
-                <input name="patient_name" class="form-control" id="patientNameInput">
-              </div>
-              <div class="col-md-6 mb-2 version-new d-none">
-                <label>Patient ID</label>
-                <input name="PatientID" class="form-control " id="patientIDInput">
-              </div>
-    
-              <!-- Old patient select fields -->
-              <!-- <div class="col-md-6 mb-2 version-old d-none">
-                <label>Select Patient</label>
-                <select name="existing_patient" class="form-select" id="existingPatientSelect"></select>
-              </div> -->
-              <div class="col-md-6 mb-2 version-old d-none">
-                <label>Type & Select Patient ID</label>
-                <input list="existingPatientList" id="existingPatientInput" class="form-control" name="existing_patient" />
-                <datalist id="existingPatientList"></datalist>
-              </div>
-
-    
-              <div class="col-md-6 mb-2">
-                <label>Doctor</label>
-                <select name="doctor" class="form-select" required></select>
-              </div>
-              <div class="col-md-6 mb-2">
-                <label>Type</label>
-                <select name="appointment_Types" class="form-select">
-                  <option value="Online">Online</option>
-                  <option value="Offline">Offline</option>
-                </select>
-              </div>
-              <div class="col-md-6 mb-2">
-                <label>Phone</label>
-                <input name="phone_no" class="form-control" required>
-              </div>
-              <div class="col-md-6 mb-2">
-                <label>Appointment Date</label>
-                <input type="date" name="appointment_date" class="form-control" required>
-              </div>
-              <div class="col-md-6 mb-2">
-                <label>Time</label>
-                <select name="time" class="form-select" required></select>
-              </div>
-              <div class="col-md-4 mb-2">
-                <label>Visit Fee</label>
-                <input name="visit_fee" type="number" class="form-control">
-              </div>
-            </div>
-            <button class="btn btcn mt-2" type="submit">Submit</button>
-          </form>
+              <button class="btn btcn mt-2" type="submit">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <div class="py-2">
-      <hr>
-    </div>
+      <div class="py-2">
+        <hr>
+      </div>
 </div>
 </div>
 </div>
@@ -517,7 +491,7 @@
 
       data.results.forEach(d => {
         const card = document.createElement('div');
-        card.className = 'col-md-4 mb-3 ';
+        card.className = 'col-md-3 mb-3';
         card.innerHTML = `
           <div class="card shadow ">
            
@@ -526,7 +500,7 @@
             <div class="card-body ">
               <h5 class="fs-5">${d.doctor_name}</h5>
               <p style="font-size:12px;"><strong>Specialization:</strong> ${d.specialization.join(', ')}</p>
-              <p style="font-size:12px;"><strong>Available Time:</strong> ${d.available_time.map(formatTime24to12).join(', ')}</p>
+              <p style="font-size:12px;"><strong>Available Time:</strong> ${d.available_time.join(', ')}</p>
               <p style="font-size:12px;"><strong>Fee:</strong> ${d.fee}</p>
               <button style="font-size:12px;" class="btn btcn" data-bs-toggle="modal" data-bs-target="#addModal" onclick="selectDoctor(${d.id});selectDoctorfee(${d.fee});">Take Appointment</button>
             </div>
@@ -557,14 +531,7 @@
       }
     }
 
-function formatTime24to12(timeStr) {
-  const [hour, minute] = timeStr.split(':');
-  const date = new Date();
-  date.setHours(hour);
-  date.setMinutes(minute);
-  return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-}
-
+   
     
   
   const API = 'http://127.0.0.1:8000/appointment/list/';
@@ -583,85 +550,38 @@ function formatTime24to12(timeStr) {
     });
   }
   
-  // function renderAppointments(date=null) {
-  //   let url = API;
-  //   if (date) {
-  //     url += `?date=${date}`;
-  //   }
+  function renderAppointments(date=null) {
+    let url = API;
+    if (date) {
+      url += `?date=${date}`;
+    }
   
   
-  //   fetch(API ).then(res => res.json()).then(data => {
+    fetch(API ).then(res => res.json()).then(data => {
       
-  //     let tbody = document.getElementById('appointmentTableBody');
-  //     tbody.innerHTML = '';
-  //     data.forEach(a => {
+      let tbody = document.getElementById('appointmentTableBody');
+      tbody.innerHTML = '';
+      data.forEach(a => {
         
-  //       tbody.innerHTML += `
-  //         <tr>
-  //           <td>${a.patient_name}</td>
-  //           <td>${a.doctor_display}</td>
-  //           <td>${a.appointment_Status}</td>
-  //           <td>${a.appointment_Types}</td>
-  //           <td>${a.phone_no}</td>
-  //           <td>${a.appointment_date}</td>
-  //           <td>${a.time_display}</td>
-  //           <td>${a.total_amount}</td>
-  //           <td>
-  //             <button class="btn btn-sm btcn" onclick="edit(${a.id})">Edit</button>
-  //             <button class="btn btn-sm btc" onclick="del(${a.id})">Delete</button>
-  //           </td>
-  //         </tr>
-  //       `;
-  //     });
-  //   });
-  // }
-
-  const patientURL = 'http://127.0.0.1:8000/patientIDName/list/';
-
-// Show/Hide patient input/select based on version
-document.getElementById('versionSelect').addEventListener('change', e => {
-  const isNew = e.target.value === 'New';
-  document.querySelectorAll('.version-new').forEach(el => el.classList.toggle('d-none', !isNew));
-  document.querySelectorAll('.version-old').forEach(el => el.classList.toggle('d-none', isNew));
-});
-
-// Fill old patient dropdown
-// function fetchPatients() {
-//   fetch(patientURL).then(res => res.json()).then(data => {
-//     console.log(data);
-//     const select = document.getElementById('existingPatientSelect');
-//     select.innerHTML = '';
-//     data.forEach(p => {
-//       const opt = document.createElement('option');
-//       opt.value = JSON.stringify(p); // we stringify to get both name and PatientID
-//       opt.text = `${p.name} (ID: ${p.PatientID})`;
-//       select.appendChild(opt);
-//     });
-//   });
-// }
-function fetchPatients() {
-  fetch(patientURL)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      const dataList = document.getElementById('existingPatientList');
-      dataList.innerHTML = '';
-
-      data.forEach(p => {
-        const opt = document.createElement('option');
-        opt.value = `${p.PatientID} - ${p.name}`;
-        opt.setAttribute('data-patient', JSON.stringify(p));
-        dataList.appendChild(opt);
-      });
-
-      // Store patients in a map for lookup
-      window.patientMap = {};
-      data.forEach(p => {
-        window.patientMap[`${p.PatientID} - ${p.name}`] = p;
+        tbody.innerHTML += `
+          <tr>
+            <td>${a.patient_name}</td>
+            <td>${a.doctor_display}</td>
+            <td>${a.appointment_Status}</td>
+            <td>${a.appointment_Types}</td>
+            <td>${a.phone_no}</td>
+            <td>${a.appointment_date}</td>
+            <td>${a.time_display}</td>
+            <td>${a.total_amount}</td>
+            <td>
+              <button class="btn btn-sm btcn" onclick="edit(${a.id})">Edit</button>
+              <button class="btn btn-sm btc" onclick="del(${a.id})">Delete</button>
+            </td>
+          </tr>
+        `;
       });
     });
-}
-
+  }
   
   function getData(form) {
     let fd = new FormData(form);
@@ -675,123 +595,35 @@ function fetchPatients() {
   }
   
  
-  // Modify form submit to handle both versions
-document.getElementById('addForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const form = e.target;
-  const version = form.appointment_Version.value;
+  document.getElementById('addForm').addEventListener('submit', e => {
+    e.preventDefault();
+    let data = getData(e.target);
 
-  let patientData = {};
- 
-  if (version === 'New') {
-  // Get current date in YYYYMMDD format
-    // const today = new Date();
-    // const dateStr = today.toISOString().split('T')[0].replace(/-/g, '');
-    const today = new Date();
-    const isoDate = today.toISOString().split('T')[0]; // "2025-05-08"
-    const year = isoDate.slice(2, 4); // "25"
-    const month = isoDate.slice(5, 7); // "05"
-    const day = isoDate.slice(8, 10); // "08"
-    const dateStr = `${year}${month}${day}`; // "250508"
-
-    console.log(dateStr);
-
-
-    const res = await fetch(API);
-      const appointments = await res.json();
-
-      let lastId = 0;
-      if (appointments.length > 0) {
-        const sortedAppointments = appointments.sort((a, b) => b.id - a.id);
-        lastId = sortedAppointments[0].id;
-      }
-
-    const nextAppointmentId = lastId + 1;
-    console.log(nextAppointmentId);
-
-    // Construct PatientID
-    const generatedPatientID = parseInt(`${dateStr}${nextAppointmentId}`);
-      console.log(generatedPatientID);
-    // Create new patient object
-    patientData = {
-      name: form.patient_name.value,
-      PatientID: generatedPatientID
-    };
-    
-    console.log(patientData);
-
-    // POST to patient API
-    const patientRes = await fetch(patientURL, {
+    fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(patientData)
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to add appointment');
+      }
+      return response.json();
+    })
+    .then((appointment) => {
+      bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
+      e.target.reset();
+      showAlert(`Appointment Number ${appointment.id || 'N/A'} added successfully!`, 'success');
+
+      renderAppointments();
+      setTimeout(() => {
+        location.reload();
+      }, 1500);
+    })
+    .catch(error => {
+      showAlert(error.message || 'Something went wrong!', 'danger');
     });
-
-    if (!patientRes.ok) {
-      return showAlert('Failed to create new patient', 'danger');
-    }
-  }
-
-  
-  // Prepare appointment data
-  let appointmentData = getData(form);
-  console.log(appointmentData);
-  // appointmentData.patient_name = patientData.name;
-  // appointmentData.PatientID = patientData.PatientID;
-  // if (appointmentData.appointment_Version === 'Old') {
-  //   const selectedOption = form.existing_patient.value;
-  //   if (!selectedOption) {
-  //     return showAlert('Please select a patient.', 'warning');
-  //   }
-  //   const existing_patient = JSON.parse(selectedOption);
-  //   console.log(existing_patient);
-  //   appointmentData.patient_name = existing_patient.name;
-  //   appointmentData.PatientID = existing_patient.PatientID;
-  // } 
-  
-  if (appointmentData.appointment_Version === 'Old') {
-    const typedValue = form.existing_patient.value;
-    const existing_patient = window.patientMap[typedValue];
-
-    if (!existing_patient) {
-      return showAlert('Please select a valid patient from the suggestions.', 'warning');
-    }
-
-    appointmentData.patient_name = existing_patient.name;
-    appointmentData.PatientID = existing_patient.PatientID;
-  }
-  else {
-    // For New patient
-    appointmentData.patient_name = patientData.name;
-    appointmentData.PatientID = patientData.PatientID;
-  }
-  console.log(appointmentData.patient_name, appointmentData.PatientID);
-
-  // delete appointmentData.existing_patient;
-
-  // Post appointment
-  fetch(API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(appointmentData)
-    
-  })
-  .then(response => {
-    if (!response.ok) throw new Error('Failed to add appointment');
-    return response.json();
-  })
-  .then(appointment => {
-    bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
-    form.reset();
-    showAlert(`Appointment Number ${appointment.id} added successfully!`, 'success');
-    // renderAppointments();
-    setTimeout(() => location.reload(), 1500);
-  })
-  .catch(err => {
-    showAlert(err.message, 'danger');
   });
-});
-
   function showAlert(message, type = 'success') {
     const alertPlaceholder = document.getElementById('alertPlaceholder');
     alertPlaceholder.innerHTML = `
@@ -806,13 +638,12 @@ document.getElementById('addForm').addEventListener('submit', async e => {
   
   window.onload = async () => {
       await fetchDoctors();
-      await fetchPatients(); // Load old patients
       await fillSelect(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
       await fillSelect(TIME, document.querySelector('#addForm [name="time"]'));
       await fetchOptions(designationURL, document.querySelector('#addDoctorForm [name="designation"]'));
       await fetchOptions(specializationURL, document.querySelector('#addDoctorForm [name="specialization"]'));
       await fetchOptions(availableTimeURL, document.querySelector('#addDoctorForm [name="available_time"]'));
-      // renderAppointments();
+      renderAppointments();
   };
 
 
