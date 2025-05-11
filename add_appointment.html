@@ -582,6 +582,25 @@ function formatTime24to12(timeStr) {
       });
     });
   }
+
+  function fillSelect2(url, select) {
+    fetch(url).then(res => res.json()).then(data => {
+      select.innerHTML = '';
+      (data.results || data).forEach(d => {
+        let opt = document.createElement('option');
+        opt.value = d.id ; // Use d if it's just a time string
+        if (select.name === 'time') {
+          // d might be a string like "14:00" or an object with .available_time
+          let timeStr = d.available_time || d.name ;
+          opt.value = d.id;
+          opt.textContent = formatTime24to12(timeStr);
+        } else {
+          opt.textContent = d.doctor_name || d.name;
+        }
+        select.appendChild(opt);
+      });
+    });
+  }
   
   // function renderAppointments(date=null) {
   //   let url = API;
@@ -807,8 +826,8 @@ document.getElementById('addForm').addEventListener('submit', async e => {
   window.onload = async () => {
       await fetchDoctors();
       await fetchPatients(); // Load old patients
-      await fillSelect(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
-      await fillSelect(TIME, document.querySelector('#addForm [name="time"]'));
+      await fillSelect2(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
+      await fillSelect2(TIME, document.querySelector('#addForm [name="time"]'));
       await fetchOptions(designationURL, document.querySelector('#addDoctorForm [name="designation"]'));
       await fetchOptions(specializationURL, document.querySelector('#addDoctorForm [name="specialization"]'));
       await fetchOptions(availableTimeURL, document.querySelector('#addDoctorForm [name="available_time"]'));
