@@ -26,7 +26,7 @@
 
 <div class="header">
 
-<div class="header-left">
+<div style="display: flex; justify-content: center;" class="header-left">
 <a href="index.html" class="logo">
 <img src="assets/img/logo.png" alt="Logo">
 </a>
@@ -394,7 +394,7 @@
 
         data.results.forEach(d => {
           const card = document.createElement('div');
-          card.className = 'col-md-3 mb-3';
+          card.className = 'col-md-4 mb-3';
           card.innerHTML = `
             <div class="card shadow">
               <img src="${d.image}" class="card-img-top mt-3 mx-auto" alt="${d.doctor_name}" style="height: 70px; width:70px; border-radius:50%;">

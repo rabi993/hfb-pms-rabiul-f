@@ -196,3 +196,8 @@ footer{
     color: black !important;          /* Ensure text color is readable */
 }
 
+.doctor_card{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
