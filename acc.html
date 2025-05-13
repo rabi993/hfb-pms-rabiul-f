@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="row d-flex justify-content-between ">
+        <div class="col-lg-3">
+            
+            <h2 class="mb-4">Accounts List</h2>
+        </div>
+        <div class="col-lg-2 row d-flex justify-content-end ">
+
+            <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Account</button>
+        </div>
+    </div>
+    <div class="mt-4 row d-flex justify-content-center py-3">
+        <div class="col-lg-3">
+
+            <h5 id="totalIncome">Total Income: 0 BDT</h5>
+        </div>
+        <div class="col-lg-3">
+
+            <h5 id="totalExpense">Total Expense: 0 BDT</h5>
+        </div>
+        <div class="col-lg-3">
+
+            <h5 id="finalProfit">Final Profit: 0 BDT</h5>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped" id="accountsTable">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Account Head</th>
+                <th>AH Type</th>
+                <th>Amount Type</th>
+                <th>Account Name</th>
+                <th>Amount</th>
+                <th>Phone</th>
+                <th>Comment</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Account</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addForm">
+          <div class="row mb-3">
+            <div class="col">
+              <label>Account Head</label>
+              <select id="addAccountHead" class="form-control" required></select>
+            </div>
+            <div class="col">
+              <label>Account Name</label>
+              <select id="addAccName" class="form-control" required></select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <label>Amount Type</label>
+              <select id="addAmountType" class="form-control" required>
+                <!-- <option value="Medicine_Buy">Medicine_Buy</option>
+                <option value="Salary">Salary</option>
+                <option value="Bonus">Bonus</option>
+                <option value="TA_DA">TA_DA</option>
+                <option value="Others">Others</option> -->
+              </select>
+            </div>
+            <div class="col">
+              <label>AH Type</label>
+              <select id="addAhType" class="form-control" required>
+                <option value="Expense">Expense</option>
+                <option value="Income">Income</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <label>Amount</label>
+              <input type="number" id="addAmount" class="form-control" required>
+            </div>
+            <div class="col">
+              <label>Phone</label>
+              <input type="text" id="addPhone" class="form-control">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label>Comment</label>
+            <textarea id="addComment" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Account</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editForm">
+          <input type="hidden" id="editId">
+          <div class="row mb-3">
+            <div class="col">
+              <label>Amount</label>
+              <input type="number" id="editAmount" class="form-control">
+            </div>
+            <div class="col">
+              <label>Phone</label>
+              <input type="text" id="editPhone" class="form-control">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label>Comment</label>
+            <textarea id="editComment" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const apiBase = "http://127.0.0.1:8000/accounts/list/";
+const accHeadUrl = "http://127.0.0.1:8000/accounts/accounts-heads/";
+const accSingleUrl = "http://127.0.0.1:8000/accounts/acc-singles/";
+const amountTypeUrl = "http://127.0.0.1:8000/accounts/amount-types/";
+
+let accHeads = {};
+let accSingles = {};
+
+// Load all account heads and singles
+function fetchMetaData() {
+    return Promise.all([
+        fetch(accHeadUrl).then(res => res.json()),
+        fetch(accSingleUrl).then(res => res.json())
+    ]).then(([heads, singles]) => {
+        heads.forEach(h => accHeads[h.id] = h.name);
+        singles.forEach(s => accSingles[s.id] = s.name);
+
+        // Populate Add Modal selects
+        const headSelect = document.getElementById("addAccountHead");
+        headSelect.innerHTML = heads.map(h => `<option value="${h.id}">${h.name}</option>`).join("");
+
+        const nameSelect = document.getElementById("addAccName");
+        nameSelect.innerHTML = singles.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
+    });
+}
+
+function fetchAccounts() {
+    fetch(apiBase)
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector("#accountsTable tbody");
+            tbody.innerHTML = "";
+
+            let totalIncome = 0;
+            let totalExpense = 0;
+
+            data.forEach(account => {
+                const amount = parseFloat(account.amount);
+                if (account.ah_type === "Income") {
+                    totalIncome += amount;
+                } else if (account.ah_type === "Expense") {
+                    totalExpense += amount;
+                }
+                const row = `
+                    <tr>
+                        <td>${account.id}</td>
+                        <td>${accHeads[account.accounts_head]}</td>
+                        <td>${account.ah_type}</td>
+                        <td>${account.amount_type}</td>
+                        <td>${accSingles[account.acc_name]}</td>
+                        <td>${account.amount}</td>
+                        <td>${account.phone}</td>
+                        <td>${account.comment}</td>
+                        <td>${new Date(account.create_date).toLocaleString()}</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" onclick="openEditModal(${account.id}, '${account.amount}', '${account.phone}', \`${account.comment}\`)">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteAccount(${account.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+            const profit = totalIncome - totalExpense;
+
+            document.getElementById("totalIncome").innerText = `Total Income: ${totalIncome.toFixed(2)} BDT`;
+            document.getElementById("totalExpense").innerText = `Total Expense: ${totalExpense.toFixed(2)} BDT`;
+            document.getElementById("finalProfit").innerText = `Final Profit: ${profit.toFixed(2)} BDT`;
+        
+        });
+}
+
+
+
+function openEditModal(id, amount, phone, comment) {
+    document.getElementById("editId").value = id;
+    document.getElementById("editAmount").value = amount;
+    document.getElementById("editPhone").value = phone;
+    document.getElementById("editComment").value = comment;
+
+    const editModal = new bootstrap.Modal(document.getElementById("editModal"));
+    editModal.show();
+}
+
+
+document.getElementById("editForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const id = document.getElementById("editId").value;
+    const amount = document.getElementById("editAmount").value;
+    const phone = document.getElementById("editPhone").value;
+    const comment = document.getElementById("editComment").value;
+
+    fetch(apiBase + id + "/", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount, phone, comment })
+    })
+    .then(res => {
+        if (res.ok) {
+            fetchAccounts();
+            bootstrap.Modal.getInstance(document.getElementById("editModal")).hide();
+        } else {
+            alert("Failed to update.");
+        }
+    });
+});
+
+function deleteAccount(id) {
+    if (!confirm("Are you sure you want to delete this record?")) return;
+
+    fetch(apiBase + id + "/", {
+        method: "DELETE"
+    }).then(res => {
+        if (res.ok) fetchAccounts();
+        else alert("Failed to delete.");
+    });
+}
+
+// let accHeadsData = [];
+// let accSinglesData = [];
+
+// function fetchMetaData() {
+//     return Promise.all([
+//         fetch(accHeadUrl).then(res => res.json()),
+//         fetch(accSingleUrl).then(res => res.json())
+//     ]).then(([heads, singles]) => {
+//         accHeadsData = heads;
+//         accSinglesData = singles;
+
+//         populateAccountHeadSelect();
+//     });
+// }
+
+// function populateAccountHeadSelect() {
+//     const headSelect = document.getElementById("addAccountHead");
+//     headSelect.innerHTML = accHeadsData.map(h => `<option value="${h.id}">${h.name}</option>`).join("");
+//     headSelect.dispatchEvent(new Event("change")); // trigger change for initial population
+// }
+
+// document.getElementById("addAccountHead").addEventListener("change", function () {
+//     const selectedId = parseInt(this.value);
+//     const selectedHead = accHeadsData.find(h => h.id === selectedId);
+
+//     // Set AH Type
+//     document.getElementById("addAhType").value = selectedHead?.AH_Type || "";
+
+//     // Filter Amount Type (mocked here with values in select)
+//     const amountTypeSelect = document.getElementById("addAmountType");
+//     const allowedTypes = selectedHead?.Amount_Type || [];
+
+//     const allOptions = Array.from(amountTypeSelect.options);
+//     amountTypeSelect.innerHTML = allOptions
+//         .filter(opt => allowedTypes.includes(parseInt(opt.index) + 1)) // assuming values are indexed starting from 1
+//         .map(opt => `<option value="${opt.value}">${opt.text}</option>`)
+//         .join("");
+    
+
+//     // Filter Account Name
+//     const accNameSelect = document.getElementById("addAccName");
+//     accNameSelect.innerHTML = accSinglesData
+//         .filter(acc => acc.accounts_head === selectedId)
+//         .map(acc => `<option value="${acc.id}">${acc.name}</option>`)
+//         .join("");
+
+//     accNameSelect.dispatchEvent(new Event("change")); // auto-fill phone for first account
+// });
+
+// // Auto-fill phone based on Account Name
+// document.getElementById("addAccName").addEventListener("change", function () {
+//     const selectedId = parseInt(this.value);
+//     const selectedAccount = accSinglesData.find(a => a.id === selectedId);
+//     document.getElementById("addPhone").value = selectedAccount?.phone || "";
+// });
+
+
+// document.getElementById("addForm").addEventListener("submit", function (e) {
+//     e.preventDefault();
+
+//     const newAccount = {
+//         accounts_head: document.getElementById("addAccountHead").value,
+//         acc_name: document.getElementById("addAccName").value,
+//         ah_type: document.getElementById("addAhType").value,
+//         amount_type: document.getElementById("addAmountType").value,
+//         amount: document.getElementById("addAmount").value,
+//         phone: document.getElementById("addPhone").value,
+//         comment: document.getElementById("addComment").value
+//     };
+
+//     fetch(apiBase, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(newAccount)
+//     })
+//     .then(res => {
+//         if (res.ok) {
+//             fetchAccounts();
+//             document.getElementById("addForm").reset();
+//             bootstrap.Modal.getInstance(document.getElementById("addModal")).hide();
+//         } else {
+//             alert("Failed to add account.");
+//         }
+//     });
+// });
+let accHeadsData = [];
+let accSinglesData = [];
+let amountTypesData = [];
+
+function fetchMetaData2() {
+    return Promise.all([
+        fetch(accHeadUrl).then(res => res.json()),
+        fetch(accSingleUrl).then(res => res.json()),
+        fetch(amountTypeUrl).then(res => res.json())
+    ]).then(([heads, singles, amountTypes]) => {
+        accHeadsData = heads;
+        accSinglesData = singles;
+        amountTypesData = amountTypes;
+
+        populateAccountHeadSelect();
+    });
+}
+
+function populateAccountHeadSelect() {
+    const headSelect = document.getElementById("addAccountHead");
+    headSelect.innerHTML = accHeadsData.map(h => `<option value="${h.id}">${h.name}</option>`).join("");
+    headSelect.dispatchEvent(new Event("change")); // auto trigger on load
+}
+
+document.getElementById("addAccountHead").addEventListener("change", function () {
+    const selectedId = parseInt(this.value);
+    const selectedHead = accHeadsData.find(h => h.id === selectedId);
+
+    // Fill AH Type
+    document.getElementById("addAhType").value = selectedHead?.AH_Type || "";
+
+    // Populate Amount Type based on AccountHead.Amount_Type
+    const amountTypeSelect = document.getElementById("addAmountType");
+    amountTypeSelect.innerHTML = amountTypesData
+        .filter(at => selectedHead?.Amount_Type.includes(at.id))
+        .map(at => `<option value="${at.type}">${at.type}</option>`)
+        .join("");
+
+    // Filter Account Name dropdown
+    const accNameSelect = document.getElementById("addAccName");
+    accNameSelect.innerHTML = accSinglesData
+        .filter(acc => acc.accounts_head === selectedId)
+        .map(acc => `<option value="${acc.id}">${acc.name}</option>`)
+        .join("");
+
+    accNameSelect.dispatchEvent(new Event("change")); // Fill phone for the first option
+});
+
+// Auto-fill phone on Account Name change
+document.getElementById("addAccName").addEventListener("change", function () {
+    const selectedId = parseInt(this.value);
+    const selectedAccount = accSinglesData.find(a => a.id === selectedId);
+    document.getElementById("addPhone").value = selectedAccount?.phone || "";
+});
+
+document.getElementById("addForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const newAccount = {
+        accounts_head: document.getElementById("addAccountHead").value,
+        acc_name: document.getElementById("addAccName").value,
+        ah_type: document.getElementById("addAhType").value,
+        amount_type: document.getElementById("addAmountType").value,
+        amount: document.getElementById("addAmount").value,
+        phone: document.getElementById("addPhone").value,
+        comment: document.getElementById("addComment").value
+    };
+
+    fetch(apiBase, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newAccount)
+    })
+    .then(res => {
+        if (res.ok) {
+            fetchAccounts();
+            document.getElementById("addForm").reset();
+            bootstrap.Modal.getInstance(document.getElementById("addModal")).hide();
+        } else {
+            alert("Failed to add account.");
+        }
+    });
+});
+
+
+// Initial Load
+fetchMetaData();
+fetchMetaData2().then(fetchAccounts);
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
