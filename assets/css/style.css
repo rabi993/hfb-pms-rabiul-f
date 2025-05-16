@@ -1353,7 +1353,7 @@ div.dataTables_wrapper div.dataTables_info {
 }
 .header .header-left {
 	float: left;
-    height: 60px;
+    height: 100px;
     padding: 0 20px;
     position: relative;
     width: 320px;
@@ -1373,7 +1373,7 @@ div.dataTables_wrapper div.dataTables_info {
 	line-height: 60px;
 }
 .header .header-left .logo img {
-    max-height: 40px;
+    max-height: 90px;
     width: auto;
 }
 .header-left .logo.logo-small {
@@ -1601,7 +1601,7 @@ footer p {
 	border-right: 1px solid #ececf5;
     bottom: 0;
     left: 0;
-    margin-top: 0;
+    margin-top: 40px;
     position: fixed;
     top: 60px;
     transition: all 0.2s ease-in-out 0s;
@@ -1620,6 +1620,7 @@ footer p {
 }
 .sidebar-menu {
     padding: 15px;
+	
 }
 .sidebar-menu ul {
 	font-size: 15px;
@@ -1627,6 +1628,7 @@ footer p {
 	margin: 0;
 	padding: 0;
 	position: relative;
+
 }
 .sidebar-menu li a {
 	color: #6f6f6f;

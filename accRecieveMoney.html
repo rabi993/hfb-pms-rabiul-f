@@ -11,18 +11,6 @@
     <h2 class="mb-4">Receive Money</h2>
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#moneyModal" onclick="openAddForm()">Add Receive Money</button>
 
-
-    <label for="doctorFilter">Doctor:</label>
-    <select id="doctorFilter">
-        <option value="">-- All Doctors --</option>
-    </select>
-
-    <label for="dateFilter">Receive Date:</label>
-    <input type="date" id="dateFilter">
-
-    <button onclick="applyFilters()">Filter</button>
-    <button onclick="loadReceiveMoney()">Reset</button>
-
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -35,12 +23,6 @@
         </tr>
       </thead>
       <tbody id="moneyTableBody"></tbody>
-      <tfoot>
-            <tr>
-                <td colspan="2"><strong>Total Amount:</strong></td>
-                <td colspan="5" id="totalAmount">0</td>
-            </tr>
-        </tfoot>
     </table>
   </div>
 
@@ -82,7 +64,6 @@
 
   <script>
     const apiBase = 'http://127.0.0.1:8000';
-    let allData = [];
 
     document.addEventListener('DOMContentLoaded', () => {
       loadDoctors();
@@ -91,120 +72,43 @@
       document.getElementById('moneyForm').addEventListener('submit', submitForm);
     });
 
-    // function loadDoctors() {
-    //   fetch(`${apiBase}/doctor/list/`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       const select = document.getElementById('doctor');
-    //       select.innerHTML = '';
-    //       data.results.forEach(doc => {
-    //         const option = document.createElement('option');
-    //         option.value = doc.id;
-    //         option.textContent = doc.doctor_name;
-    //         select.appendChild(option);
-    //       });
-    //     });
-    // }
-function loadDoctors() {
-  fetch(`${apiBase}/doctor/list/`)
-    .then(res => res.json())
-    .then(data => {
-      const doctorSelect = document.getElementById('doctor');
-      const filterSelect = document.getElementById('doctorFilter');
-      doctorSelect.innerHTML = '';
-      filterSelect.innerHTML = '<option value="">-- All Doctors --</option>';
-
-      data.results.forEach(doc => {
-        const option1 = document.createElement('option');
-        option1.value = doc.id;
-        option1.textContent = doc.doctor_name;
-        doctorSelect.appendChild(option1);
-
-        const option2 = option1.cloneNode(true);
-        filterSelect.appendChild(option2);
-      });
-    });
-}
-
-
-    // function loadReceiveMoney() {
-    //   fetch(`${apiBase}/appointment/ReceiveMoney/`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       const tbody = document.getElementById('moneyTableBody');
-    //       tbody.innerHTML = '';
-    //       data.forEach(item => {
-    //         const row = `<tr>
-    //           <td>${item.id}</td>
-    //           <td>${item.doctor_display}</td>
-    //           <td>${item.received_amount}</td>
-    //           <td>${item.receive_date}</td>
-    //           <td>${item.comment || ''}</td>
-    //           <td>
-    //             <button class="btn btn-sm btn-warning" onclick='openEditForm(${JSON.stringify(item)})'>Edit</button>
-    //             <button class="btn btn-sm btn-danger" onclick="deleteMoney(${item.id})">Delete</button>
-    //           </td>
-    //         </tr>`;
-    //         tbody.insertAdjacentHTML('beforeend', row);
-    //       });
-    //     });
-    // } 
-    async function loadReceiveMoney() {
-        const response = await axios.get(`${apiBase}/appointment/ReceiveMoney/`);
-        allData = response.data;
-        renderTable(allData);
+    function loadDoctors() {
+      fetch(`${apiBase}/doctor/list/`)
+        .then(res => res.json())
+        .then(data => {
+          const select = document.getElementById('doctor');
+          select.innerHTML = '';
+          data.results.forEach(doc => {
+            const option = document.createElement('option');
+            option.value = doc.id;
+            option.textContent = doc.doctor_name;
+            select.appendChild(option);
+          });
+        });
     }
-    function renderTable(data) {
-            const tbody = document.getElementById("moneyTableBody");
-            tbody.innerHTML = "";
 
-            let total = 0;
-            data.forEach(item => {
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${item.id}</td>
-                    <td>${item.doctor_display}</td>
-                    <td>${item.received_amount}</td>
-                    <td>${item.receive_date}</td>
-                    <td>${new Date(item.create_date).toLocaleString()}</td>
-                    <td>${item.comment || ''}</td>
-                    <td>
-                      <button class="btn btn-sm btn-info" onclick="editReceiveMoney(${item.id})">Edit</button>
-                      <button class="btn btn-sm btn-danger" onclick="deleteMoney(${item.id})">Delete</button>
-                    </td>
-
-                `;
-                tbody.appendChild(row);
-                total += item.received_amount;
-            });
-
-            document.getElementById("totalAmount").textContent = total.toLocaleString();
-
-        }
-    
-function editReceiveMoney(id) {
-  const item = allData.find(i => i.id === id);
-  if (item) {
-    openEditForm(item);
-  }
-}
-
-    function applyFilters() {
-            const doctorId = document.getElementById("doctorFilter").value;
-            const dateValue = document.getElementById("dateFilter").value;
-
-            let filtered = allData;
-
-            if (doctorId) {
-                filtered = filtered.filter(item => item.doctor == doctorId);
-            }
-            if (dateValue) {
-                filtered = filtered.filter(item => item.receive_date === dateValue);
-            }
-
-            renderTable(filtered);
-        }
+    function loadReceiveMoney() {
+      fetch(`${apiBase}/appointment/ReceiveMoney/`)
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.getElementById('moneyTableBody');
+          tbody.innerHTML = '';
+          data.forEach(item => {
+            const row = `<tr>
+              <td>${item.id}</td>
+              <td>${item.doctor_display}</td>
+              <td>${item.received_amount}</td>
+              <td>${item.receive_date}</td>
+              <td>${item.comment || ''}</td>
+              <td>
+                <button class="btn btn-sm btn-warning" onclick='openEditForm(${JSON.stringify(item)})'>Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteMoney(${item.id})">Delete</button>
+              </td>
+            </tr>`;
+            tbody.insertAdjacentHTML('beforeend', row);
+          });
+        });
+    }
 
     function openAddForm() {
       document.getElementById('moneyForm').reset();
@@ -286,6 +190,7 @@ function editReceiveMoney(id) {
 <body>
     <h2>Receive Money Records</h2>
 
+    
     <label for="doctorFilter">Doctor:</label>
     <select id="doctorFilter">
         <option value="">-- All Doctors --</option>
@@ -297,6 +202,7 @@ function editReceiveMoney(id) {
     <button onclick="applyFilters()">Filter</button>
     <button onclick="loadReceiveMoney()">Reset</button>
 
+    
     <table style="margin-top: 20px;">
         <thead>
             <tr>
