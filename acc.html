@@ -18,7 +18,7 @@
             <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Account</button>
         </div>
     </div>
-    <div class="mt-4 row d-flex justify-content-center py-3">
+    <!-- <div class="mt-4 row d-flex justify-content-center py-3">
         <div class="col-lg-3">
 
             <h5 id="totalIncome">Total Income: 0 BDT</h5>
@@ -31,7 +31,7 @@
 
             <h5 id="finalProfit">Final Profit: 0 BDT</h5>
         </div>
-    </div>
+    </div> -->
 
     <table class="table table-bordered table-striped" id="accountsTable">
         <thead class="table-dark">
@@ -41,7 +41,8 @@
                 <th>AH Type</th>
                 <th>Amount Type</th>
                 <th>Account Name</th>
-                <th>Amount</th>
+                <th>Expense</th>
+                <th>Income</th>
                 <th>Phone</th>
                 <th>Comment</th>
                 <th>Date</th>
@@ -49,6 +50,15 @@
             </tr>
         </thead>
         <tbody></tbody>
+        <tfoot>
+            <tr >
+                <td colspan="5" class="text-center bg-dark text-white"><strong>Total Amount:</strong></td>
+                <td colspan="1" id="totalIncome" class="fw-bold bg-dark text-white">0</td>
+                <td colspan="1" id="totalExpense" class="fw-bold bg-dark text-white">0</td>
+                <td colspan="2" class="text-center bg-dark text-white"><strong>Final Amount:</strong></td>
+                <td colspan="2" id="finalProfit" class="fw-bold bg-dark text-white">0</td>
+            </tr>
+        </tfoot>
     </table>
 </div>
 
@@ -56,8 +66,8 @@
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Account</h5>
+      <div class="modal-header ">
+        <h4 class="modal-title fw-bold ">Add Account</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
@@ -105,7 +115,9 @@
             <label>Comment</label>
             <textarea id="addComment" class="form-control"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Add</button>
+          <div style="width: 10%; margin: auto;" >
+            <button type="submit" class="btn btn-success py-2 px-4  fw-bold fs-5">Add</button>
+          </div>
         </form>
       </div>
     </div>
@@ -138,7 +150,10 @@
             <label>Comment</label>
             <textarea id="editComment" class="form-control"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Update</button>
+          <!-- <button type="submit" class="btn btn-success">Update</button> -->
+           <div style="width: 10%; margin: auto;" >
+            <button type="submit" class="btn btn-success py-2 px-4  fw-bold fs-5">Update</button>
+          </div>
         </form>
       </div>
     </div>
@@ -196,10 +211,12 @@ function fetchAccounts() {
                         <td>${account.ah_type}</td>
                         <td>${account.amount_type}</td>
                         <td>${accSingles[account.acc_name]}</td>
-                        <td>${account.amount}</td>
+                        
+                        <td>${account.ah_type === "Expense" ? account.amount : 0}</td>
+                        <td>${account.ah_type === "Income" ? account.amount : 0}</td>
                         <td>${account.phone}</td>
                         <td>${account.comment}</td>
-                        <td>${new Date(account.create_date).toLocaleString()}</td>
+                        <td>${new Date(account.create_date).toLocaleDateString()}</td>
                         <td>
                             <button class="btn btn-sm btn-warning" onclick="openEditModal(${account.id}, '${account.amount}', '${account.phone}', \`${account.comment}\`)">Edit</button>
                             <button class="btn btn-sm btn-danger" onclick="deleteAccount(${account.id})">Delete</button>
@@ -210,9 +227,9 @@ function fetchAccounts() {
             });
             const profit = totalIncome - totalExpense;
 
-            document.getElementById("totalIncome").innerText = `Total Income: ${totalIncome.toFixed(2)} BDT`;
-            document.getElementById("totalExpense").innerText = `Total Expense: ${totalExpense.toFixed(2)} BDT`;
-            document.getElementById("finalProfit").innerText = `Final Profit: ${profit.toFixed(2)} BDT`;
+            document.getElementById("totalIncome").innerText = ` ${totalIncome.toFixed(2)} Tk`;
+            document.getElementById("totalExpense").innerText = ` ${totalExpense.toFixed(2)} Tk`;
+            document.getElementById("finalProfit").innerText = ` ${profit.toFixed(2)} Tk`;
         
         });
 }
