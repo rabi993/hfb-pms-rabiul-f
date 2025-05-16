@@ -15,8 +15,14 @@
     <label for="doctorFilter" class="form-label">Doctor:</label>
     <select id="doctorFilter" class="form-select d-inline w-auto mx-2"></select>
 
-    <label for="dateFilter" class="form-label">Receive Date:</label>
-    <input type="date" id="dateFilter" class="form-control d-inline w-auto mx-2">
+    <!-- <label for="dateFilter" class="form-label">Receive Date:</label>
+    <input type="date" id="dateFilter" class="form-control d-inline w-auto mx-2"> -->
+    <label for="fromDate" class="form-label">From:</label>
+    <input type="date" id="fromDate" class="form-control d-inline w-auto mx-2">
+
+    <label for="toDate" class="form-label">To:</label>
+    <input type="date" id="toDate" class="form-control d-inline w-auto mx-2">
+
 
     <button class="btn btn-success" onclick="applyFilters()">Filter</button>
     <button class="btn btn-secondary" onclick="loadReceiveMoney()">Reset</button>
@@ -110,11 +116,24 @@
       });
   }
 
-  async function loadReceiveMoney() {
-    const response = await fetch(`${apiBase}/appointment/ReceiveMoney/`);
-    allData = await response.json();
-    renderTable(allData);
+  // async function loadReceiveMoney() {
+  //   const response = await fetch(`${apiBase}/appointment/ReceiveMoney/`);
+  //   allData = await response.json();
+  //   renderTable(allData);
+  // }
+  function loadReceiveMoney() {
+    document.getElementById('doctorFilter').value = '';
+    document.getElementById('fromDate').value = '';
+    document.getElementById('toDate').value = '';
+
+    fetch(`${apiBase}/appointment/ReceiveMoney/`)
+      .then(res => res.json())
+      .then(data => {
+        allData = data;
+        renderTable(allData);
+      });
   }
+
 
   function renderTable(data) {
     const tbody = document.getElementById("moneyTableBody");
@@ -143,21 +162,43 @@
     document.getElementById("totalAmount").textContent = total.toLocaleString();
   }
 
+  // function applyFilters() {
+  //   const doctorId = document.getElementById("doctorFilter").value;
+  //   const dateValue = document.getElementById("dateFilter").value;
+
+  //   let filtered = allData;
+
+  //   if (doctorId) {
+  //     filtered = filtered.filter(item => item.doctor == doctorId);
+  //   }
+  //   if (dateValue) {
+  //     filtered = filtered.filter(item => item.receive_date === dateValue);
+  //   }
+
+  //   renderTable(filtered);
+  // }
   function applyFilters() {
     const doctorId = document.getElementById("doctorFilter").value;
-    const dateValue = document.getElementById("dateFilter").value;
+    const fromDate = document.getElementById("fromDate").value;
+    const toDate = document.getElementById("toDate").value;
 
     let filtered = allData;
 
     if (doctorId) {
       filtered = filtered.filter(item => item.doctor == doctorId);
     }
-    if (dateValue) {
-      filtered = filtered.filter(item => item.receive_date === dateValue);
+
+    if (fromDate) {
+      filtered = filtered.filter(item => item.receive_date >= fromDate);
+    }
+
+    if (toDate) {
+      filtered = filtered.filter(item => item.receive_date <= toDate);
     }
 
     renderTable(filtered);
   }
+
 
   function openAddForm() {
     document.getElementById('moneyForm').reset();
