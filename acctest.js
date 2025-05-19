@@ -114,7 +114,9 @@ function loadTimeFilter() {
     
     // Render Appointment Table
     function renderAppointments() {
-      const selectedDate = document.getElementById('filterDate').value;
+      // document.getElementById('fromDatee').value = '';
+      // document.getElementById('toDatee').value = '';
+      // const selectedDate = document.getElementById('filterDate').value;
       const selectedDoctor = document.getElementById('filterDoctor').value;
       const selectedTime = document.getElementById('filterTime').value; 
       // const selectedStatus = document.getElementById('filterStatus').value;
@@ -126,10 +128,20 @@ function loadTimeFilter() {
         .then(data => {
           // Sort appointments by ascending ID
           data.sort((a, b) => a.id - b.id);
+          const fromDate = document.getElementById("fromDatee").value;
+          const toDate = document.getElementById("toDatee").value;
+
           let filtered = data;
-          if (selectedDate) {
-            filtered = filtered.filter(a => a.appointment_date === selectedDate);
+          if (fromDate) {
+            filtered = filtered.filter(a => a.appointment_date >= fromDate);
           }
+
+          if (toDate) {
+            filtered = filtered.filter(a => a.appointment_date <= toDate);
+          }
+          // if (selectedDate) {
+          //   filtered = filtered.filter(a => a.appointment_date === selectedDate);
+          // }
           if (selectedDoctor) {
             filtered = filtered.filter(a => a.doctor == selectedDoctor);
           }
@@ -217,10 +229,10 @@ function toHourMinute(timeStr) {
 
 
     // Set default filter to today
-    function setDefaultDate() {
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('filterDate').value = '';
-    }
+    // function setDefaultDate() {
+    //   const today = new Date().toISOString().split('T')[0];
+    //   document.getElementById('filterDate').value = '';
+    // }
     
 
    
@@ -229,7 +241,7 @@ function toHourMinute(timeStr) {
     
     // Load Everything
     window.onload = () => {
-      setDefaultDate();
+      // setDefaultDate();
       loadDoctorFilter();
       loadTimeFilter();
       // loadStatusFilter();
