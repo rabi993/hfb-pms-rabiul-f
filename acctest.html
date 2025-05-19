@@ -8,6 +8,27 @@
 </head>
 <body>
 <div class="container mt-4">
+  
+  <div style="border: 2px solid gray; border-radius: 10px;" class="mt-4 text-center py-4 my-4">
+    <h3 class="pb-4"><strong>Accounts Summary</strong></h3>
+    <div class="row d-flex justify-content-center ">
+      <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(147, 13, 13); color: white;"  class="col-md-3 col-lg-3">
+        <h4><strong>Expense:</strong> <span id="summaryExpense">0</span></h4>
+      </div>
+      <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(75, 72, 72); color: white;" class="col-md-3 col-lg-3">
+        <h4><strong>Income:</strong> <span id="summaryIncome">0</span></h4p>
+      </div>
+      <div style="border: 2px solid gray; border-radius: 10px; background-color: green; color: white;" class="col-md-5 col-lg-5">
+        <h4><strong>Final Profit (Income - Expense):</strong> <span id="summaryFinal">0</span></h4>
+      </div>
+      
+    </div>
+  
+  
+  
+</div>
+
+
     <div class="row d-flex justify-content-between ">
         <div class="col-lg-3">
             
@@ -21,12 +42,17 @@
     <!-- Filter Section -->
     
     
-    <div class="row mb-4 g-3">
-      <label for="fromDateee" class="form-label">From:</label>
-      <input type="date" id="fromDateee" class="form-control d-inline w-auto mx-2">
-  
-      <label for="toDateee" class="form-label">To:</label>
-      <input type="date" id="toDateee" class="form-control d-inline w-auto mx-2">
+    <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(75, 72, 72); color: white;"  class="row d-flex justify-content-center mb-4 g-3 w-75 m-auto pb-3">
+      <div class="col-md-3 col-lg-3">
+
+        <label for="fromDateee" class="form-label">From:</label>
+        <input type="date" id="fromDateee" class="form-control d-inline w-auto mx-2">
+      </div>
+      <div class="col-md-3 col-lg-3">
+
+        <label for="toDateee" class="form-label">To:</label>
+        <input type="date" id="toDateee" class="form-control d-inline w-auto mx-2">
+      </div>
 
 
       <!-- <div class="col-md-3">
@@ -68,13 +94,13 @@
         <input type="date" id="dateTo" class="form-control" />
       </div> -->
 
-      <div class="col-md-1 d-flex align-items-end">
-        <button class="btn btn-primary w-100" onclick="fetchAccounts()">Filter</button>
+      <div class="col-md-2 col-lg-2 d-flex align-items-end">
+        <button class="btn btn-success w-100" onclick="fetchAccounts()">Filter</button>
       </div>
     </div>
 
     <table class="table table-bordered table-striped" id="accountsTable">
-        <thead class="table-dark">
+        <thead class="table-light">
             <tr>
                 <th>ID</th>
                 <th>Account Head</th>
@@ -92,15 +118,15 @@
         <tbody></tbody>
         <tfoot>
             <tr >
-                <td colspan="5" class="text-center bg-dark text-white"><strong>Total Amount:</strong></td>
+                <td colspan="5" class="text-center bg-dark text-white"><strong>Total :</strong></td>
                 <td colspan="1" id="totalExpense" class="fw-bold bg-dark text-white">0</td>
                 <td colspan="1" id="totalIncome" class="fw-bold bg-dark text-white">0</td>
-                <td colspan="2" class="text-center bg-dark text-white"><strong>Final Amount:</strong></td>
+                <td colspan="2" class="text-center bg-dark text-white"><strong>acc :</strong></td>
                 <td colspan="2" id="finalProfit" class="fw-bold bg-dark text-white">0</td>
             </tr>
         </tfoot>
     </table>
-    <div class="mb-3">
+    <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(75, 72, 72); color: white;"  class="mb-3 pt-3 text-center pb-3">
       <label for="doctorFilter" class="form-label">Doctor:</label>
       <select id="doctorFilter" class="form-select d-inline w-auto mx-2"></select>
 
@@ -118,7 +144,7 @@
     </div>
 
     <table class="table table-bordered">
-      <thead class="table-dark">
+      <thead class=" table-light">
       <tr>
         <th>ID</th>
         <th>Doctor</th>
@@ -132,16 +158,16 @@
       <tbody id="moneyTableBody"></tbody>
       <tfoot>
         <tr>
-          <td colspan="2"><strong>Total Expense to Doctor:</strong></td>
-          <td class="fw-bold" colspan="5" id="totalAmount">0</td>
+          <td class="text-center bg-dark text-white" colspan="2"><strong>Total Expense to Doctor:</strong></td>
+          <td class=" bg-dark text-white fw-bold"  colspan="5" id="totalAmount">0</td>
         </tr>
       </tfoot>
     </table>
 
 
-    <div class=" row d-flex justify-content-center w-100 m-auto">
+    <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(75, 72, 72); color: white;"  class="  row d-flex justify-content-center w-100 m-auto mb-3">
             <!-- <div class="col-lg-3"><h2 >All Appointment</h2></div> -->
-            <div class="d-flex gap-2 py-4 mb-3 col align-items-center w-100 m-auto">
+            <div class="d-flex gap-2 pt-3  mb-3 col align-items-center w-100 m-auto">
               
               <label for="fromDatee" class="form-label">From:</label>
               <input type="date" id="fromDatee" class="form-control d-inline w-auto mx-2">
@@ -183,7 +209,7 @@
       
         
         <table class="table table-bordered">
-          <thead>
+          <thead class="table-light">
             <tr>
               <td>Id</td>
               <th>Patient</th>
@@ -203,13 +229,14 @@
           <tbody id="appointmentTableBody"></tbody>
           <tfoot>
         <tr>
-          <td colspan="2"><strong>Total Income from Appointment :</strong></td>
-          <td class="fw-bold" colspan="5" id="totalAmountapp">0</td>
+          <td class="text-center bg-dark text-white" colspan="2"><strong>Total Income from Appointment :</strong></td>
+          <td class="bg-dark text-white fw-bold" colspan="8" id="totalAmountapp">0</td>
         </tr>
       </tfoot>
         </table>
         
 </div>
+
 
 <!-- Add Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -394,6 +421,7 @@ function fetchAccounts() {
             document.getElementById("totalExpense").innerText = ` ${totalExpense.toFixed(2)} Tk`;
             document.getElementById("finalProfit").innerText = ` ${profit.toFixed(2)} Tk`;
         
+            updateSummary();
         });
 }
 
@@ -566,6 +594,7 @@ fetchMetaData2().then(fetchAccounts);
       .then(data => {
         allData = data;
         renderTable(allData);
+        
       });
   }
 
@@ -585,9 +614,11 @@ fetchMetaData2().then(fetchAccounts);
       `;
       tbody.appendChild(row);
       total += parseFloat(item.received_amount);
+      
     });
 
     document.getElementById("totalAmount").textContent = total.toLocaleString();
+    updateSummary();
   }
 
   function applyFilters() {
@@ -614,8 +645,306 @@ fetchMetaData2().then(fetchAccounts);
 
 </script>
 
+<script>
+   // Constants
+    const API = 'http://127.0.0.1:8000/appointment/list/';
+    const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
+    const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
+    
+    // Fill options into a select
+    function fillSelect(url, select, selectedId = null) {
+      fetch(url).then(res => res.json()).then(data => {
+        select.innerHTML = '';
+        (data.results || data).forEach(d => {
+          let opt = document.createElement('option');
+          opt.value = d.id;
+          opt.textContent = d.doctor_name || d.name;
+          if (selectedId && selectedId == d.id) {
+            opt.selected = true;
+          }
+          select.appendChild(opt);
+        });
+      });
+    }
+    
+    // Load Doctor Filter Options
+    function fillSelectff(url, selectId, keyName, selectedId = null) {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          const select = document.getElementById(selectId);
+          select.innerHTML = '<option value="">All</option>';
+          (data.results || data).forEach(item => {
+            const opt = document.createElement('option');
+            opt.value = item.id;
+            opt.textContent = item[keyName];
+            if (selectedId && selectedId == item.id) {
+              opt.selected = true;
+            }
+            select.appendChild(opt);
+          });
+        });
+    }
+    function fillSelectf(url, selectId, keyName, selectedId = null, formatFunc = null) { 
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          const select = document.getElementById(selectId);
+          select.innerHTML = '<option value="">All</option>';
+          (data.results || data).forEach(item => {
+            const opt = document.createElement('option');
+            opt.value = item.id;
+            const rawValue = item[keyName];
+            opt.textContent = formatFunc ? formatFunc(rawValue) : rawValue;
+            if (selectedId && selectedId == item.id) {
+              opt.selected = true;
+            }
+            select.appendChild(opt);
+          });
+        });
+    }
+
+
+// Load Doctor Filter Options
+function loadDoctorFilter() {
+  fillSelectf(DOCTOR, 'filterDoctor', 'doctor_name');
+}
+
+
+function loadTimeFilter() {
+  fillSelectf(TIME, 'filterTime', 'name', null, formatTime12Hour);
+}
+
+   
+    // Load Status Filter
+    // function loadStatusFilter() {
+    //   const appointment_Status = {
+    //     // "Pending": "Pending",
+    //     "Completed": "Visited",
+    //   };
+    //   let select = document.getElementById('filterStatus');
+    //   select.innerHTML = '<option value="Visited">Visited</option>'; // Optional "All" option
+    //   for (let key in appointment_Status) {
+    //     let opt = document.createElement('option');
+    //     opt.value = key;
+    //     opt.textContent = appointment_Status[key];
+    //     select.appendChild(opt);
+    //   }
+    // }
+    function loadTypeFilter() {
+      const appointment_Types = {
+        "Online": "Online",
+        "Offline": "Offline",
+      };
+      let select = document.getElementById('filterType');
+      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
+      for (let key in appointment_Types) {
+        let opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = appointment_Types[key];
+        select.appendChild(opt);
+      }
+    }
+    function loadVersionFilter() {
+      const appointment_Version = {
+        "New": "New",
+        "Old": "Old",
+      };
+      let select = document.getElementById('filterVersion');
+      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
+      for (let key in appointment_Version) {
+        let opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = appointment_Version[key];
+        select.appendChild(opt);
+      }
+    }
+    
+    // Render Appointment Table
+    function renderAppointments() {
+      // document.getElementById('fromDatee').value = '';
+      // document.getElementById('toDatee').value = '';
+      // const selectedDate = document.getElementById('filterDate').value;
+      const selectedDoctor = document.getElementById('filterDoctor').value;
+      const selectedTime = document.getElementById('filterTime').value; 
+      // const selectedStatus = document.getElementById('filterStatus').value;
+      const selectedType = document.getElementById('filterType').value;
+      const selectedVersion = document.getElementById('filterVersion').value;
+    
+      fetch(API)
+        .then(res => res.json())
+        .then(data => {
+          // Sort appointments by ascending ID
+          data.sort((a, b) => a.id - b.id);
+          const fromDate = document.getElementById("fromDatee").value;
+          const toDate = document.getElementById("toDatee").value;
+
+          let filtered = data;
+          if (fromDate) {
+            filtered = filtered.filter(a => a.appointment_date >= fromDate);
+          }
+
+          if (toDate) {
+            filtered = filtered.filter(a => a.appointment_date <= toDate);
+          }
+          // if (selectedDate) {
+          //   filtered = filtered.filter(a => a.appointment_date === selectedDate);
+          // }
+          if (selectedDoctor) {
+            filtered = filtered.filter(a => a.doctor == selectedDoctor);
+          }
+          if (selectedTime) { 
+            filtered = filtered.filter(a => a.time== selectedTime);
+          } 
+          // if (selectedStatus) {
+          //   filtered = filtered.filter(a => a.appointment_Status == selectedStatus);
+          // }
+          if (selectedType) {
+            filtered = filtered.filter(a => a.appointment_Types == selectedType);
+          }
+          if (selectedVersion) {
+            filtered = filtered.filter(a => a.appointment_Version == selectedVersion);
+          }
+    
+          let tbody = document.getElementById('appointmentTableBody');
+          tbody.innerHTML = '';
+          let total = 0;
+          filtered.forEach((a, index) => {
+            if(a.appointment_Status === "Completed"){
+
+              tbody.innerHTML += `
+                <tr>
+                  <td>${a.id}</td>
+                  <td>${a.patient_name}</td>
+                  <td>${a.PatientID}</td>
+                  <td>${a.appointment_Version}</td>
+                  <td>${a.id}</td>
+                  <td>${a.doctor_display}</td>
+                  <td>${a.appointment_Types}</td>
+                  <td>${a.phone_no}</td>
+                  <td>${formatTime12Hour(a.time_display)}</td>
+                  
+  
+                  <td>${a.total_amount} TK</td>
+                  
+                  
+                </tr>
+              `;
+              total += parseFloat(a.total_amount);
+            }
+          });
+          document.getElementById("totalAmountapp").textContent = total.toLocaleString();
+          updateSummary();
+        });
+    }
+    // <td><b>${a.appointment_Status === "Completed" ? "Visited" : a.appointment_Status}</b></td>
+    function formatTime12Hour(timeStr) {
+      if (!timeStr) return '';
+      const [hour, minute] = timeStr.split(':');
+      const h = parseInt(hour);
+      const m = parseInt(minute);
+      const suffix = h >= 12 ? 'PM' : 'AM';
+      const hour12 = ((h + 11) % 12 + 1); // converts 0-23 to 1-12
+      return `${hour12}:${m.toString().padStart(2, '0')} ${suffix}`;
+    }
+    
+    
+function convertTo24Hour(timeStr) {
+  if (!timeStr) return null;
+  const [time, modifier] = timeStr.split(' ');
+  let [hours, minutes] = time.split(':');
+
+  if (modifier === 'PM' && hours !== '12') {
+    hours = String(parseInt(hours, 10) + 12);
+  }
+  if (modifier === 'AM' && hours === '12') {
+    hours = '00';
+  }
+  return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}:00`;
+}
+function toFullTime(timeStr) {
+  // If timeStr is already in HH:MM:SS, return it as-is
+  if (timeStr.length === 8) return timeStr;
+
+  // Convert "HH:MM" → "HH:MM:00"
+  return timeStr + ":00";
+} 
+function toHourMinute(timeStr) {
+  // Assumes format is "HH:MM:SS"
+  return timeStr.slice(0, 5);
+}
+
+
+
+
+    // Set default filter to today
+    // function setDefaultDate() {
+    //   const today = new Date().toISOString().split('T')[0];
+    //   document.getElementById('filterDate').value = '';
+    // }
+    
+
+   
+    
+   
+    
+    // Load Everything
+    window.onload = () => {
+      // setDefaultDate();
+      loadDoctorFilter();
+      loadTimeFilter();
+      // loadStatusFilter();
+      loadTypeFilter();
+      loadVersionFilter();
+      renderAppointments();
+      
+      // fillSelect(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
+      // fillSelect(TIME, document.querySelector('#addForm [name="time"]'));
+      // fillSelect(DOCTOR, document.querySelector('#editForm [name="doctor"]'));
+      // fillSelect(TIME, document.querySelector('#editForm [name="time"]'));
+    };
+    
+    
+    // Change Label for Filter Date
+    // function updateLabel() {
+    //   const filterDate = document.getElementById('filterDate');
+    //   const label = document.getElementById('filterDateLabel');
+    //   if (filterDate.value) {
+    //     label.textContent = "Date";
+    //   } else {
+    //     label.textContent = "Today";
+    //   }
+    // }
+    // updateLabel();
+</script>
+<script>
+  function updateSummary() {
+    // Get values from table footers
+    const totalExpense = parseFloat(document.getElementById("totalExpense")?.innerText.split("||")[0].replace(/,/g, '') ) || 0;
+    const totalIncome = parseFloat(document.getElementById("totalIncome")?.innerText.split("||")[0].replace(/,/g, '') ) || 0;
+    const totalDoctorAmount = parseFloat(document.getElementById("totalAmount")?.innerText.split("||")[0].replace(/,/g, '') ) || 0;
+    const totalAppointmentIncome = parseFloat(document.getElementById("totalAmountapp")?.innerText.split("||")[0].replace(/,/g, '') ) || 0;
+    console.log(totalExpense);
+    console.log(totalIncome);
+    console.log(totalDoctorAmount);
+    console.log(totalAppointmentIncome);
+
+    // Calculate
+    const finalExpense = totalExpense + totalDoctorAmount;
+    const finalIncome = totalIncome + totalAppointmentIncome;
+    const finalProfit = finalIncome - finalExpense;
+
+    // Display in summary section
+    document.getElementById("summaryExpense").innerText = finalExpense.toFixed(2);
+    document.getElementById("summaryIncome").innerText = finalIncome.toFixed(2);
+    document.getElementById("summaryFinal").innerText = finalProfit.toFixed(2);
+}
+
+  
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="acctest.js"></script>
+<!-- <script src="acctest.js"></script> -->
 </body>
 </html>
