@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Doctor Receive Money</title>
+<title>Add Account Head</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -219,10 +219,12 @@
 <li class="submenu active">
 <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span class="menu-arrow"></span></a>
 <ul>
-<li><a href="accReceiveMoneyDoctor.html" class="active">Doctor Receive Money</a></li>
+<li><a href="accReceiveMoneyDoctor.html" >Doctor Receive Money</a></li>
 <li><a href="acc.html" >Expenses & Income</a></li>
 <li><a href="salary.html">Salary</a></li>
-<li><a href="add-fees-collection.html">Add Fees</a></li>
+<li><a href="amountType.html" >Add Amount Types</a></li>
+<li><a href="accountHead.html" class="active">Add Account Head</a></li>
+<li><a href="accSingles.html">Add Account single</a></li>
 <li><a href="add-expenses.html">Add Expenses</a></li>
 <li><a href="add-salary.html">Add Salary</a></li>
 </ul>
@@ -330,10 +332,10 @@
 <div class="page-header">
 <div class="row align-items-center">
 <div class="col">
-<h3 class="page-title">Doctor Receive Money</h3>
+<h3 class="page-title">Add Accounts Heads</h3>
 <ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
-<li class="breadcrumb-item active">Expenses To load Doctor </li>
+<li class="breadcrumb-item"><a href="amountType.html">Add Accounts Heads</a></li>
+<li class="breadcrumb-item active">Accounts Heads Table </li>
 </ul>
 </div>
 </div>
@@ -349,85 +351,68 @@
 <!-- <h5 class="form-title"><span>Event Information</span></h5> -->
 </div>
 <div class="container pb-4">
-    <div class="container">
-  <h2 class="mb-4">Receive Money</h2>
-  <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#moneyModal" onclick="openAddForm()">Add Receive Money</button>
+   <div class="container">
+    <h2>Accounts Heads</h2>
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Account Head</button>
 
-  <div class="mb-3">
-    <label for="doctorFilter" class="form-label">Doctor:</label>
-    <select id="doctorFilter" class="form-select d-inline w-auto mx-2"></select>
-
-    <!-- <label for="dateFilter" class="form-label">Receive Date:</label>
-    <input type="date" id="dateFilter" class="form-control d-inline w-auto mx-2"> -->
-    <label for="fromDate" class="form-label">From:</label>
-    <input type="date" id="fromDate" class="form-control d-inline w-auto mx-2">
-
-    <label for="toDate" class="form-label">To:</label>
-    <input type="date" id="toDate" class="form-control d-inline w-auto mx-2">
-
-
-    <button class="btn btn-success" onclick="applyFilters()">Filter</button>
-    <button class="btn btn-secondary" onclick="loadReceiveMoney()">Reset</button>
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>AH Type</th>
+          <th>Amount Types</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="accountHeadTable"></tbody>
+    </table>
   </div>
 
-  <table class="table table-bordered">
-    <thead class="table-dark">
-    <tr>
-      <th>ID</th>
-      <th>Doctor</th>
-      <th>Amount</th>
-      <th>Receive Date</th>
-      <!-- <th>Created At</th> -->
-      <th>Comment</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody id="moneyTableBody"></tbody>
-    <tfoot>
-      <tr>
-        <td colspan="2"><strong>Total Amount:</strong></td>
-        <td class="fw-bold" colspan="5" id="totalAmount">0</td>
-      </tr>
-    </tfoot>
-  </table>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="moneyModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="moneyForm">
-        <div class="modal-header">
-          <h5 class="modal-title">Receive Money</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
+  <!-- Add Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Add Account Head</h5></div>
         <div class="modal-body">
-          <input type="hidden" id="moneyId">
-          <div class="mb-3">
-            <label for="doctor" class="form-label">Doctor</label>
-            <select id="doctor" class="form-select" required></select>
-          </div>
-          <div class="mb-3">
-            <label for="received_amount" class="form-label">Amount</label>
-            <input type="number" id="received_amount" class="form-control" required>
-          </div>
-          <!-- <div class="mb-3">
-            <label for="receive_date" class="form-label">Receive Date</label>
-            <input type="date" id="receive_date" class="form-control" required>
-          </div> -->
-          <div class="mb-3">
-            <label for="comment" class="form-label">Comment</label>
-            <textarea id="comment" class="form-control"></textarea>
-          </div>
+          <input type="text" id="addName" class="form-control mb-2" placeholder="Name">
+          <select id="addAHType" class="form-control mb-2">
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+          <label>Amount Types</label>
+          <select id="addAmountTypes" class="form-control" multiple></select>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Save</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="saveAddBtn">Save</button>
         </div>
-      </form>
+      </div>
     </div>
   </div>
-</div>
+
+  <!-- Edit Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Edit Account Head</h5></div>
+        <div class="modal-body">
+          <input type="hidden" id="editId">
+          <input type="text" id="editName" class="form-control mb-2">
+          <select id="editAHType" class="form-control mb-2">
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+          <label>Amount Types</label>
+          <select id="editAmountTypes" class="form-control" multiple></select>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="saveEditBtn">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
       
     
@@ -455,186 +440,127 @@
 <script src="assets/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-  const apiBase = 'http://127.0.0.1:8000';
-  let allData = [];
+  <script>
+    const apiUrl = 'http://127.0.0.1:8000/accounts/accounts-heads/';
+    const amountTypesUrl = 'http://127.0.0.1:8000/accounts/amount-types/';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    loadDoctors();
-    loadReceiveMoney();
-    document.getElementById('moneyForm').addEventListener('submit', submitForm);
-  });
+    const accountHeadTable = document.getElementById('accountHeadTable');
+    const addAmountTypes = document.getElementById('addAmountTypes');
+    const editAmountTypes = document.getElementById('editAmountTypes');
 
-  function loadDoctors() {
-    fetch(`${apiBase}/doctor/list/`)
-      .then(res => res.json())
-      .then(data => {
-        const doctorSelect = document.getElementById('doctor');
-        const filterSelect = document.getElementById('doctorFilter');
-        doctorSelect.innerHTML = '';
-        filterSelect.innerHTML = '<option value="">-- All Doctors --</option>';
+    let amountTypeMap = {};
 
-        data.results.forEach(doc => {
-          const option1 = new Option(doc.doctor_name, doc.id);
-          doctorSelect.add(option1);
+    async function fetchAmountTypes() {
+      const res = await fetch(amountTypesUrl);
+      const types = await res.json();
+      amountTypeMap = {};
+      addAmountTypes.innerHTML = '';
+      editAmountTypes.innerHTML = '';
 
-          const option2 = new Option(doc.doctor_name, doc.id);
-          filterSelect.add(option2);
+      types.forEach(t => {
+        amountTypeMap[t.id] = t.type;
+        const option1 = new Option(t.type, t.id);
+        const option2 = new Option(t.type, t.id);
+        addAmountTypes.add(option1);
+        editAmountTypes.add(option2);
+      });
+    }
+
+    async function fetchAccountHeads() {
+      const res = await fetch(apiUrl);
+      const heads = await res.json();
+      accountHeadTable.innerHTML = '';
+      heads.forEach(h => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${h.id}</td>
+          <td>${h.name}</td>
+          <td>${h.AH_Type}</td>
+          <td>${h.Amount_Type.map(id => amountTypeMap[id]).join(', ')}</td>
+          <td>
+            <button class="btn btn-sm btn-info me-1" onclick='openEditModal(${JSON.stringify(h)})'>Edit</button>
+            <button class="btn btn-sm btn-danger" onclick='deleteHead(${h.id})'>Delete</button>
+          </td>
+        `;
+        accountHeadTable.appendChild(row);
+      });
+    }
+
+    async function deleteHead(id) {
+      if (confirm("Delete this Account Head?")) {
+        await fetch(`${apiUrl}${id}/`, { method: 'DELETE' });
+        fetchAccountHeads();
+      }
+    }
+
+    
+    document.getElementById('saveAddBtn').addEventListener('click', async () => {
+        const name = document.getElementById('addName').value.trim();
+        const AH_Type = document.getElementById('addAHType').value;
+        const types = Array.from(addAmountTypes.selectedOptions).map(o => parseInt(o.value));
+
+        if (!name || types.length === 0) return alert("Name and amount types are required");
+
+        await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, AH_Type, Amount_Type: types })
         });
-      });
-  }
 
-  // async function loadReceiveMoney() {
-  //   const response = await fetch(`${apiBase}/appointment/ReceiveMoney/`);
-  //   allData = await response.json();
-  //   renderTable(allData);
-  // }
-  function loadReceiveMoney() {
-    document.getElementById('doctorFilter').value = '';
-    document.getElementById('fromDate').value = '';
-    document.getElementById('toDate').value = '';
+        // Clear form
+        document.getElementById('addName').value = '';
+        addAmountTypes.selectedIndex = -1;
 
-    fetch(`${apiBase}/appointment/ReceiveMoney/`)
-      .then(res => res.json())
-      .then(data => {
-        allData = data;
-        renderTable(allData);
-      });
-  }
+        // Close modal properly
+        const addModalEl = document.getElementById('addModal');
+        const addModal = bootstrap.Modal.getInstance(addModalEl);
+        addModal.hide();
 
-
-  function renderTable(data) {
-    const tbody = document.getElementById("moneyTableBody");
-    tbody.innerHTML = "";
-
-    let total = 0;
-    data.forEach(item => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${item.id}</td>
-        <td>${item.doctor_display}</td>
-        <td>${item.received_amount}</td>
-        <td>${item.receive_date}</td>
-        <td>${item.comment || ''}</td>
-        <td>
-          <button class="btn btn-sm btn-warning" onclick="editReceiveMoney(${item.id})">Edit</button>
-          <button class="btn btn-sm btn-danger" onclick="deleteMoney(${item.id})">Delete</button>
-        </td>
-      `;
-      
-        // <td>${new Date(item.create_date).toLocaleDateString()}</td>
-      tbody.appendChild(row);
-      total += parseFloat(item.received_amount);
+        fetchAccountHeads();
     });
 
-    document.getElementById("totalAmount").textContent = total.toLocaleString();
-  }
 
-  // function applyFilters() {
-  //   const doctorId = document.getElementById("doctorFilter").value;
-  //   const dateValue = document.getElementById("dateFilter").value;
-
-  //   let filtered = allData;
-
-  //   if (doctorId) {
-  //     filtered = filtered.filter(item => item.doctor == doctorId);
-  //   }
-  //   if (dateValue) {
-  //     filtered = filtered.filter(item => item.receive_date === dateValue);
-  //   }
-
-  //   renderTable(filtered);
-  // }
-  function applyFilters() {
-    const doctorId = document.getElementById("doctorFilter").value;
-    const fromDate = document.getElementById("fromDate").value;
-    const toDate = document.getElementById("toDate").value;
-
-    let filtered = allData;
-
-    if (doctorId) {
-      filtered = filtered.filter(item => item.doctor == doctorId);
+    function openEditModal(head) {
+      document.getElementById('editId').value = head.id;
+      document.getElementById('editName').value = head.name;
+      document.getElementById('editAHType').value = head.AH_Type;
+      Array.from(editAmountTypes.options).forEach(opt => {
+        opt.selected = head.Amount_Type.includes(parseInt(opt.value));
+      });
+      new bootstrap.Modal(document.getElementById('editModal')).show();
     }
 
-    if (fromDate) {
-      filtered = filtered.filter(item => item.receive_date >= fromDate);
-    }
+    
+    document.getElementById('saveEditBtn').addEventListener('click', async () => {
+        const id = document.getElementById('editId').value;
+        const name = document.getElementById('editName').value.trim();
+        const AH_Type = document.getElementById('editAHType').value;
+        const types = Array.from(editAmountTypes.selectedOptions).map(o => parseInt(o.value));
 
-    if (toDate) {
-      filtered = filtered.filter(item => item.receive_date <= toDate);
-    }
+        if (!name || types.length === 0) return alert("Name and amount types required");
 
-    renderTable(filtered);
-  }
+        await fetch(`${apiUrl}${id}/`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, AH_Type, Amount_Type: types })
+        });
+
+        // Close modal properly
+        const editModalEl = document.getElementById('editModal');
+        const editModal = bootstrap.Modal.getInstance(editModalEl);
+        editModal.hide();
+
+        fetchAccountHeads();
+    });
 
 
-  function openAddForm() {
-    document.getElementById('moneyForm').reset();
-    document.getElementById('moneyId').value = '';
-  }
+    // Initial load
+    fetchAmountTypes().then(fetchAccountHeads);
+  </script>
 
-  function openEditForm(item) {
-    document.getElementById('moneyId').value = item.id;
-    document.getElementById('doctor').value = item.doctor;
-    document.getElementById('received_amount').value = item.received_amount;
-    // document.getElementById('receive_date').value = item.receive_date;
-    document.getElementById('comment').value = item.comment;
-    new bootstrap.Modal(document.getElementById('moneyModal')).show();
-  }
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  function editReceiveMoney(id) {
-    const item = allData.find(i => i.id === id);
-    if (item) openEditForm(item);
-  }
-
-  function submitForm(e) {
-    e.preventDefault();
-
-    const id = document.getElementById('moneyId').value;
-    const now = new Date().toISOString().split('T')[0];
-    const payload = {
-      doctor: document.getElementById('doctor').value,
-      received_amount: document.getElementById('received_amount').value,
-      // receive_date: document.getElementById('receive_date').value,
-      receive_date: now,
-      comment: document.getElementById('comment').value
-    };
-
-    const url = id ? `${apiBase}/appointment/ReceiveMoney/${id}/` : `${apiBase}/appointment/ReceiveMoney/`;
-    const method = id ? 'PUT' : 'POST';
-
-    fetch(url, {
-      method: method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to save');
-      return res.json();
-    })
-    .then(() => {
-      bootstrap.Modal.getInstance(document.getElementById('moneyModal')).hide();
-      loadReceiveMoney();
-    })
-    .catch(err => alert('Error: ' + err.message));
-  }
-
-  function deleteMoney(id) {
-    if (!confirm('Are you sure you want to delete this entry?')) return;
-    fetch(`${apiBase}/appointment/ReceiveMoney/${id}/`, {
-      method: 'DELETE'
-    })
-    .then(res => {
-      if (!res.ok) throw new Error('Delete failed');
-      loadReceiveMoney();
-    })
-    .catch(err => alert('Error: ' + err.message));
-  }
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script src="logout.js"></script>
+<script src="logout.js"></script>
 
 </body>
 
