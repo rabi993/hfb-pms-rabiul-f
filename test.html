@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Accounts</title>
+<title>Doctor Receive Money</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -219,8 +219,8 @@
 <li class="submenu active">
 <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span class="menu-arrow"></span></a>
 <ul>
-<li><a href="fees-collections.html">Fees Collection</a></li>
-<li><a href="acc.html" class="active">Expenses & Income</a></li>
+<li><a href="accReceiveMoneyDoctor.html" class="active">Doctor Receive Money</a></li>
+<li><a href="acc.html" >Expenses & Income</a></li>
 <li><a href="salary.html">Salary</a></li>
 <li><a href="add-fees-collection.html">Add Fees</a></li>
 <li><a href="add-expenses.html">Add Expenses</a></li>
@@ -330,10 +330,10 @@
 <div class="page-header">
 <div class="row align-items-center">
 <div class="col">
-<h3 class="page-title">Account Details</h3>
+<h3 class="page-title">Doctor Receive Money</h3>
 <ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="acc.html">Account Details</a></li>
-<li class="breadcrumb-item active">Expenses & Income </li>
+<li class="breadcrumb-item"><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
+<li class="breadcrumb-item active">Expenses To load Doctor </li>
 </ul>
 </div>
 </div>
@@ -349,336 +349,85 @@
 <!-- <h5 class="form-title"><span>Event Information</span></h5> -->
 </div>
 <div class="container pb-4">
-    <div class=" ">
-        <div class=" ">
-          
-          <div style="border: 2px solid gray; border-radius: 10px;" class=" text-center py-4 mb-4">
-            <h3 class="pb-4"><strong>Accounts Summary</strong></h3>
-            <div class="row d-flex justify-content-center ">
-              <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(147, 13, 13); color: white;"  class="col-md-3 col-lg-3">
-                <h6 class="pt-2"><strong>Expense:</strong> <span id="summaryExpense">0</span></h6>
-              </div>
-              <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(75, 72, 72); color: white;" class="col-md-3 col-lg-3">
-                <h6 class="pt-2"><strong>Income:</strong> <span id="summaryIncome">0</span></h6>
-              </div>
-              <div style="border: 2px solid gray; border-radius: 10px; background-color: green; color: white;" class="col-md-5 col-lg-5">
-                <h6 class="pt-2"><strong>Final Profit (Income - Expense):</strong> <span id="summaryFinal">0</span></h6>
-              </div>
-              
-            </div>
-          
-          
-          
+    <div class="container">
+  <h2 class="mb-4">Receive Money</h2>
+  <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#moneyModal" onclick="openAddForm()">Add Receive Money</button>
+
+  <div class="mb-3">
+    <label for="doctorFilter" class="form-label">Doctor:</label>
+    <select id="doctorFilter" class="form-select d-inline w-auto mx-2"></select>
+
+    <!-- <label for="dateFilter" class="form-label">Receive Date:</label>
+    <input type="date" id="dateFilter" class="form-control d-inline w-auto mx-2"> -->
+    <label for="fromDate" class="form-label">From:</label>
+    <input type="date" id="fromDate" class="form-control d-inline w-auto mx-2">
+
+    <label for="toDate" class="form-label">To:</label>
+    <input type="date" id="toDate" class="form-control d-inline w-auto mx-2">
+
+
+    <button class="btn btn-success" onclick="applyFilters()">Filter</button>
+    <button class="btn btn-secondary" onclick="loadReceiveMoney()">Reset</button>
+  </div>
+
+  <table class="table table-bordered">
+    <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Doctor</th>
+      <th>Amount</th>
+      <th>Receive Date</th>
+      <!-- <th>Created At</th> -->
+      <th>Comment</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="moneyTableBody"></tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><strong>Total Amount:</strong></td>
+        <td class="fw-bold" colspan="5" id="totalAmount">0</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="moneyModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="moneyForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Receive Money</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-
-
-            <div class="row d-flex justify-content-between ">
-                <div class="col-lg-3">
-                    
-                    <h2 class="mb-4">Accounts List</h2>
-                </div>
-                <div class="col-lg-2 row d-flex justify-content-end ">
-
-                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Account</button>
-                </div>
-            </div>
-            <!-- Filter Section -->
-            
-            
-            <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(75, 72, 72); color: white;"  class="row d-flex justify-content-center mb-4 g-3  m-auto pb-3">
-              <div class="col-md-3 col-lg-3">
-
-                <label for="fromDateee" class="form-label">From:</label>
-                <input type="date" id="fromDateee" class="form-control d-inline w-auto mx-2">
-              </div>
-              <div class="col-md-3 col-lg-3">
-
-                <label for="toDateee" class="form-label">To:</label>
-                <input type="date" id="toDateee" class="form-control d-inline w-auto mx-2">
-              </div>
-
-
-              <!-- <div class="col-md-3">
-                <label for="accountsHeadFilter" class="form-label">Accounts Head</label>
-                <select id="accountsHeadFilter" class="form-select">
-                  
-                </select>
-              </div>
-
-              <div class="col-md-2">
-                <label for="ahTypeFilter" class="form-label">AH Type</label>
-                <select id="ahTypeFilter" class="form-select">
-                  <option value="">All</option>
-                  <option value="Expense">Expense</option>
-                  <option value="Income">Income</option>
-                </select>
-              </div>
-
-              <div class="col-md-2">
-                <label for="amountTypeFilter" class="form-label">Amount Type</label>
-                <select id="amountTypeFilter" class="form-select">
-                  
-                </select>
-              </div>
-              <div class="col-md-2">
-                <label for="amountNameFilter" class="form-label">Account name</label>
-                <select id="amountNameFilter" class="form-select">
-                  
-                </select>
-              </div>
-
-              <div class="col-md-2">
-                <label for="dateFrom" class="form-label">From Date</label>
-                <input type="date" id="dateFrom" class="form-control" />
-              </div>
-
-              <div class="col-md-2">
-                <label for="dateTo" class="form-label">To Date</label>
-                <input type="date" id="dateTo" class="form-control" />
-              </div> -->
-
-              <div class="col-md-2 col-lg-2 d-flex align-items-end">
-                <button class="btn btn-success w-100" onclick="fetchAccounts()">Filter</button>
-              </div>
-            </div>
-
-            <table class="table table-bordered table-striped "  id="accountsTable">
-                <thead class="table-light ">
-                    <tr>
-                        <th>ID</th>
-                        <th>Account Head</th>
-                        <th>Head_Type</th>
-                        <th>Amount_Type</th>
-                        <th>Account_Name</th>
-                        <th>Expense</th>
-                        <th>Income</th>
-                        <th>Phone</th>
-                        <!-- <th>Comment</th> -->
-                        <th>Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                <tfoot>
-                    <tr style="font-size: 15px;">
-                        <td colspan="5" class="text-center bg-dark text-white"><strong>Total :</strong></td>
-                        <td colspan="1" id="totalExpense" class="fw-bold bg-dark text-white">0</td>
-                        <td colspan="1" id="totalIncome" class="fw-bold bg-dark text-white">0</td>
-                        <td colspan="2" class="text-center bg-dark text-white"><strong>acc :</strong></td>
-                        <td colspan="2" id="finalProfit" class="fw-bold bg-dark text-white">0</td>
-                    </tr>
-                </tfoot>
-            </table>
-            <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(75, 72, 72); color: white;"  class="mb-3 pt-3 text-center pb-3 mt-5">
-              <label for="doctorFilter" class="form-label">Doctor:</label>
-              <select id="doctorFilter" class="form-select d-inline w-auto mx-2"></select>
-
-              <!-- <label for="dateFilter" class="form-label">Receive Date:</label>
-              <input type="date" id="dateFilter" class="form-control d-inline w-auto mx-2"> -->
-              <label for="fromDate" class="form-label">From:</label>
-              <input type="date" id="fromDate" class="form-control d-inline w-auto mx-2">
-
-              <label for="toDate" class="form-label">To:</label>
-              <input type="date" id="toDate" class="form-control d-inline w-auto mx-2">
-
-
-              <button class="btn btn-success" onclick="applyFilters()">Filter</button>
-              <button class="btn btn-secondary" onclick="loadReceiveMoney()">Reset</button>
-            </div>
-
-            <table class="table table-bordered mb-5">
-              <thead class=" table-light">
-              <tr>
-                <th>ID</th>
-                <th>Doctor</th>
-                <th>Amount</th>
-                <th>Receive_Date</th>
-                <!-- <th>Created At</th> -->
-                <th>Comment</th>
-                <!-- <th>Actions</th> -->
-              </tr>
-              </thead>
-              <tbody id="moneyTableBody"></tbody>
-              <tfoot class="">
-                <tr>
-                  <td class="text-center bg-dark text-white" colspan="2"><strong>Total Expense to Doctor:</strong></td>
-                  <td class=" bg-dark text-white fw-bold"  colspan="5" id="totalAmount">0</td>
-                </tr>
-              </tfoot>
-            </table>
-
-
-            <div style="border: 2px solid gray; border-radius: 10px; background-color: rgb(75, 72, 72); color: white;"  class="  row d-flex justify-content-center w-100 m-auto mb-3 pb-3">
-                    <!-- <div class="col-lg-3"><h2 >All Appointment</h2></div> -->
-                    <div class="d-flex gap-2 pt-3  mb-3 col align-items-center w-100 m-auto ">
-                      
-                      <label for="fromDatee" class="form-label">From:</label>
-                      <input type="date" id="fromDatee" class="form-control d-inline w-auto mx-2">
-
-                      <label for="toDatee" class="form-label">To:</label>
-                      <input type="date" id="toDatee" class="form-control d-inline w-auto mx-2">
-                      <!-- <b><label for="filterDate" id="filterDateLabel">Today</label></b>
-                      <input type="date" id="filterDate" class="form-control" onchange="updateLabel()" /> -->
-                      
-                      <!-- <input type="date" id="filterDate" class="form-control" /> -->
-                      <b><label for="filterDoctor" >Doctor</label></b>
-                      <select id="filterDoctor" class="form-control">
-                        <option value="">All Doctors</option>
-                      </select>
-                      <b><label for="filterTime" >Time</label></b>
-                      <select id="filterTime" class="form-control"> 
-                        <option value="">All Time</option> 
-                      </select>
-                      <!-- <b><label for="filterStatus" >Status</label></b>
-                      <select id="filterStatus" class="form-control">
-                        <option value="">Status</option>
-                      </select> -->
-                      <b><label for="filterType" >Type</label></b>
-                      <select id="filterType" class="form-control">
-                        <option value="">Type</option>
-                      </select>
-                      <b><label for="filterVersion" >Version</label></b>
-                      <select id="filterVersion" class="form-control">
-                        <option value="">Version</option>
-                      </select>
-                      <button class="btn btcn btn-success" onclick="renderAppointments()">Filter</button>
-                    </div>
-                    <!-- <div class="col-lg-2 text-end">
-                      
-                      <button style="border: none;" class="btn btcn mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Appointment</button>
-                    </div> -->
-
-                  </div>
-              
-                
-                <table class="table table-bordered">
-                  <thead class="table-light">
-                    <tr>
-                      <td>Id</td>
-                      <th>Patient</th>
-                      <th>PatientID</th>
-                      <th>Version</th>
-                      <th>ID</th>
-                      <th>Doctor</th>
-                      <th>Type</th>
-                      <th>Phone</th>
-                      <th>Slot</th>
-                      <!-- <th>Time</th> -->
-                      <th>Total</th>
-                      <!-- <th>Status</th> -->
-                      <!-- <th>Actions</th> -->
-                    </tr>
-                  </thead>
-                  <tbody id="appointmentTableBody"></tbody>
-                  <tfoot>
-                <tr>
-                  <td class="text-center bg-dark text-white" colspan="2"><strong>Total Income from Appointment :</strong></td>
-                  <td class="bg-dark text-white fw-bold" colspan="8" id="totalAmountapp">0</td>
-                </tr>
-              </tfoot>
-                </table>
-                
-        </div>
-
-
-        <!-- Add Modal -->
-        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header ">
-                <h4 class="modal-title fw-bold ">Add Account</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                <form id="addForm">
-                  <div class="row mb-3">
-                    <div class="col">
-                      <label>Account Head</label>
-                      <select id="addAccountHead" class="form-control" required></select>
-                    </div>
-                    <div class="col">
-                      <label>Account Name</label>
-                      <select id="addAccName" class="form-control" required></select>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col">
-                      <label>Amount Type</label>
-                      <select id="addAmountType" class="form-control" required>
-                        <!-- <option value="Medicine_Buy">Medicine_Buy</option>
-                        <option value="Salary">Salary</option>
-                        <option value="Bonus">Bonus</option>
-                        <option value="TA_DA">TA_DA</option>
-                        <option value="Others">Others</option> -->
-                      </select>
-                    </div>
-                    <div class="col">
-                      <label>AH Type</label>
-                      <select id="addAhType" class="form-control" required>
-                        <option value="Expense">Expense</option>
-                        <option value="Income">Income</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col">
-                      <label>Amount</label>
-                      <input type="number" id="addAmount" class="form-control" required>
-                    </div>
-                    <div class="col">
-                      <label>Phone</label>
-                      <input type="text" id="addPhone" class="form-control">
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label>Comment</label>
-                    <textarea id="addComment" class="form-control"></textarea>
-                  </div>
-                  <div style="width: 10%; margin: auto;" >
-                    <button type="submit" class="btn btn-success py-2 px-4  fw-bold fs-5">Add</button>
-                  </div>
-                </form>
-              </div>
-            </div>
+        <div class="modal-body">
+          <input type="hidden" id="moneyId">
+          <div class="mb-3">
+            <label for="doctor" class="form-label">Doctor</label>
+            <select id="doctor" class="form-select" required></select>
+          </div>
+          <div class="mb-3">
+            <label for="received_amount" class="form-label">Amount</label>
+            <input type="number" id="received_amount" class="form-control" required>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="receive_date" class="form-label">Receive Date</label>
+            <input type="date" id="receive_date" class="form-control" required>
+          </div> -->
+          <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea id="comment" class="form-control"></textarea>
           </div>
         </div>
-
-
-        <!-- Edit Modal -->
-        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Edit Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                <form id="editForm">
-                  <input type="hidden" id="editId">
-                  <div class="row mb-3">
-                    <div class="col">
-                      <label>Amount</label>
-                      <input type="number" id="editAmount" class="form-control">
-                    </div>
-                    <div class="col">
-                      <label>Phone</label>
-                      <input type="text" id="editPhone" class="form-control">
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label>Comment</label>
-                    <textarea id="editComment" class="form-control"></textarea>
-                  </div>
-                  <!-- <button type="submit" class="btn btn-success">Update</button> -->
-                  <div style="width: 10%; margin: auto;" >
-                    <button type="submit" class="btn btn-success py-2 px-4  fw-bold fs-5">Update</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
-      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
       
     
@@ -707,274 +456,58 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-const apiBase = "http://127.0.0.1:8000/accounts/list/";
-const accHeadUrl = "http://127.0.0.1:8000/accounts/accounts-heads/";
-const accSingleUrl = "http://127.0.0.1:8000/accounts/acc-singles/";
-const amountTypeUrl = "http://127.0.0.1:8000/accounts/amount-types/";
-
-let accHeads = {};
-let accSingles = {};
-
-// Load all account heads and singles
-function fetchMetaData() {
-    return Promise.all([
-        fetch(accHeadUrl).then(res => res.json()),
-        fetch(accSingleUrl).then(res => res.json())
-    ]).then(([heads, singles]) => {
-        heads.forEach(h => accHeads[h.id] = h.name);
-        singles.forEach(s => accSingles[s.id] = s.name);
-
-        // Populate Add Modal selects
-        const headSelect = document.getElementById("addAccountHead");
-        headSelect.innerHTML = heads.map(h => `<option value="${h.id}">${h.name}</option>`).join("");
-
-        const nameSelect = document.getElementById("addAccName");
-        nameSelect.innerHTML = singles.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
-    });
-}
-
-function fetchAccounts() {
-    fetch(apiBase)
-        .then(response => response.json())
-        .then(data => {
-            const fromDate = document.getElementById("fromDateee").value;
-            const toDate = document.getElementById("toDateee").value;
-
-            let filtered = data;
-            if (fromDate) {
-              filtered = filtered.filter(a => a.create_date >= fromDate);
-            }
-
-            if (toDate) {
-              filtered = filtered.filter(a => a.create_date <= toDate);
-            }
-
-            const tbody = document.querySelector("#accountsTable tbody");
-            tbody.innerHTML = "";
-
-            let totalIncome = 0;
-            let totalExpense = 0;
-
-            filtered.forEach(account => {
-                const amount = parseFloat(account.amount);
-                if (account.ah_type === "Income") {
-                    totalIncome += amount;
-                } else if (account.ah_type === "Expense") {
-                    totalExpense += amount;
-                }
-                const row = `
-                    <tr >
-                        <td>${account.id}</td>
-                        <td>${accHeads[account.accounts_head]}</td>
-                        
-                       
-                        <td>${account.ah_type}</td>
-                        <td>${account.amount_type}</td>
-                        <td>${accSingles[account.acc_name]}</td>
-                        
-                        <td>${account.ah_type === "Expense" ? account.amount : 0}</td>
-                        <td>${account.ah_type === "Income" ? account.amount : 0}</td>
-                        <td>${account.phone}</td>
-                        <td>${new Date(account.create_date).toLocaleDateString()}</td>
-                        <td>
-                          
-                              <button class="btn btn-sm btn-warning" onclick="openEditModal(${account.id}, '${account.amount}', '${account.phone}', \`${account.comment}\`)">Edit</button>
-                           
-                              <button class="btn btn-sm btn-danger" onclick="deleteAccount(${account.id})">Delete</button>
-                            
-                        </td> 
-                    </tr>
-                `;
-                tbody.innerHTML += row;
-            });
-            const profit = totalIncome - totalExpense;
-
-            document.getElementById("totalIncome").innerText = ` ${totalIncome.toFixed(2)} Tk`;
-            document.getElementById("totalExpense").innerText = ` ${totalExpense.toFixed(2)} Tk`;
-            document.getElementById("finalProfit").innerText = ` ${profit.toFixed(2)} Tk`;
-        
-            updateSummary();
-        });
-}
-
-
-
-function openEditModal(id, amount, phone, comment) {
-    document.getElementById("editId").value = id;
-    document.getElementById("editAmount").value = amount;
-    document.getElementById("editPhone").value = phone;
-    document.getElementById("editComment").value = comment;
-
-    const editModal = new bootstrap.Modal(document.getElementById("editModal"));
-    editModal.show();
-}
-
-
-document.getElementById("editForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const id = document.getElementById("editId").value;
-    const amount = document.getElementById("editAmount").value;
-    const phone = document.getElementById("editPhone").value;
-    const comment = document.getElementById("editComment").value;
-
-    fetch(apiBase + id + "/", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount, phone, comment })
-    })
-    .then(res => {
-        if (res.ok) {
-            fetchAccounts();
-            bootstrap.Modal.getInstance(document.getElementById("editModal")).hide();
-        } else {
-            alert("Failed to update.");
-        }
-    });
-});
-
-function deleteAccount(id) {
-    if (!confirm("Are you sure you want to delete this record?")) return;
-
-    fetch(apiBase + id + "/", {
-        method: "DELETE"
-    }).then(res => {
-        if (res.ok) fetchAccounts();
-        else alert("Failed to delete.");
-    });
-}
-
-
-let accHeadsData = [];
-let accSinglesData = [];
-let amountTypesData = [];
-
-function fetchMetaData2() {
-    return Promise.all([
-        fetch(accHeadUrl).then(res => res.json()),
-        fetch(accSingleUrl).then(res => res.json()),
-        fetch(amountTypeUrl).then(res => res.json())
-    ]).then(([heads, singles, amountTypes]) => {
-        accHeadsData = heads;
-        accSinglesData = singles;
-        amountTypesData = amountTypes;
-
-        populateAccountHeadSelect();
-    });
-}
-
-function populateAccountHeadSelect() {
-    const headSelect = document.getElementById("addAccountHead");
-    headSelect.innerHTML = accHeadsData.map(h => `<option value="${h.id}">${h.name}</option>`).join("");
-    headSelect.dispatchEvent(new Event("change")); // auto trigger on load
-}
-
-document.getElementById("addAccountHead").addEventListener("change", function () {
-    const selectedId = parseInt(this.value);
-    const selectedHead = accHeadsData.find(h => h.id === selectedId);
-
-    // Fill AH Type
-    document.getElementById("addAhType").value = selectedHead?.AH_Type || "";
-
-    // Populate Amount Type based on AccountHead.Amount_Type
-    const amountTypeSelect = document.getElementById("addAmountType");
-    amountTypeSelect.innerHTML = amountTypesData
-        .filter(at => selectedHead?.Amount_Type.includes(at.id))
-        .map(at => `<option value="${at.type}">${at.type}</option>`)
-        .join("");
-
-    // Filter Account Name dropdown
-    const accNameSelect = document.getElementById("addAccName");
-    accNameSelect.innerHTML = accSinglesData
-        .filter(acc => acc.accounts_head === selectedId)
-        .map(acc => `<option value="${acc.id}">${acc.name}</option>`)
-        .join("");
-
-    accNameSelect.dispatchEvent(new Event("change")); // Fill phone for the first option
-});
-
-// Auto-fill phone on Account Name change
-document.getElementById("addAccName").addEventListener("change", function () {
-    const selectedId = parseInt(this.value);
-    const selectedAccount = accSinglesData.find(a => a.id === selectedId);
-    document.getElementById("addPhone").value = selectedAccount?.phone || "";
-});
-
-document.getElementById("addForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const newAccount = {
-        accounts_head: document.getElementById("addAccountHead").value,
-        acc_name: document.getElementById("addAccName").value,
-        ah_type: document.getElementById("addAhType").value,
-        amount_type: document.getElementById("addAmountType").value,
-        amount: document.getElementById("addAmount").value,
-        phone: document.getElementById("addPhone").value,
-        comment: document.getElementById("addComment").value
-    };
-
-    fetch(apiBase, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newAccount)
-    })
-    .then(res => {
-        if (res.ok) {
-            fetchAccounts();
-            document.getElementById("addForm").reset();
-            bootstrap.Modal.getInstance(document.getElementById("addModal")).hide();
-        } else {
-            alert("Failed to add account.");
-        }
-    });
-});
-
-// Initial Load
-fetchMetaData();
-fetchMetaData2().then(fetchAccounts);
-
-</script>
-
-<script>
-  const apiBasee = 'http://127.0.0.1:8000';
+  const apiBase = 'http://127.0.0.1:8000';
   let allData = [];
 
   document.addEventListener('DOMContentLoaded', () => {
     loadDoctors();
     loadReceiveMoney();
+    document.getElementById('moneyForm').addEventListener('submit', submitForm);
   });
 
   function loadDoctors() {
-    fetch(`${apiBasee}/doctor/list/`)
+    fetch(`${apiBase}/doctor/list/`)
       .then(res => res.json())
       .then(data => {
+        const doctorSelect = document.getElementById('doctor');
         const filterSelect = document.getElementById('doctorFilter');
+        doctorSelect.innerHTML = '';
         filterSelect.innerHTML = '<option value="">-- All Doctors --</option>';
+
         data.results.forEach(doc => {
-          const option = new Option(doc.doctor_name, doc.id);
-          filterSelect.add(option);
+          const option1 = new Option(doc.doctor_name, doc.id);
+          doctorSelect.add(option1);
+
+          const option2 = new Option(doc.doctor_name, doc.id);
+          filterSelect.add(option2);
         });
       });
   }
 
+  // async function loadReceiveMoney() {
+  //   const response = await fetch(`${apiBase}/appointment/ReceiveMoney/`);
+  //   allData = await response.json();
+  //   renderTable(allData);
+  // }
   function loadReceiveMoney() {
     document.getElementById('doctorFilter').value = '';
     document.getElementById('fromDate').value = '';
     document.getElementById('toDate').value = '';
 
-    fetch(`${apiBasee}/appointment/ReceiveMoney/`)
+    fetch(`${apiBase}/appointment/ReceiveMoney/`)
       .then(res => res.json())
       .then(data => {
         allData = data;
         renderTable(allData);
-        
       });
   }
+
 
   function renderTable(data) {
     const tbody = document.getElementById("moneyTableBody");
     tbody.innerHTML = "";
-    let total = 0;
 
+    let total = 0;
     data.forEach(item => {
       const row = document.createElement("tr");
       row.innerHTML = `
@@ -983,16 +516,35 @@ fetchMetaData2().then(fetchAccounts);
         <td>${item.received_amount}</td>
         <td>${item.receive_date}</td>
         <td>${item.comment || ''}</td>
+        <td>
+          <button class="btn btn-sm btn-warning" onclick="editReceiveMoney(${item.id})">Edit</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteMoney(${item.id})">Delete</button>
+        </td>
       `;
+      
+        // <td>${new Date(item.create_date).toLocaleDateString()}</td>
       tbody.appendChild(row);
       total += parseFloat(item.received_amount);
-      
     });
 
     document.getElementById("totalAmount").textContent = total.toLocaleString();
-    updateSummary();
   }
 
+  // function applyFilters() {
+  //   const doctorId = document.getElementById("doctorFilter").value;
+  //   const dateValue = document.getElementById("dateFilter").value;
+
+  //   let filtered = allData;
+
+  //   if (doctorId) {
+  //     filtered = filtered.filter(item => item.doctor == doctorId);
+  //   }
+  //   if (dateValue) {
+  //     filtered = filtered.filter(item => item.receive_date === dateValue);
+  //   }
+
+  //   renderTable(filtered);
+  // }
   function applyFilters() {
     const doctorId = document.getElementById("doctorFilter").value;
     const fromDate = document.getElementById("fromDate").value;
@@ -1015,309 +567,73 @@ fetchMetaData2().then(fetchAccounts);
     renderTable(filtered);
   }
 
-</script>
 
-<script>
-   // Constants
-    const API = 'http://127.0.0.1:8000/appointment/list/';
-    const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
-    const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
-    
-    // Fill options into a select
-    function fillSelect(url, select, selectedId = null) {
-      fetch(url).then(res => res.json()).then(data => {
-        select.innerHTML = '';
-        (data.results || data).forEach(d => {
-          let opt = document.createElement('option');
-          opt.value = d.id;
-          opt.textContent = d.doctor_name || d.name;
-          if (selectedId && selectedId == d.id) {
-            opt.selected = true;
-          }
-          select.appendChild(opt);
-        });
-      });
-    }
-    
-    // Load Doctor Filter Options
-    function fillSelectff(url, selectId, keyName, selectedId = null) {
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          const select = document.getElementById(selectId);
-          select.innerHTML = '<option value="">All</option>';
-          (data.results || data).forEach(item => {
-            const opt = document.createElement('option');
-            opt.value = item.id;
-            opt.textContent = item[keyName];
-            if (selectedId && selectedId == item.id) {
-              opt.selected = true;
-            }
-            select.appendChild(opt);
-          });
-        });
-    }
-    function fillSelectf(url, selectId, keyName, selectedId = null, formatFunc = null) { 
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          const select = document.getElementById(selectId);
-          select.innerHTML = '<option value="">All</option>';
-          (data.results || data).forEach(item => {
-            const opt = document.createElement('option');
-            opt.value = item.id;
-            const rawValue = item[keyName];
-            opt.textContent = formatFunc ? formatFunc(rawValue) : rawValue;
-            if (selectedId && selectedId == item.id) {
-              opt.selected = true;
-            }
-            select.appendChild(opt);
-          });
-        });
-    }
-
-
-// Load Doctor Filter Options
-function loadDoctorFilter() {
-  fillSelectf(DOCTOR, 'filterDoctor', 'doctor_name');
-}
-
-
-function loadTimeFilter() {
-  fillSelectf(TIME, 'filterTime', 'name', null, formatTime12Hour);
-}
-
-   
-    // Load Status Filter
-    // function loadStatusFilter() {
-    //   const appointment_Status = {
-    //     // "Pending": "Pending",
-    //     "Completed": "Visited",
-    //   };
-    //   let select = document.getElementById('filterStatus');
-    //   select.innerHTML = '<option value="Visited">Visited</option>'; // Optional "All" option
-    //   for (let key in appointment_Status) {
-    //     let opt = document.createElement('option');
-    //     opt.value = key;
-    //     opt.textContent = appointment_Status[key];
-    //     select.appendChild(opt);
-    //   }
-    // }
-    function loadTypeFilter() {
-      const appointment_Types = {
-        "Online": "Online",
-        "Offline": "Offline",
-      };
-      let select = document.getElementById('filterType');
-      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
-      for (let key in appointment_Types) {
-        let opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = appointment_Types[key];
-        select.appendChild(opt);
-      }
-    }
-    function loadVersionFilter() {
-      const appointment_Version = {
-        "New": "New",
-        "Old": "Old",
-      };
-      let select = document.getElementById('filterVersion');
-      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
-      for (let key in appointment_Version) {
-        let opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = appointment_Version[key];
-        select.appendChild(opt);
-      }
-    }
-    
-    // Render Appointment Table
-    function renderAppointments() {
-      // document.getElementById('fromDatee').value = '';
-      // document.getElementById('toDatee').value = '';
-      // const selectedDate = document.getElementById('filterDate').value;
-      const selectedDoctor = document.getElementById('filterDoctor').value;
-      const selectedTime = document.getElementById('filterTime').value; 
-      // const selectedStatus = document.getElementById('filterStatus').value;
-      const selectedType = document.getElementById('filterType').value;
-      const selectedVersion = document.getElementById('filterVersion').value;
-    
-      fetch(API)
-        .then(res => res.json())
-        .then(data => {
-          // Sort appointments by ascending ID
-          data.sort((a, b) => a.id - b.id);
-          const fromDate = document.getElementById("fromDatee").value;
-          const toDate = document.getElementById("toDatee").value;
-
-          let filtered = data;
-          if (fromDate) {
-            filtered = filtered.filter(a => a.appointment_date >= fromDate);
-          }
-
-          if (toDate) {
-            filtered = filtered.filter(a => a.appointment_date <= toDate);
-          }
-          // if (selectedDate) {
-          //   filtered = filtered.filter(a => a.appointment_date === selectedDate);
-          // }
-          if (selectedDoctor) {
-            filtered = filtered.filter(a => a.doctor == selectedDoctor);
-          }
-          if (selectedTime) { 
-            filtered = filtered.filter(a => a.time== selectedTime);
-          } 
-          // if (selectedStatus) {
-          //   filtered = filtered.filter(a => a.appointment_Status == selectedStatus);
-          // }
-          if (selectedType) {
-            filtered = filtered.filter(a => a.appointment_Types == selectedType);
-          }
-          if (selectedVersion) {
-            filtered = filtered.filter(a => a.appointment_Version == selectedVersion);
-          }
-    
-          let tbody = document.getElementById('appointmentTableBody');
-          tbody.innerHTML = '';
-          let total = 0;
-          filtered.forEach((a, index) => {
-            if(a.appointment_Status === "Completed"){
-
-              tbody.innerHTML += `
-                <tr>
-                  <td>${a.id}</td>
-                  <td>${a.patient_name}</td>
-                  <td>${a.PatientID}</td>
-                  <td>${a.appointment_Version}</td>
-                  <td>${a.id}</td>
-                  <td>${a.doctor_display}</td>
-                  <td>${a.appointment_Types}</td>
-                  <td>${a.phone_no}</td>
-                  <td>${formatTime12Hour(a.time_display)}</td>
-                  
-  
-                  <td>${a.total_amount} TK</td>
-                  
-                  
-                </tr>
-              `;
-              total += parseFloat(a.total_amount);
-            }
-          });
-          document.getElementById("totalAmountapp").textContent = total.toLocaleString();
-          updateSummary();
-        });
-    }
-    // <td><b>${a.appointment_Status === "Completed" ? "Visited" : a.appointment_Status}</b></td>
-    function formatTime12Hour(timeStr) {
-      if (!timeStr) return '';
-      const [hour, minute] = timeStr.split(':');
-      const h = parseInt(hour);
-      const m = parseInt(minute);
-      const suffix = h >= 12 ? 'PM' : 'AM';
-      const hour12 = ((h + 11) % 12 + 1); // converts 0-23 to 1-12
-      return `${hour12}:${m.toString().padStart(2, '0')} ${suffix}`;
-    }
-    
-    
-function convertTo24Hour(timeStr) {
-  if (!timeStr) return null;
-  const [time, modifier] = timeStr.split(' ');
-  let [hours, minutes] = time.split(':');
-
-  if (modifier === 'PM' && hours !== '12') {
-    hours = String(parseInt(hours, 10) + 12);
+  function openAddForm() {
+    document.getElementById('moneyForm').reset();
+    document.getElementById('moneyId').value = '';
   }
-  if (modifier === 'AM' && hours === '12') {
-    hours = '00';
+
+  function openEditForm(item) {
+    document.getElementById('moneyId').value = item.id;
+    document.getElementById('doctor').value = item.doctor;
+    document.getElementById('received_amount').value = item.received_amount;
+    // document.getElementById('receive_date').value = item.receive_date;
+    document.getElementById('comment').value = item.comment;
+    new bootstrap.Modal(document.getElementById('moneyModal')).show();
   }
-  return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}:00`;
-}
-function toFullTime(timeStr) {
-  // If timeStr is already in HH:MM:SS, return it as-is
-  if (timeStr.length === 8) return timeStr;
 
-  // Convert "HH:MM" → "HH:MM:00"
-  return timeStr + ":00";
-} 
-function toHourMinute(timeStr) {
-  // Assumes format is "HH:MM:SS"
-  return timeStr.slice(0, 5);
-}
+  function editReceiveMoney(id) {
+    const item = allData.find(i => i.id === id);
+    if (item) openEditForm(item);
+  }
 
+  function submitForm(e) {
+    e.preventDefault();
 
-
-
-    // Set default filter to today
-    // function setDefaultDate() {
-    //   const today = new Date().toISOString().split('T')[0];
-    //   document.getElementById('filterDate').value = '';
-    // }
-    
-
-   
-    
-   
-    
-    // Load Everything
-    window.onload = () => {
-      // setDefaultDate();
-      loadDoctorFilter();
-      loadTimeFilter();
-      // loadStatusFilter();
-      loadTypeFilter();
-      loadVersionFilter();
-      renderAppointments();
-      
-      // fillSelect(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
-      // fillSelect(TIME, document.querySelector('#addForm [name="time"]'));
-      // fillSelect(DOCTOR, document.querySelector('#editForm [name="doctor"]'));
-      // fillSelect(TIME, document.querySelector('#editForm [name="time"]'));
+    const id = document.getElementById('moneyId').value;
+    const now = new Date().toISOString().split('T')[0];
+    const payload = {
+      doctor: document.getElementById('doctor').value,
+      received_amount: document.getElementById('received_amount').value,
+      // receive_date: document.getElementById('receive_date').value,
+      receive_date: now,
+      comment: document.getElementById('comment').value
     };
-    
-    
-    // Change Label for Filter Date
-    // function updateLabel() {
-    //   const filterDate = document.getElementById('filterDate');
-    //   const label = document.getElementById('filterDateLabel');
-    //   if (filterDate.value) {
-    //     label.textContent = "Date";
-    //   } else {
-    //     label.textContent = "Today";
-    //   }
-    // }
-    // updateLabel();
-</script>
-<script>
-  function updateSummary() {
-    // Get values from table footers
-    const totalExpense = parseFloat(document.getElementById("totalExpense")?.innerText.split("||")[0].replace(/,/g, '') ) || 0;
-    const totalIncome = parseFloat(document.getElementById("totalIncome")?.innerText.split("||")[0].replace(/,/g, '') ) || 0;
-    const totalDoctorAmount = parseFloat(document.getElementById("totalAmount")?.innerText.split("||")[0].replace(/,/g, '') ) || 0;
-    const totalAppointmentIncome = parseFloat(document.getElementById("totalAmountapp")?.innerText.split("||")[0].replace(/,/g, '') ) || 0;
-    console.log(totalExpense);
-    console.log(totalIncome);
-    console.log(totalDoctorAmount);
-    console.log(totalAppointmentIncome);
 
-    // Calculate
-    const finalExpense = totalExpense + totalDoctorAmount;
-    const finalIncome = totalIncome + totalAppointmentIncome;
-    const finalProfit = finalIncome - finalExpense;
+    const url = id ? `${apiBase}/appointment/ReceiveMoney/${id}/` : `${apiBase}/appointment/ReceiveMoney/`;
+    const method = id ? 'PUT' : 'POST';
 
-    // Display in summary section
-    document.getElementById("summaryExpense").innerText = finalExpense.toFixed(2);
-    document.getElementById("summaryIncome").innerText = finalIncome.toFixed(2);
-    document.getElementById("summaryFinal").innerText = finalProfit.toFixed(2);
-}
+    fetch(url, {
+      method: method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to save');
+      return res.json();
+    })
+    .then(() => {
+      bootstrap.Modal.getInstance(document.getElementById('moneyModal')).hide();
+      loadReceiveMoney();
+    })
+    .catch(err => alert('Error: ' + err.message));
+  }
 
-  
+  function deleteMoney(id) {
+    if (!confirm('Are you sure you want to delete this entry?')) return;
+    fetch(`${apiBase}/appointment/ReceiveMoney/${id}/`, {
+      method: 'DELETE'
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Delete failed');
+      loadReceiveMoney();
+    })
+    .catch(err => alert('Error: ' + err.message));
+  }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="acctest.js"></script> -->
   <script src="logout.js"></script>
 
 </body>
