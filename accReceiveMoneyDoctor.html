@@ -353,7 +353,7 @@
 <div class="container pb-4">
     <div class="container">
   <h2 class="mb-4">Receive Money</h2>
-  <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#moneyModal" onclick="openAddForm()">Add Receive Money</button>
+  <!-- <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#moneyModal" onclick="openAddForm()">Add Receive Money</button> -->
 
   <div class="mb-3">
     <label for="doctorFilter" class="form-label">Doctor:</label>
@@ -370,6 +370,7 @@
 
     <button class="btn btn-success" onclick="applyFilters()">Filter</button>
     <button class="btn btn-secondary" onclick="loadReceiveMoney()">Reset</button>
+    <button class="btn btn-success " data-bs-toggle="modal" data-bs-target="#moneyModal" onclick="openAddForm()">Add Receive Money</button>
   </div>
 
   <table class="table table-bordered">
@@ -378,7 +379,7 @@
       <th>ID</th>
       <th>Doctor</th>
       <th>Amount</th>
-      <th>Receive Date</th>
+      <th>Receive_Date</th>
       <!-- <th>Created At</th> -->
       <th>Comment</th>
       <th>Actions</th>
