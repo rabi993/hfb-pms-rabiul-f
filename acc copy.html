@@ -228,7 +228,7 @@
 
                           </div>
                         </div>
-                        <div id="printSection" style="width:100%; padding:0; margin:0;">
+                        
                           <!-- Filter Section -->
 
 
@@ -249,56 +249,56 @@
 
 
                             <!-- <div class="col-md-3">
-                  <label for="accountsHeadFilter" class="form-label">Accounts Head</label>
-                  <select id="accountsHeadFilter" class="form-select">
-                    
-                  </select>
-                </div>
-  
-                <div class="col-md-2">
-                  <label for="ahTypeFilter" class="form-label">AH Type</label>
-                  <select id="ahTypeFilter" class="form-select">
-                    <option value="">All</option>
-                    <option value="Expense">Expense</option>
-                    <option value="Income">Income</option>
-                  </select>
-                </div>
-  
-                <div class="col-md-2">
-                  <label for="amountTypeFilter" class="form-label">Amount Type</label>
-                  <select id="amountTypeFilter" class="form-select">
-                    
-                  </select>
-                </div>
-                <div class="col-md-2">
-                  <label for="amountNameFilter" class="form-label">Account name</label>
-                  <select id="amountNameFilter" class="form-select">
-                    
-                  </select>
-                </div>
-  
-                <div class="col-md-2">
-                  <label for="dateFrom" class="form-label">From Date</label>
-                  <input type="date" id="dateFrom" class="form-control" />
-                </div>
-  
-                <div class="col-md-2">
-                  <label for="dateTo" class="form-label">To Date</label>
-                  <input type="date" id="dateTo" class="form-control" />
-                </div> -->
+                              <label for="accountsHeadFilter" class="form-label">Accounts Head</label>
+                              <select id="accountsHeadFilter" class="form-select">
+                                
+                              </select>
+                            </div>
+              
+                            <div class="col-md-2">
+                              <label for="ahTypeFilter" class="form-label">AH Type</label>
+                              <select id="ahTypeFilter" class="form-select">
+                                <option value="">All</option>
+                                <option value="Expense">Expense</option>
+                                <option value="Income">Income</option>
+                              </select>
+                            </div>
+              
+                            <div class="col-md-2">
+                              <label for="amountTypeFilter" class="form-label">Amount Type</label>
+                              <select id="amountTypeFilter" class="form-select">
+                                
+                              </select>
+                            </div>
+                            <div class="col-md-2">
+                              <label for="amountNameFilter" class="form-label">Account name</label>
+                              <select id="amountNameFilter" class="form-select">
+                                
+                              </select>
+                            </div>
+              
+                            <div class="col-md-2">
+                              <label for="dateFrom" class="form-label">From Date</label>
+                              <input type="date" id="dateFrom" class="form-control" />
+                            </div>
+              
+                            <div class="col-md-2">
+                              <label for="dateTo" class="form-label">To Date</label>
+                              <input type="date" id="dateTo" class="form-control" />
+                            </div> -->
 
                             <div class="col-md-4 col-lg-4 d-flex align-items-end">
                               <button class="btn btn-success w-100" onclick="fetchAccounts()">Filter</button>
                               <button class="btn btn-primary ms-5" onclick="pdfForPrintTable()">Print</button>
                             </div>
                           </div>
-
-                          <table class="table table-bordered " id="accountsTable">
+                        <div id="printSection" style="width:100%; padding:0; margin:0;">
+                          <table class="table table-bordered table-striped " id="accountsTable">
                             <thead class="table-light ">
                               <tr>
-                                <!-- <th>ID</th> -->
-                                <!-- <th>Account Head</th> -->
-                                <!-- <th>Head_Type</th> -->
+                                <th>ID</th>
+                                <th>Account Head</th>
+                                <th>Head_Type</th>
                                 <th>Amount_Type</th>
                                 <th>Account_Name</th>
                                 <th>Expense</th>
@@ -309,15 +309,14 @@
                                 <th>Actions</th>
                               </tr>
                             </thead>
-                            <tbody style="display: none;" id="accmoneyTableBody"></tbody>
+                            <tbody></tbody>
                             <tfoot>
                               <tr style="font-size: 15px;">
-                                <td colspan="2" class="text-center bg-dark text-white"><strong>Total :</strong></td>
+                                <td colspan="5" class="text-center bg-dark text-white"><strong>Total :</strong></td>
                                 <td colspan="1" id="totalExpense" class="fw-bold bg-dark text-white">0</td>
                                 <td colspan="1" id="totalIncome" class="fw-bold bg-dark text-white">0</td>
-                                <td colspan="1" class="text-center bg-dark text-white"><strong>acc :</strong></td>
-                                <td colspan="1" id="finalProfit" class="fw-bold bg-dark text-white">0</td>
-                                <td class="bg-dark text-white fw-bold" colspan="1" ><button id="toggleBtn2" onclick="toggleTable2()">Expand</button></td>
+                                <td colspan="2" class="text-center bg-dark text-white"><strong>acc :</strong></td>
+                                <td colspan="2" id="finalProfit" class="fw-bold bg-dark text-white">0</td>
                               </tr>
                             </tfoot>
                           </table>
@@ -354,13 +353,12 @@
                               <!-- <th>Actions</th> -->
                             </tr>
                           </thead>
-                          <tbody id="moneyTableBody"style="display: none;" ></tbody>
+                          <tbody id="moneyTableBody"></tbody>
                           <tfoot class="">
                             <tr>
-                              <td class="text-center bg-dark text-white" colspan="3"><strong>Total Expense to
+                              <td class="text-center bg-dark text-white" colspan="4"><strong>Total Expense to
                                   Doctor:</strong></td>
-                              <td class=" bg-dark text-white fw-bold" colspan="1" id="totalAmount">0</td>
-                              <td class="bg-dark text-white fw-bold" colspan="1" ><button id="toggleBtn1" onclick="toggleTable1()">Expand</button></td>
+                              <td class=" bg-dark text-white fw-bold" colspan="3" id="totalAmount">0</td>
                             </tr>
                           </tfoot>
                         </table>
@@ -410,7 +408,6 @@
 
                         </div>
 
-                        
 
                         <table class="table table-bordered">
                           <thead class="table-light">
@@ -430,15 +427,12 @@
                               <!-- <th>Actions</th> -->
                             </tr>
                           </thead>
-                          <tbody id="appointmentTableBody" style="display: none;"></tbody>
+                          <tbody id="appointmentTableBody"></tbody>
                           <tfoot>
                             <tr>
                               <td class="text-center bg-dark text-white" colspan="5"><strong>Total Income from
                                   Appointment :</strong></td>
-                              <td class="bg-dark text-white fw-bold" colspan="3" id="totalAmountapp">0</td>
-                              <td class="bg-dark text-white fw-bold" colspan="2" ><button id="toggleBtn" onclick="toggleTable()">Expand</button></td>
-
-
+                              <td class="bg-dark text-white fw-bold" colspan="5" id="totalAmountapp">0</td>
                             </tr>
                           </tfoot>
                         </table>
@@ -618,7 +612,7 @@
               filtered = filtered.filter(a => a.create_date <= toDate);
             }
 
-            const tbody = document.getElementById("accmoneyTableBody");
+            const tbody = document.querySelector("#accountsTable tbody");
             tbody.innerHTML = "";
 
             let totalIncome = 0;
@@ -633,11 +627,11 @@
               }
               const row = `
                     <tr >
-                        
-                        
+                        <td>${account.id}</td>
+                        <td>${accHeads[account.accounts_head]}</td>
                         
                        
-                        
+                        <td>${account.ah_type}</td>
                         <td>${account.amount_type}</td>
                         <td>${accSingles[account.acc_name]}</td>
                         
@@ -656,8 +650,6 @@
                 `;
               tbody.innerHTML += row;
             });
-            // <td>${accHeads[account.accounts_head]}</td>
-            // <td>${account.ah_type}</td>
             const profit = totalIncome - totalExpense;
 
             document.getElementById("totalIncome").innerText = ` ${totalIncome.toFixed(2)} Tk`;
@@ -1219,37 +1211,6 @@
           });
       }
     </script>
-    <script>
-      function toggleTable() {
-        const tableBody = document.getElementById('appointmentTableBody');
-        const toggleBtn = document.getElementById('toggleBtn');
-        const isHidden = tableBody.style.display === 'none';
-
-        tableBody.style.display = isHidden ? 'table-row-group' : 'none';
-        toggleBtn.textContent = isHidden ? 'Close' : 'Expand';
-      }
-    </script>
-    <script>
-      function toggleTable1() {
-        const tableBody = document.getElementById('moneyTableBody');
-        const toggleBtn = document.getElementById('toggleBtn1');
-        const isHidden = tableBody.style.display === 'none';
-
-        tableBody.style.display = isHidden ? 'table-row-group' : 'none';
-        toggleBtn.textContent = isHidden ? 'Close' : 'Expand';
-      }
-    </script>
-    <script>
-      function toggleTable2() {
-        const tableBody = document.getElementById('accmoneyTableBody');
-        const toggleBtn = document.getElementById('toggleBtn2');
-        const isHidden = tableBody.style.display === 'none';
-
-        tableBody.style.display = isHidden ? 'table-row-group' : 'none';
-        toggleBtn.textContent = isHidden ? 'Close' : 'Expand';
-      }
-    </script>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
