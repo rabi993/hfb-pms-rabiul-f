@@ -2,646 +2,579 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Appointment List</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <title>Appointment List</title>
 
-<link rel="shortcut icon" href="assets/img/logo.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
+  <link rel="shortcut icon" href="assets/img/logo.png">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
 
-<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
 
-<link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-<link
-  href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css"
-  rel="stylesheet"
-  crossorigin="anonymous"
-/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
 
 
-    <link rel="stylesheet" href="assets/css/style2.css" />
+  <link rel="stylesheet" href="assets/css/style2.css" />
 </head>
+
 <body>
 
-<div class="main-wrapper">
+  <div class="main-wrapper">
 
-<div class="header">
+    <div class="header">
 
-<div style="display: flex; justify-content: center;" class="header-left">
-<a href="index.html" class="logo">
-<img src="assets/img/logoo.png" alt="Logo">
-</a>
-<a href="index.html" class="logo logo-small">
-<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
-</a>
-</div>
+      <div style="display: flex; justify-content: center;" class="header-left">
+        <a href="index.html" class="logo">
+          <img src="assets/img/logoo.png" alt="Logo">
+        </a>
+        <a href="index.html" class="logo logo-small">
+          <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+        </a>
+      </div>
 
-<a href="javascript:void(0);" id="toggle_btn">
-<i class="fas fa-align-left"></i>
-</a>
+      <div style="padding-top: 20px;">
+        <a href="javascript:void(0);" id="toggle_btn">
+          <i class="fas fa-align-left"></i>
+        </a>
 
-<div class="top-nav-search">
-<form>
-<input type="text" class="form-control" placeholder="Search here">
-<button class="btn" type="submit"><i class="fas fa-search"></i></button>
-</form>
-</div>
-
-
-<a class="mobile_btn" id="mobile_btn">
-<i class="fas fa-bars"></i>
-</a>
+        <div class="top-nav-search ">
+          <h1 class="text-center" style="font-weight: 800;font-size: 50px; color:#18AEFA;align-items: center;">
+            Homeopathic Foundation Bangladesh</h1>
+        </div>
 
 
-<ul class="nav user-menu">
+        <a class="mobile_btn pt-4" id="mobile_btn">
+          <i class="fas fa-bars"></i>
+        </a>
 
+
+        <ul class="nav user-menu">
 
 
 
-<li class="nav-item dropdown has-arrow">
-<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-  <span class="user-img"><img style="border: 2px solid #18AEFA; border-radius: 50%;padding: 2px;" class="rounded-circle " src="assets/img/profiles/rrr.png" width="31" alt="Ryan Taylor"></span>
-</a>
-<div class="dropdown-menu">
-<div class="user-header">
-<div class="avatar avatar-sm">
-<img src="assets/img/profiles/rrr.png" alt="User Image" class="avatar-img rounded-circle">
-</div>
-<div class="user-text">
-<!-- <h6>Ryan Taylor</h6>
-<p class="text-muted mb-0">Administrator</p> -->
-</div>
-</div>
-<a class="dropdown-item" href="profile.html">My Profile</a>
-<a class="dropdown-item" href="inbox.html">Inbox</a>
-<a class="dropdown-item" onclick="handlelogOut()" href="#">Logout</a>
-</div>
-</li>
 
-</ul>
-
-</div>
-
-
-<div class="sidebar" id="sidebar">
-<div class="sidebar-inner slimscroll">
-<div id="sidebar-menu" class="sidebar-menu">
-<ul>
-<li class="menu-title">
-<span>Main Menu</span>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="index.html">Admin Dashboard</a></li>
-<li><a href="teacher-dashboard.html">Doctor Dashboard</a></li>
-<li><a href="student-dashboard.html">Accounts Dashboard</a></li>
-</ul>
-</li>
-<li class="submenu ">
-<a href="#"><i class="fas fa-user-graduate"></i> <span> Doctors</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="add-Doctors.html" >Doctor List</a></li>
-<li><a href="doctorsCard.html">Doctor View</a></li>
-<li><a href="add-student.html">Doctor Add</a></li>
-<li><a href="edit-student.html">Doctor Edit</a></li>
-<li><a href="add_designation.html">Add designation</a></li>
-<li><a href="add_specialization.html">Add specialization</a></li>
-<li><a href="add_availableTime.html">Add availableTime</a></li>
-</ul>
-</li>
-<li class="submenu active">
-<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients Appointments</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="add_appointment.html" >Add Appointment</a></li>
-<li><a href="all_appointment.html" class="active">Appointment List</a></li>
-<li><a href="teacher-details.html">Patients View</a></li>
-<li><a href="add-teacher.html">Patients Add</a></li>
-<li><a href="edit-teacher.html">Patients Edit</a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients </span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="teachers.html">Patients List</a></li>
-<li><a href="teacher-details.html">Patients View</a></li>
-<li><a href="add-teacher.html">Patients Add</a></li>
-<li><a href="edit-teacher.html">Patients Edit</a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="departments.html">Department List</a></li>
-<li><a href="add-department.html">Department Add</a></li>
-<li><a href="edit-department.html">Department Edit</a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="subjects.html">Subject List</a></li>
-<li><a href="add-subject.html">Subject Add</a></li>
-<li><a href="edit-subject.html">Subject Edit</a></li>
-</ul>
-</li>
-<li class="menu-title">
-<span>Management</span>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
-<li><a href="acc.html">Expenses & Income</a></li>
-<li><a href="salary.html">Salary</a></li>
-<li><a href="amountType.html" >Add Amount Types</a></li>
-<li><a href="accountHead.html">Add Account Head</a></li>
-<li><a href="accSingles.html">Add Account single</a></li>
-<li><a href="add-expenses.html">Add Expenses</a></li>
-<li><a href="add-salary.html">Add Salary</a></li>
-</ul>
-</li>
-<li>
-<a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
-</li>
-<li>
-<a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
-</li>
-<li>
-<a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
-</li>
-<li>
-<a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
-</li>
-<li>
-<a href="time-table.html"><i class="fas fa-table"></i> <span>Time Table</span></a>
-</li>
-<li>
-<a href="library.html"><i class="fas fa-book"></i> <span>Library</span></a>
-</li>
-<li class="menu-title">
-<span>Pages</span>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-shield-alt"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="login.html">Login</a></li>
-<li><a href="register.html">Register</a></li>
-<li><a href="forgot-password.html">Forgot Password</a></li>
-<li><a href="error-404.html">Error Page</a></li>
-</ul>
-</li>
-<li>
-<a href="blank-page.html"><i class="fas fa-file"></i> <span>Blank Page</span></a>
-</li>
-<li class="menu-title">
-<span>Others</span>
-</li>
-<li>
-<a href="sports.html"><i class="fas fa-baseball-ball"></i> <span>Sports</span></a>
-</li>
-<li>
-<a href="hostel.html"><i class="fas fa-hotel"></i> <span>Hostel</span></a>
-</li>
-<li>
-<a href="transport.html"><i class="fas fa-bus"></i> <span>Transport</span></a>
-</li>
-<li class="menu-title">
-<span>UI Interface</span>
-</li>
-<li>
-<a href="components.html"><i class="fas fa-vector-square"></i> <span>Components</span></a>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-columns"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="form-basic-inputs.html">Basic Inputs </a></li>
-<li><a href="form-input-groups.html">Input Groups </a></li>
-<li><a href="form-horizontal.html">Horizontal Form </a></li>
-<li><a href="form-vertical.html"> Vertical Form </a></li>
-<li><a href="form-mask.html"> Form Mask </a></li>
-<li><a href="form-validation.html"> Form Validation </a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="tables-basic.html">Basic Tables </a></li>
-<li><a href="data-tables.html">Data Table </a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="javascript:void(0);"><i class="fas fa-code"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
-<ul>
-<li class="submenu">
-<a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="javascript:void(0);"><span>Level 2</span></a></li>
-<li class="submenu">
-<a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="javascript:void(0);">Level 3</a></li>
-<li><a href="javascript:void(0);">Level 3</a></li>
-</ul>
-</li>
-<li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
-</ul>
-</li>
-<li>
-<a href="javascript:void(0);"> <span>Level 1</span></a>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
-
-<div class="page-wrapper">
-<div class="content container-fluid mt-5">
-
-<div class="page-header">
-<div class="row align-items-center">
-  <div class="col col-lg-11">
-  <h3 class="page-title">Appointment List</h3>
-  <ul class="breadcrumb">
-  <li class="breadcrumb-item"><a href="all_appointment.html">Appointment</a></li>
-  <li class="breadcrumb-item active">Appointment List</li>
-  </ul>
-  </div>
-  <div class="col col-lg-1">
-    <button class="btn btcn" onclick="pdfForPrintTable()">Print</button>
-  </div>
-</div>
-</div>
-
-<div class="row">
-<div class="col-sm-12">
-<div class="card">
-<div class="card-body">
-
-<div class="row">
-<div class="col-12">
-<!-- <h5 class="form-title"><span>Event Information</span></h5> -->
-</div>
-<div class="container pb-4">
-    <div class="container" id="printSection">
-        <div class=" row d-flex justify-content-center w-100 m-auto">
-            <!-- <div class="col-lg-3"><h2 >All Appointment</h2></div> -->
-            <div class="d-flex gap-2 py-4 mb-3 col align-items-center w-100 m-auto">
-              
-              <b><label for="filterDate" id="filterDateLabel">Today</label></b>
-              <input type="date" id="filterDate" class="form-control" onchange="updateLabel()" />
-              
-              <!-- <input type="date" id="filterDate" class="form-control" /> -->
-              <b><label for="filterDoctor" >Doctor</label></b>
-              <select id="filterDoctor" class="form-control">
-                <option value="">All Doctors</option>
-              </select>
-              <b><label for="filterTime" >Time</label></b>
-              <select id="filterTime" class="form-control"> 
-                <option value="">All Time</option> 
-              </select>
-              <b><label for="filterStatus" >Status</label></b>
-              <select id="filterStatus" class="form-control">
-                <option value="">Status</option>
-              </select>
-              <b><label for="filterType" >Type</label></b>
-              <select id="filterType" class="form-control">
-                <option value="">Type</option>
-              </select>
-              <b><label for="filterVersion" >Version</label></b>
-              <select id="filterVersion" class="form-control">
-                <option value="">Version</option>
-              </select>
-              <button class="btn btcn" onclick="renderAppointments()">Filter</button>
+          <li class="nav-item dropdown has-arrow">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/rrr.jpg" width="31"
+                  alt="Ryan Taylor"></span>
+            </a>
+            <div class="dropdown-menu">
+              <div class="user-header">
+                <div class="avatar avatar-sm">
+                  <img src="assets/img/profiles/rrr.jpg" alt="User Image" class="avatar-img rounded-circle">
+                </div>
+                <div class="user-text">
+                  <!-- <h6>Ryan Taylor</h6> <p class="text-muted mb-0">Administrator</p> -->
+                </div>
+              </div>
+              <a class="dropdown-item" href="profile.html">My Profile</a>
+              <a class="dropdown-item" href="inbox.html">Inbox</a>
+              <a class="dropdown-item" onclick="handlelogOut()" href="#">Logout</a>
             </div>
-            <!-- <div class="col-lg-2 text-end">
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+          <ul>
+            <li class="menu-title">
+              <span>Main Menu</span>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="index.html">Admin Dashboard</a></li>
+                <li><a href="teacher-dashboard.html">Doctor Dashboard</a></li>
+                <li><a href="student-dashboard.html">Accounts Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="submenu ">
+              <a href="#"><i class="fas fa-user-graduate"></i> <span> Doctors</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="add-Doctors.html">Doctor List</a></li>
+                <li><a href="doctorsCard.html">Doctor View</a></li>
+                <li><a href="add-student.html">Doctor Add</a></li>
+                <li><a href="edit-student.html">Doctor Edit</a></li>
+                <li><a href="add_designation.html">Add designation</a></li>
+                <li><a href="add_specialization.html">Add specialization</a></li>
+                <li><a href="add_availableTime.html">Add availableTime</a></li>
+              </ul>
+            </li>
+            <li class="submenu active">
+              <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients Appointments</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="add_appointment.html">Add Appointment</a></li>
+                <li><a href="all_appointment.html" class="active">Appointment List</a></li>
+                <li><a href="teacher-details.html">Patients View</a></li>
+                <li><a href="add-teacher.html">Patients Add</a></li>
+                <li><a href="edit-teacher.html">Patients Edit</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients </span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="teachers.html">Patients List</a></li>
+                <li><a href="teacher-details.html">Patients View</a></li>
+                <li><a href="add-teacher.html">Patients Add</a></li>
+                <li><a href="edit-teacher.html">Patients Edit</a></li>
+              </ul>
+            </li>
+             
+            <li class="menu-title">
+              <span>Management</span>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
+                <li><a href="acc.html">Expenses & Income</a></li>
+                <li><a href="salary.html">Salary</a></li>
+                <li><a href="amountType.html">Add Amount Types</a></li>
+                <li><a href="accountHead.html">Add Account Head</a></li>
+                <li><a href="accSingles.html">Add Account single</a></li>
+                <li><a href="add-expenses.html">Add Expenses</a></li>
+                <li><a href="add-salary.html">Add Salary</a></li>
+              </ul>
+            </li>
+             
+             
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="page-wrapper">
+      <div class="content container-fluid mt-5">
+
+        <div class="page-header">
+          <div class="row align-items-center">
+            <div class="col col-lg-11">
+              <h3 class="page-title">Appointment List</h3>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="all_appointment.html">Appointment</a></li>
+                <li class="breadcrumb-item active">Appointment List</li>
+              </ul>
+            </div>
+            <div class="col col-lg-1">
+              <button class="btn btcn" onclick="pdfForPrintTable()">Print</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+
+                <div class="row">
+                  <div class="col-12">
+                    <!-- <h5 class="form-title"><span>Event Information</span></h5> -->
+                  </div>
+                  <div class="container pb-4">
+                    <div class="container" id="printSection">
+                      <div class=" row d-flex justify-content-center w-100 m-auto">
+                        <!-- <div class="col-lg-3"><h2 >All Appointment</h2></div> -->
+                        <div class="d-flex gap-2 py-4 mb-3 col align-items-center w-100 m-auto">
+
+                          <b><label for="filterDate" id="filterDateLabel">Today</label></b>
+                          <input type="date" id="filterDate" class="form-control" onchange="updateLabel()" />
+
+                          <!-- <input type="date" id="filterDate" class="form-control" /> -->
+                          <b><label for="filterDoctor">Doctor</label></b>
+                          <select id="filterDoctor" class="form-control">
+                            <option value="">All Doctors</option>
+                          </select>
+                          <b><label for="filterTime">Time</label></b>
+                          <select id="filterTime" class="form-control">
+                            <option value="">All Time</option>
+                          </select>
+                          <b><label for="filterStatus">Status</label></b>
+                          <select id="filterStatus" class="form-control">
+                            <option value="">Status</option>
+                          </select>
+                          <b><label for="filterType">Type</label></b>
+                          <select id="filterType" class="form-control">
+                            <option value="">Type</option>
+                          </select>
+                          <b><label for="filterVersion">Version</label></b>
+                          <select id="filterVersion" class="form-control">
+                            <option value="">Version</option>
+                          </select>
+                          <button class="btn btcn" onclick="renderAppointments()">Filter</button>
+                        </div>
+                        <!-- <div class="col-lg-2 text-end">
               
               <button style="border: none;" class="btn btcn mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Appointment</button>
             </div> -->
-            <!-- <button class="btn btcn" onclick="pdfForPrintTable()">Ready to Print</button> -->
+                        <!-- <button class="btn btcn" onclick="pdfForPrintTable()">Ready to Print</button> -->
 
 
-          </div>
-      
-        <!-- <div id="printSection"> -->
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <td>Serial</td>
-                <th>Patient</th>
-                <th>PatientID</th>
-                <th>Version</th>
-                <th>ID</th>
-                <th>Doctor</th>
-                <th>Type</th>
-                <th>Phone</th>
-                <th>Slot</th>
-                <th>Time</th>
-                <th>Total</th>
-                <!-- <th>Status</th> -->
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="appointmentTableBody"></tbody>
-          </table>
-        <!-- </div> -->
+                      </div>
 
-        
-      </div>
-    
+                      <!-- <div id="printSection"> -->
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <td>Serial</td>
+                            <th>Patient</th>
+                            <th>PatientID</th>
+                            <th>Version</th>
+                            <th>ID</th>
+                            <th>Doctor</th>
+                            <th>Type</th>
+                            <th>Phone</th>
+                            <th>Slot</th>
+                            <th>Time</th>
+                            <th>Total</th>
+                            <!-- <th>Status</th> -->
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody id="appointmentTableBody"></tbody>
+                      </table>
+                      <!-- </div> -->
 
-</div>
 
-    <!-- Add Modal -->
-    <div class="modal fade" id="addModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content p-3">
-            
-            <h5>Add Appointment</h5>
-            
-            <form id="addForm">
-              <div class="row">
-                <div class="col-md-6 mb-2"><label>Patient Name</label><input name="patient_name" class="form-control" required></div>
-                <div class="col-md-6 mb-2"><label>Doctor</label><select name="doctor" class="form-select" required></select></div>
-                <div class="col-md-6 mb-2"><label>Status</label>
-                  <select name="appointment_Status" class="form-select">
-                    <option value="Pending">Pending</option><option value="Running">Running</option><option value="Completed">Completed</option>
-                  </select>
+                    </div>
+
+
+                  </div>
+
+                  <!-- Add Modal -->
+                  <div class="modal fade" id="addModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content p-3">
+
+                        <h5>Add Appointment</h5>
+
+                        <form id="addForm">
+                          <div class="row">
+                            <div class="col-md-6 mb-2"><label>Patient Name</label><input name="patient_name"
+                                class="form-control" required></div>
+                            <div class="col-md-6 mb-2"><label>Doctor</label><select name="doctor" class="form-select"
+                                required></select></div>
+                            <div class="col-md-6 mb-2"><label>Status</label>
+                              <select name="appointment_Status" class="form-select">
+                                <option value="Pending">Pending</option>
+                                <option value="Running">Running</option>
+                                <option value="Completed">Completed</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-2"><label>Type</label>
+                              <select name="appointment_Types" class="form-select">
+                                <option value="Online">Online</option>
+                                <option value="Offline">Offline</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-2"><label>Phone</label><input name="phone_no" class="form-control"
+                                required></div>
+                            <div class="col-md-6 mb-2"><label>Appointment Date</label><input type="date"
+                                name="appointment_date" class="form-control" required></div>
+                            <div class="col-md-6 mb-2"><label>Time</label><select name="time" class="form-select"
+                                required></select></div>
+                            <div class="col-md-6 mb-2"><label>Symptom</label><textarea name="symptom"
+                                class="form-control"></textarea></div>
+                            <div class="col-md-4 mb-2"><label>Visit Fee</label><input name="visit_fee" type="number"
+                                class="form-control"></div>
+                            <div class="col-md-4 mb-2"><label>Medicine Cost</label><input name="medicine_cost"
+                                type="number" step="0.01" class="form-control"></div>
+                            <div class="col-md-4 mb-2"><label>Other Cost</label><input name="others_cost" type="number"
+                                step="0.01" class="form-control"></div>
+                            <div class="col-md-6 mb-2"><label>Payment</label><select name="payment" class="form-select">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                              </select></div>
+                            <div class="col-md-6 mb-2 " style="display: none;"><label>Cancel</label><select
+                                name="cancel" class="form-select">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                              </select></div>
+                          </div>
+                          <button class="btn btcn mt-2" type="submit">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Edit Modal -->
+                  <div class="modal fade" id="editModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content p-3">
+                        <h5>Edit Appointment</h5>
+                        <form id="editForm">
+                          <input type="hidden" name="id">
+                          <div class="row">
+                            <div class="col-md-6 mb-2"><label>Patient Name</label><input name="patient_name"
+                                class="form-control" required></div>
+                            <div class="col-md-6 mb-2"><label>Doctor</label><select name="doctor" class="form-select"
+                                required></select></div>
+                            <div class="col-md-6 mb-2"><label>Status</label>
+                              <select name="appointment_Status" class="form-select">
+                                <option value="Pending">Pending</option>
+                                <option value="Running">Running</option>
+                                <option value="Completed">Completed</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-2"><label>Type</label>
+                              <select name="appointment_Types" class="form-select">
+                                <option value="Online">Online</option>
+                                <option value="Offline">Offline</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-2"><label>Phone</label><input name="phone_no" class="form-control"
+                                required></div>
+                            <div class="col-md-6 mb-2"><label>Appointment Date</label><input type="date"
+                                name="appointment_date" class="form-control" required></div>
+                            <div class="col-md-6 mb-2"><label>Time</label><select name="time" class="form-select"
+                                required></select></div>
+                            <!-- <div class="col-md-6 mb-2"><label>Symptom</label><textarea name="symptom" class="form-control"></textarea></div> -->
+                            <div class="col-md-4 mb-2"><label>Visit Fee</label><input name="visit_fee" type="number"
+                                class="form-control"></div>
+                            <div class="col-md-4 mb-2"><label>Medicine Cost</label><input name="medicine_cost"
+                                type="number" step="0.01" class="form-control"></div>
+                            <div class="col-md-4 mb-2"><label>Other Cost</label><input name="others_cost" type="number"
+                                step="0.01" class="form-control"></div>
+                            <div class="col-md-12 mb-2 text-end">
+                              <strong id="totalFeeDisplay">Total: $0.00</strong>
+                            </div>
+                            <div class="col-md-6 mb-2"><label>Payment</label><select name="payment" class="form-select">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                              </select></div>
+                            <!-- <div class="col-md-6 mb-2"><label>Cancel</label><select name="cancel" class="form-select"><option value="false">No</option><option value="true">Yes</option></select></div> -->
+                          </div>
+                          <button class="btn btcn mt-2" type="submit">Update</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="py-3">
+                    <hr>
+                  </div>
                 </div>
-                <div class="col-md-6 mb-2"><label>Type</label>
-                  <select name="appointment_Types" class="form-select">
-                    <option value="Online">Online</option><option value="Offline">Offline</option>
-                  </select>
-                </div>
-                <div class="col-md-6 mb-2"><label>Phone</label><input name="phone_no" class="form-control" required></div>
-                <div class="col-md-6 mb-2"><label>Appointment Date</label><input type="date" name="appointment_date" class="form-control" required></div>
-                <div class="col-md-6 mb-2"><label>Time</label><select name="time" class="form-select" required></select></div>
-                <div class="col-md-6 mb-2"><label>Symptom</label><textarea name="symptom" class="form-control"></textarea></div>
-                <div class="col-md-4 mb-2"><label>Visit Fee</label><input name="visit_fee" type="number" class="form-control"></div>
-                <div class="col-md-4 mb-2" ><label>Medicine Cost</label><input name="medicine_cost" type="number" step="0.01" class="form-control"></div>
-                <div class="col-md-4 mb-2" ><label>Other Cost</label><input name="others_cost" type="number" step="0.01" class="form-control"></div>
-                <div class="col-md-6 mb-2"><label>Payment</label><select name="payment" class="form-select"><option value="false">No</option><option value="true">Yes</option></select></div>
-                <div class="col-md-6 mb-2 " style="display: none;"><label>Cancel</label><select name="cancel" class="form-select"><option value="false">No</option><option value="true">Yes</option></select></div>
               </div>
-              <button class="btn btcn mt-2" type="submit">Submit</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-      
-      <!-- Edit Modal -->
-      <div class="modal fade" id="editModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content p-3">
-            <h5>Edit Appointment</h5>
-            <form id="editForm">
-              <input type="hidden" name="id">
-              <div class="row">
-                <div class="col-md-6 mb-2"><label>Patient Name</label><input name="patient_name" class="form-control" required></div>
-                <div class="col-md-6 mb-2"><label>Doctor</label><select name="doctor" class="form-select" required></select></div>
-                <div class="col-md-6 mb-2"><label>Status</label>
-                  <select name="appointment_Status" class="form-select">
-                    <option value="Pending">Pending</option><option value="Running">Running</option><option value="Completed">Completed</option>
-                  </select>
-                </div>
-                <div class="col-md-6 mb-2"><label>Type</label>
-                  <select name="appointment_Types" class="form-select">
-                    <option value="Online">Online</option><option value="Offline">Offline</option>
-                  </select>
-                </div>
-                <div class="col-md-6 mb-2"><label>Phone</label><input name="phone_no" class="form-control" required></div>
-                <div class="col-md-6 mb-2"><label>Appointment Date</label><input type="date" name="appointment_date" class="form-control" required></div>
-                <div class="col-md-6 mb-2"><label>Time</label><select name="time" class="form-select" required></select></div>
-                <!-- <div class="col-md-6 mb-2"><label>Symptom</label><textarea name="symptom" class="form-control"></textarea></div> -->
-                <div class="col-md-4 mb-2"><label>Visit Fee</label><input name="visit_fee" type="number" class="form-control"></div>
-                <div  class="col-md-4 mb-2"><label>Medicine Cost</label><input name="medicine_cost" type="number" step="0.01" class="form-control"></div>
-                <div class="col-md-4 mb-2"><label>Other Cost</label><input name="others_cost" type="number" step="0.01" class="form-control"></div>
-                <div class="col-md-12 mb-2 text-end">
-                  <strong id="totalFeeDisplay">Total: $0.00</strong>
-                </div>
-                <div class="col-md-6 mb-2"><label>Payment</label><select name="payment" class="form-select"><option value="false">No</option><option value="true">Yes</option></select></div>
-                <!-- <div class="col-md-6 mb-2"><label>Cancel</label><select name="cancel" class="form-select"><option value="false">No</option><option value="true">Yes</option></select></div> -->
-              </div>
-              <button class="btn btcn mt-2" type="submit">Update</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="py-3">
-        <hr>
-      </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-</div>
+    </div>
 
 
-<script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
 
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-<script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 
-<script>
-    // Constants
-    const API = 'http://127.0.0.1:8000/appointment/list/';
-    const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
-    const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
-    
-    // Fill options into a select
-    function fillSelect(url, select, selectedId = null) {
-      fetch(url).then(res => res.json()).then(data => {
-        select.innerHTML = '';
-        (data.results || data).forEach(d => {
+    <script>
+      // Constants
+      const API = 'http://127.0.0.1:8000/appointment/list/';
+      const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
+      const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
+
+      // Fill options into a select
+      function fillSelect(url, select, selectedId = null) {
+        fetch(url).then(res => res.json()).then(data => {
+          select.innerHTML = '';
+          (data.results || data).forEach(d => {
+            let opt = document.createElement('option');
+            opt.value = d.id;
+            opt.textContent = d.doctor_name || d.name;
+            if (selectedId && selectedId == d.id) {
+              opt.selected = true;
+            }
+            select.appendChild(opt);
+          });
+        });
+      }
+
+      // Load Doctor Filter Options
+      function fillSelectff(url, selectId, keyName, selectedId = null) {
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            const select = document.getElementById(selectId);
+            select.innerHTML = '<option value="">All</option>';
+            (data.results || data).forEach(item => {
+              const opt = document.createElement('option');
+              opt.value = item.id;
+              opt.textContent = item[keyName];
+              if (selectedId && selectedId == item.id) {
+                opt.selected = true;
+              }
+              select.appendChild(opt);
+            });
+          });
+      }
+      function fillSelectf(url, selectId, keyName, selectedId = null, formatFunc = null) {
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            const select = document.getElementById(selectId);
+            select.innerHTML = '<option value="">All</option>';
+            (data.results || data).forEach(item => {
+              const opt = document.createElement('option');
+              opt.value = item.id;
+              const rawValue = item[keyName];
+              opt.textContent = formatFunc ? formatFunc(rawValue) : rawValue;
+              if (selectedId && selectedId == item.id) {
+                opt.selected = true;
+              }
+              select.appendChild(opt);
+            });
+          });
+      }
+
+
+      // Load Doctor Filter Options
+      function loadDoctorFilter() {
+        fillSelectf(DOCTOR, 'filterDoctor', 'doctor_name');
+      }
+
+      // Load Time Filter Options
+      // function loadTimeFilter() {
+      //   fillSelectf(TIME, 'filterTime', 'name');
+      // }
+      function loadTimeFilter() {
+        fillSelectf(TIME, 'filterTime', 'name', null, formatTime12Hour);
+      }
+
+      // function loadDoctorFilter() {
+      //   fetch(DOCTOR)
+      //     .then(res => res.json())
+      //     .then(data => {
+      //       let select = document.getElementById('filterDoctor');
+      //       select.innerHTML = '<option value="">All Doctor</option>'; // Optional "All" option
+      //       data.results.forEach(doctor => {
+      //         let opt = document.createElement('option');
+      //         opt.value = doctor.id;
+      //         opt.textContent = doctor.doctor_name;
+      //         select.appendChild(opt);
+      //       });
+      //     });
+      // }
+      //  // Load Time Filter Options 
+      //  function loadTimeFilter() { 
+      //   fetch(TIME )
+      //     .then(res => res.json())
+      //     .then(data => {
+      //       let select = document.getElementById('filterTime'); 
+      //       select.innerHTML = '<option value="">All Time</option>';  
+      //       data.results.forEach(time=> { 
+      //         let opt = document.createElement('option');
+      //         opt.value = time.id;
+      //         opt.textContent = time.name; 
+      //         select.appendChild(opt);
+      //       });
+      //     });
+      // } 
+      // Load Status Filter
+      function loadStatusFilter() {
+        const appointment_Status = {
+          "Pending": "Pending",
+          "Completed": "Visited",
+        };
+        let select = document.getElementById('filterStatus');
+        select.innerHTML = '<option value="">All</option>'; // Optional "All" option
+        for (let key in appointment_Status) {
           let opt = document.createElement('option');
-          opt.value = d.id;
-          opt.textContent = d.doctor_name || d.name;
-          if (selectedId && selectedId == d.id) {
-            opt.selected = true;
-          }
+          opt.value = key;
+          opt.textContent = appointment_Status[key];
           select.appendChild(opt);
-        });
-      });
-    }
-    
-    // Load Doctor Filter Options
-    function fillSelectff(url, selectId, keyName, selectedId = null) {
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          const select = document.getElementById(selectId);
-          select.innerHTML = '<option value="">All</option>';
-          (data.results || data).forEach(item => {
-            const opt = document.createElement('option');
-            opt.value = item.id;
-            opt.textContent = item[keyName];
-            if (selectedId && selectedId == item.id) {
-              opt.selected = true;
+        }
+      }
+      function loadTypeFilter() {
+        const appointment_Types = {
+          "Online": "Online",
+          "Offline": "Offline",
+        };
+        let select = document.getElementById('filterType');
+        select.innerHTML = '<option value="">All</option>'; // Optional "All" option
+        for (let key in appointment_Types) {
+          let opt = document.createElement('option');
+          opt.value = key;
+          opt.textContent = appointment_Types[key];
+          select.appendChild(opt);
+        }
+      }
+      function loadVersionFilter() {
+        const appointment_Version = {
+          "New": "New",
+          "Old": "Old",
+        };
+        let select = document.getElementById('filterVersion');
+        select.innerHTML = '<option value="">All</option>'; // Optional "All" option
+        for (let key in appointment_Version) {
+          let opt = document.createElement('option');
+          opt.value = key;
+          opt.textContent = appointment_Version[key];
+          select.appendChild(opt);
+        }
+      }
+
+      // Render Appointment Table
+      function renderAppointments() {
+        const selectedDate = document.getElementById('filterDate').value;
+        const selectedDoctor = document.getElementById('filterDoctor').value;
+        const selectedTime = document.getElementById('filterTime').value;
+        const selectedStatus = document.getElementById('filterStatus').value;
+        const selectedType = document.getElementById('filterType').value;
+        const selectedVersion = document.getElementById('filterVersion').value;
+
+        fetch(API)
+          .then(res => res.json())
+          .then(data => {
+            // Sort appointments by ascending ID
+            data.sort((a, b) => a.id - b.id);
+            let filtered = data;
+            if (selectedDate) {
+              filtered = filtered.filter(a => a.appointment_date === selectedDate);
             }
-            select.appendChild(opt);
-          });
-        });
-    }
-    function fillSelectf(url, selectId, keyName, selectedId = null, formatFunc = null) { 
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          const select = document.getElementById(selectId);
-          select.innerHTML = '<option value="">All</option>';
-          (data.results || data).forEach(item => {
-            const opt = document.createElement('option');
-            opt.value = item.id;
-            const rawValue = item[keyName];
-            opt.textContent = formatFunc ? formatFunc(rawValue) : rawValue;
-            if (selectedId && selectedId == item.id) {
-              opt.selected = true;
+            if (selectedDoctor) {
+              filtered = filtered.filter(a => a.doctor == selectedDoctor);
             }
-            select.appendChild(opt);
-          });
-        });
-    }
+            if (selectedTime) {
+              filtered = filtered.filter(a => a.time == selectedTime);
+            }
+            if (selectedStatus) {
+              filtered = filtered.filter(a => a.appointment_Status == selectedStatus);
+            }
+            if (selectedType) {
+              filtered = filtered.filter(a => a.appointment_Types == selectedType);
+            }
+            if (selectedVersion) {
+              filtered = filtered.filter(a => a.appointment_Version == selectedVersion);
+            }
 
-
-// Load Doctor Filter Options
-function loadDoctorFilter() {
-  fillSelectf(DOCTOR, 'filterDoctor', 'doctor_name');
-}
-
-// Load Time Filter Options
-// function loadTimeFilter() {
-//   fillSelectf(TIME, 'filterTime', 'name');
-// }
-function loadTimeFilter() {
-  fillSelectf(TIME, 'filterTime', 'name', null, formatTime12Hour);
-}
-
-    // function loadDoctorFilter() {
-    //   fetch(DOCTOR)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       let select = document.getElementById('filterDoctor');
-    //       select.innerHTML = '<option value="">All Doctor</option>'; // Optional "All" option
-    //       data.results.forEach(doctor => {
-    //         let opt = document.createElement('option');
-    //         opt.value = doctor.id;
-    //         opt.textContent = doctor.doctor_name;
-    //         select.appendChild(opt);
-    //       });
-    //     });
-    // }
-    //  // Load Time Filter Options 
-    //  function loadTimeFilter() { 
-    //   fetch(TIME )
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       let select = document.getElementById('filterTime'); 
-    //       select.innerHTML = '<option value="">All Time</option>';  
-    //       data.results.forEach(time=> { 
-    //         let opt = document.createElement('option');
-    //         opt.value = time.id;
-    //         opt.textContent = time.name; 
-    //         select.appendChild(opt);
-    //       });
-    //     });
-    // } 
-    // Load Status Filter
-    function loadStatusFilter() {
-      const appointment_Status = {
-        "Pending": "Pending",
-        "Completed": "Visited",
-      };
-      let select = document.getElementById('filterStatus');
-      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
-      for (let key in appointment_Status) {
-        let opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = appointment_Status[key];
-        select.appendChild(opt);
-      }
-    }
-    function loadTypeFilter() {
-      const appointment_Types = {
-        "Online": "Online",
-        "Offline": "Offline",
-      };
-      let select = document.getElementById('filterType');
-      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
-      for (let key in appointment_Types) {
-        let opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = appointment_Types[key];
-        select.appendChild(opt);
-      }
-    }
-    function loadVersionFilter() {
-      const appointment_Version = {
-        "New": "New",
-        "Old": "Old",
-      };
-      let select = document.getElementById('filterVersion');
-      select.innerHTML = '<option value="">All</option>'; // Optional "All" option
-      for (let key in appointment_Version) {
-        let opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = appointment_Version[key];
-        select.appendChild(opt);
-      }
-    }
-    
-    // Render Appointment Table
-    function renderAppointments() {
-      const selectedDate = document.getElementById('filterDate').value;
-      const selectedDoctor = document.getElementById('filterDoctor').value;
-      const selectedTime = document.getElementById('filterTime').value; 
-      const selectedStatus = document.getElementById('filterStatus').value;
-      const selectedType = document.getElementById('filterType').value;
-      const selectedVersion = document.getElementById('filterVersion').value;
-    
-      fetch(API)
-        .then(res => res.json())
-        .then(data => {
-          // Sort appointments by ascending ID
-          data.sort((a, b) => a.id - b.id);
-          let filtered = data;
-          if (selectedDate) {
-            filtered = filtered.filter(a => a.appointment_date === selectedDate);
-          }
-          if (selectedDoctor) {
-            filtered = filtered.filter(a => a.doctor == selectedDoctor);
-          }
-          if (selectedTime) { 
-            filtered = filtered.filter(a => a.time== selectedTime);
-          } 
-          if (selectedStatus) {
-            filtered = filtered.filter(a => a.appointment_Status == selectedStatus);
-          }
-          if (selectedType) {
-            filtered = filtered.filter(a => a.appointment_Types == selectedType);
-          }
-          if (selectedVersion) {
-            filtered = filtered.filter(a => a.appointment_Version == selectedVersion);
-          }
-    
-          let tbody = document.getElementById('appointmentTableBody');
-          tbody.innerHTML = '';
-          filtered.forEach((a, index) => {
-            tbody.innerHTML += `
+            let tbody = document.getElementById('appointmentTableBody');
+            tbody.innerHTML = '';
+            filtered.forEach((a, index) => {
+              tbody.innerHTML += `
               <tr>
                 <td>${index + 1}</td>
                 <td>${a.patient_name}</td>
@@ -657,306 +590,306 @@ function loadTimeFilter() {
                 <td>${a.total_amount} TK</td>
                 
                 <td>
-                  ${a.appointment_Status === "Completed" 
-                    ? `<button class="btn btn-sm btn-success">Visited</button>` 
-                    : `<button class="btn btn-sm btcn" onclick="visit(${a.id})">Visit</button>`}
+                  ${a.appointment_Status === "Completed"
+                  ? `<button class="btn btn-sm btn-success">Visited</button>`
+                  : `<button class="btn btn-sm btcn" onclick="visit(${a.id})">Visit</button>`}
                   <button class="btn btn-sm btcn" onclick="edit(${a.id})">Edit</button>
                   <button class="btn btn-sm btc" onclick="del(${a.id})">Delete</button>
                 </td>
               </tr>
             `;
+            });
           });
+      }
+      // <td><b>${a.appointment_Status === "Completed" ? "Visited" : a.appointment_Status}</b></td>
+      function formatTime12Hour(timeStr) {
+        if (!timeStr) return '';
+        const [hour, minute] = timeStr.split(':');
+        const h = parseInt(hour);
+        const m = parseInt(minute);
+        const suffix = h >= 12 ? 'PM' : 'AM';
+        const hour12 = ((h + 11) % 12 + 1); // converts 0-23 to 1-12
+        return `${hour12}:${m.toString().padStart(2, '0')} ${suffix}`;
+      }
+      // Get form data as an object
+      function getData(form) {
+        let fd = new FormData(form);
+        let obj = Object.fromEntries(fd.entries());
+        obj.visit_fee = parseInt(obj.visit_fee) || 0;
+        obj.medicine_cost = parseFloat(obj.medicine_cost) || 0;
+        obj.others_cost = parseFloat(obj.others_cost) || 0;
+
+        obj.payment = obj.payment === 'true';
+        obj.cancel = obj.cancel === 'true';
+        return obj;
+      }
+
+      // Add Appointment
+      document.getElementById('addForm').addEventListener('submit', e => {
+        e.preventDefault();
+        let data = getData(e.target);
+        fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(() => {
+          bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
+          e.target.reset();
+          renderAppointments();
         });
-    }
-    // <td><b>${a.appointment_Status === "Completed" ? "Visited" : a.appointment_Status}</b></td>
-    function formatTime12Hour(timeStr) {
-      if (!timeStr) return '';
-      const [hour, minute] = timeStr.split(':');
-      const h = parseInt(hour);
-      const m = parseInt(minute);
-      const suffix = h >= 12 ? 'PM' : 'AM';
-      const hour12 = ((h + 11) % 12 + 1); // converts 0-23 to 1-12
-      return `${hour12}:${m.toString().padStart(2, '0')} ${suffix}`;
-    }
-    // Get form data as an object
-    function getData(form) {
-      let fd = new FormData(form);
-      let obj = Object.fromEntries(fd.entries());
-      obj.visit_fee = parseInt(obj.visit_fee) || 0;
-      obj.medicine_cost = parseFloat(obj.medicine_cost) || 0;
-      obj.others_cost = parseFloat(obj.others_cost) || 0;
-      
-      obj.payment = obj.payment === 'true';
-      obj.cancel = obj.cancel === 'true';
-      return obj;
-    }
-    
-    // Add Appointment
-    document.getElementById('addForm').addEventListener('submit', e => {
-      e.preventDefault();
-      let data = getData(e.target);
-      fetch(API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }).then(() => {
-        bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
-        e.target.reset();
-        renderAppointments();
       });
-    });
-    
 
-    
-    // Edit Appointment
-    // function editt(id) {
-    //   fetch(API + id + '/')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       let form = document.getElementById('editForm');
-    //       form.id.value = data.id;
-    //       form.patient_name.value = data.patient_name;
-    //       form.phone_no.value = data.phone_no;
-    //       form.appointment_date.value = data.appointment_date;
-    //       form.visit_fee.value = data.visit_fee;
-    //       form.medicine_cost.value = data.medicine_cost;
-    //       form.others_cost.value = data.others_cost;
-    //       form.payment.value = data.payment.toString();
-    //       form.appointment_Types.value = data.appointment_Types;
-    //       form.appointment_Status.value = data.appointment_Status;
-    
-    //       // Important: Fill doctor and time with selection
-    //       fillSelect(DOCTOR, form.doctor, data.doctor);
-    //       // fillSelect(TIME, form.time, data.time);
 
-    //       fetch(`${DOCTOR}${data.doctor}/`)
-    //         .then(res => res.json())
-    //         .then(doctor => {
-    //           const timeSelect = form.time;
-    //           timeSelect.innerHTML = '';
 
-    //           doctor.available_time.forEach(time => {
-    //             const opt = document.createElement('option');
-    //             opt.value = time;
-    //             opt.textContent = formatTime12Hour(time);
-    //             if (time === data.time_display || time === data.start_time_display) {
-    //               opt.selected = true;
-    //             }
-    //             timeSelect.appendChild(opt);
-    //           });
-    //       });
+      // Edit Appointment
+      // function editt(id) {
+      //   fetch(API + id + '/')
+      //     .then(res => res.json())
+      //     .then(data => {
+      //       let form = document.getElementById('editForm');
+      //       form.id.value = data.id;
+      //       form.patient_name.value = data.patient_name;
+      //       form.phone_no.value = data.phone_no;
+      //       form.appointment_date.value = data.appointment_date;
+      //       form.visit_fee.value = data.visit_fee;
+      //       form.medicine_cost.value = data.medicine_cost;
+      //       form.others_cost.value = data.others_cost;
+      //       form.payment.value = data.payment.toString();
+      //       form.appointment_Types.value = data.appointment_Types;
+      //       form.appointment_Status.value = data.appointment_Status;
 
-    
-    //       calculateEditTotal(); // Update total fee in edit form
-    
-    //       new bootstrap.Modal(document.getElementById('editModal')).show();
-    //     });
-    // }
-    function edit(id) {
-      fetch(API + id + '/')
-        .then(res => res.json())
-        .then(data => {
-          let form = document.getElementById('editForm');
-          form.id.value = data.id;
-          form.patient_name.value = data.patient_name;
-          form.phone_no.value = data.phone_no;
-          form.appointment_date.value = data.appointment_date;
-          form.visit_fee.value = data.visit_fee;
-          form.medicine_cost.value = data.medicine_cost;
-          form.others_cost.value = data.others_cost;
-          form.payment.value = data.payment.toString();
-          form.appointment_Types.value = data.appointment_Types;
-          form.appointment_Status.value = data.appointment_Status;
-          form.doctor.value = data.doctor;
-          
-          // form.time.value = data.time;
-          // fetch(`${DOCTOR}${data.doctor}/`)
-          //   .then(res => res.json())
-          //   .then(doctor => {
-          //     const timeSelect = form.time;
-          //     timeSelect.innerHTML = '';
+      //       // Important: Fill doctor and time with selection
+      //       fillSelect(DOCTOR, form.doctor, data.doctor);
+      //       // fillSelect(TIME, form.time, data.time);
 
-          //     doctor.available_time.forEach(time => {
-                
-          //       const opt = document.createElement('option');
-          //       opt.value = time;
-          //       opt.textContent = formatTime12Hour(time);
-          //       if (time === data.time_display || time === data.start_time_display) {
-          //         opt.selected = true;
-          //       }
-          //       timeSelect.appendChild(opt);
-          //     });
-          // });
+      //       fetch(`${DOCTOR}${data.doctor}/`)
+      //         .then(res => res.json())
+      //         .then(doctor => {
+      //           const timeSelect = form.time;
+      //           timeSelect.innerHTML = '';
 
-                    
-          fetch(`${DOCTOR}${data.doctor}/`)
-            .then(res => res.json())
-            .then(doctor => {
-              const timeSelect = form.time;
-              timeSelect.innerHTML = '';
+      //           doctor.available_time.forEach(time => {
+      //             const opt = document.createElement('option');
+      //             opt.value = time;
+      //             opt.textContent = formatTime12Hour(time);
+      //             if (time === data.time_display || time === data.start_time_display) {
+      //               opt.selected = true;
+      //             }
+      //             timeSelect.appendChild(opt);
+      //           });
+      //       });
 
-              const selectedTime24 = toHourMinute(data.time_display || data.start_time_display);
 
-              // Step 1: Fetch all available times to get IDs
-              fetch("http://127.0.0.1:8000/doctor/availableTime/")
-                .then(res => res.json())
-                .then(allTimes => {
-                  doctor.available_time.forEach(timeStr => {
-                    const matched = allTimes.find(t => toHourMinute(t.name) === toHourMinute(timeStr));
-                    if (matched) {
-                      const opt = document.createElement('option');
-                      opt.value = matched.id; // use ID as value for form submission
-                      opt.textContent = formatTime12Hour(matched.name);
+      //       calculateEditTotal(); // Update total fee in edit form
 
-                      if (toHourMinute(matched.name) === selectedTime24) {
-                        opt.selected = true;
-                        form.time.value = matched.id; // also assign to hidden/select value
+      //       new bootstrap.Modal(document.getElementById('editModal')).show();
+      //     });
+      // }
+      function edit(id) {
+        fetch(API + id + '/')
+          .then(res => res.json())
+          .then(data => {
+            let form = document.getElementById('editForm');
+            form.id.value = data.id;
+            form.patient_name.value = data.patient_name;
+            form.phone_no.value = data.phone_no;
+            form.appointment_date.value = data.appointment_date;
+            form.visit_fee.value = data.visit_fee;
+            form.medicine_cost.value = data.medicine_cost;
+            form.others_cost.value = data.others_cost;
+            form.payment.value = data.payment.toString();
+            form.appointment_Types.value = data.appointment_Types;
+            form.appointment_Status.value = data.appointment_Status;
+            form.doctor.value = data.doctor;
+
+            // form.time.value = data.time;
+            // fetch(`${DOCTOR}${data.doctor}/`)
+            //   .then(res => res.json())
+            //   .then(doctor => {
+            //     const timeSelect = form.time;
+            //     timeSelect.innerHTML = '';
+
+            //     doctor.available_time.forEach(time => {
+
+            //       const opt = document.createElement('option');
+            //       opt.value = time;
+            //       opt.textContent = formatTime12Hour(time);
+            //       if (time === data.time_display || time === data.start_time_display) {
+            //         opt.selected = true;
+            //       }
+            //       timeSelect.appendChild(opt);
+            //     });
+            // });
+
+
+            fetch(`${DOCTOR}${data.doctor}/`)
+              .then(res => res.json())
+              .then(doctor => {
+                const timeSelect = form.time;
+                timeSelect.innerHTML = '';
+
+                const selectedTime24 = toHourMinute(data.time_display || data.start_time_display);
+
+                // Step 1: Fetch all available times to get IDs
+                fetch("http://127.0.0.1:8000/doctor/availableTime/")
+                  .then(res => res.json())
+                  .then(allTimes => {
+                    doctor.available_time.forEach(timeStr => {
+                      const matched = allTimes.find(t => toHourMinute(t.name) === toHourMinute(timeStr));
+                      if (matched) {
+                        const opt = document.createElement('option');
+                        opt.value = matched.id; // use ID as value for form submission
+                        opt.textContent = formatTime12Hour(matched.name);
+
+                        if (toHourMinute(matched.name) === selectedTime24) {
+                          opt.selected = true;
+                          form.time.value = matched.id; // also assign to hidden/select value
+                        }
+
+                        timeSelect.appendChild(opt);
                       }
-
-                      timeSelect.appendChild(opt);
-                    }
+                    });
                   });
-                });
-            });
-
-
-          
-
-
-          // Show total amount
-          const total = data.visit_fee + parseFloat(data.medicine_cost) + parseFloat(data.others_cost);
-          document.getElementById('totalFeeDisplay').innerText = `Total: ${total.toFixed(2)} TK`;
-
-          // Open modal
-          let editModal = new bootstrap.Modal(document.getElementById('editModal'));
-          editModal.show();
-        });
-    }
-function convertTo24Hour(timeStr) {
-  if (!timeStr) return null;
-  const [time, modifier] = timeStr.split(' ');
-  let [hours, minutes] = time.split(':');
-
-  if (modifier === 'PM' && hours !== '12') {
-    hours = String(parseInt(hours, 10) + 12);
-  }
-  if (modifier === 'AM' && hours === '12') {
-    hours = '00';
-  }
-  return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}:00`;
-}
-function toFullTime(timeStr) {
-  // If timeStr is already in HH:MM:SS, return it as-is
-  if (timeStr.length === 8) return timeStr;
-
-  // Convert "HH:MM" → "HH:MM:00"
-  return timeStr + ":00";
-} 
-function toHourMinute(timeStr) {
-  // Assumes format is "HH:MM:SS"
-  return timeStr.slice(0, 5);
-}
+              });
 
 
 
 
-    function visit(id) {
-      fetch(API + id + '/')
-        .then(res => res.json())
-        .then(data => {
-          let form = document.getElementById('editForm');
-          form.id.value = data.id;
-          form.patient_name.value = data.patient_name;
-          form.phone_no.value = data.phone_no;
-          form.appointment_date.value = data.appointment_date;
-          form.visit_fee.value = data.visit_fee;
-          form.medicine_cost.value = data.medicine_cost;
-          form.others_cost.value = data.others_cost;
-          form.payment.value = data.payment.toString();
-          form.appointment_Types.value = data.appointment_Types;
 
-          // form.appointment_Status.value = data.appointment_Status;
-          // Important difference: status set to "Completed"
-          form.appointment_Status.value = "Completed";
-    
-          // Important: Fill doctor and time with selection
-          fillSelect(DOCTOR, form.doctor, data.doctor);
+            // Show total amount
+            const total = data.visit_fee + parseFloat(data.medicine_cost) + parseFloat(data.others_cost);
+            document.getElementById('totalFeeDisplay').innerText = `Total: ${total.toFixed(2)} TK`;
 
-          // fillSelect(TIME, form.time, data.time);
-          // form.time.value = data.time;
+            // Open modal
+            let editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+          });
+      }
+      function convertTo24Hour(timeStr) {
+        if (!timeStr) return null;
+        const [time, modifier] = timeStr.split(' ');
+        let [hours, minutes] = time.split(':');
 
-          // fetch(`${DOCTOR}${data.doctor}/`)
-          //   .then(res => res.json())
-          //   .then(doctor => {
-          //     const timeSelect = form.time;
-          //     timeSelect.innerHTML = '';
+        if (modifier === 'PM' && hours !== '12') {
+          hours = String(parseInt(hours, 10) + 12);
+        }
+        if (modifier === 'AM' && hours === '12') {
+          hours = '00';
+        }
+        return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}:00`;
+      }
+      function toFullTime(timeStr) {
+        // If timeStr is already in HH:MM:SS, return it as-is
+        if (timeStr.length === 8) return timeStr;
 
-          //     doctor.available_time.forEach(time => {
-          //       const opt = document.createElement('option');
-          //       opt.value = time;
-          //       opt.textContent = formatTime12Hour(time);
-          //       if (time === data.time_display || time === data.start_time_display) {
-          //         opt.selected = true;
-          //       }
-          //       timeSelect.appendChild(opt);
-          //     });
-          // });
-                    
-          fetch(`${DOCTOR}${data.doctor}/`)
-            .then(res => res.json())
-            .then(doctor => {
-              const timeSelect = form.time;
-              timeSelect.innerHTML = '';
+        // Convert "HH:MM" → "HH:MM:00"
+        return timeStr + ":00";
+      }
+      function toHourMinute(timeStr) {
+        // Assumes format is "HH:MM:SS"
+        return timeStr.slice(0, 5);
+      }
 
-              const selectedTime24 = toHourMinute(data.time_display || data.start_time_display);
 
-              // Step 1: Fetch all available times to get IDs
-              fetch("http://127.0.0.1:8000/doctor/availableTime/")
-                .then(res => res.json())
-                .then(allTimes => {
-                  doctor.available_time.forEach(timeStr => {
-                    const matched = allTimes.find(t => toHourMinute(t.name) === toHourMinute(timeStr));
-                    if (matched) {
-                      const opt = document.createElement('option');
-                      opt.value = matched.id; // use ID as value for form submission
-                      opt.textContent = formatTime12Hour(matched.name);
 
-                      if (toHourMinute(matched.name) === selectedTime24) {
-                        opt.selected = true;
-                        form.time.value = matched.id; // also assign to hidden/select value
+
+      function visit(id) {
+        fetch(API + id + '/')
+          .then(res => res.json())
+          .then(data => {
+            let form = document.getElementById('editForm');
+            form.id.value = data.id;
+            form.patient_name.value = data.patient_name;
+            form.phone_no.value = data.phone_no;
+            form.appointment_date.value = data.appointment_date;
+            form.visit_fee.value = data.visit_fee;
+            form.medicine_cost.value = data.medicine_cost;
+            form.others_cost.value = data.others_cost;
+            form.payment.value = data.payment.toString();
+            form.appointment_Types.value = data.appointment_Types;
+
+            // form.appointment_Status.value = data.appointment_Status;
+            // Important difference: status set to "Completed"
+            form.appointment_Status.value = "Completed";
+
+            // Important: Fill doctor and time with selection
+            fillSelect(DOCTOR, form.doctor, data.doctor);
+
+            // fillSelect(TIME, form.time, data.time);
+            // form.time.value = data.time;
+
+            // fetch(`${DOCTOR}${data.doctor}/`)
+            //   .then(res => res.json())
+            //   .then(doctor => {
+            //     const timeSelect = form.time;
+            //     timeSelect.innerHTML = '';
+
+            //     doctor.available_time.forEach(time => {
+            //       const opt = document.createElement('option');
+            //       opt.value = time;
+            //       opt.textContent = formatTime12Hour(time);
+            //       if (time === data.time_display || time === data.start_time_display) {
+            //         opt.selected = true;
+            //       }
+            //       timeSelect.appendChild(opt);
+            //     });
+            // });
+
+            fetch(`${DOCTOR}${data.doctor}/`)
+              .then(res => res.json())
+              .then(doctor => {
+                const timeSelect = form.time;
+                timeSelect.innerHTML = '';
+
+                const selectedTime24 = toHourMinute(data.time_display || data.start_time_display);
+
+                // Step 1: Fetch all available times to get IDs
+                fetch("http://127.0.0.1:8000/doctor/availableTime/")
+                  .then(res => res.json())
+                  .then(allTimes => {
+                    doctor.available_time.forEach(timeStr => {
+                      const matched = allTimes.find(t => toHourMinute(t.name) === toHourMinute(timeStr));
+                      if (matched) {
+                        const opt = document.createElement('option');
+                        opt.value = matched.id; // use ID as value for form submission
+                        opt.textContent = formatTime12Hour(matched.name);
+
+                        if (toHourMinute(matched.name) === selectedTime24) {
+                          opt.selected = true;
+                          form.time.value = matched.id; // also assign to hidden/select value
+                        }
+
+                        timeSelect.appendChild(opt);
                       }
-
-                      timeSelect.appendChild(opt);
-                    }
+                    });
                   });
-                });
-            });
+              });
 
-    
-          calculateEditTotal(); // Update total fee in edit form
-    
-          new bootstrap.Modal(document.getElementById('editModal')).show();
+
+            calculateEditTotal(); // Update total fee in edit form
+
+            new bootstrap.Modal(document.getElementById('editModal')).show();
+          });
+      }
+
+
+
+      // Update Appointment
+      document.getElementById('editForm').addEventListener('submit', e => {
+        e.preventDefault();
+        let data = getData(e.target);
+        console.log(data);
+        let id = e.target.id.value;
+        fetch(API + id + '/', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(() => {
+          bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+          renderAppointments();
         });
-    }
-
-   
-
-    // Update Appointment
-    document.getElementById('editForm').addEventListener('submit', e => {
-      e.preventDefault();
-      let data = getData(e.target);
-      console.log(data);
-      let id = e.target.id.value;
-      fetch(API + id + '/', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }).then(() => {
-        bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
-        renderAppointments();
       });
-    });
-    // Update Appointment
+      // Update Appointment
       // document.getElementById('editForm').addEventListener('submit', e => {
       //   e.preventDefault();
       //   let data = getData(e.target);
@@ -973,140 +906,134 @@ function toHourMinute(timeStr) {
       //     renderAppointments();
       //   });
       // });
-     
 
 
 
-    
-    // Delete Appointment
-    // function del(id) {
-      
-    //   if (confirm('Delete this appointment?')) {
-    //     fetch(API + id + '/', { method: 'DELETE' }).then(() => renderAppointments());
-    //   }
-    // }
-    async function del(id) {
-      if (!confirm('Delete this appointment?')){ 
-        
-        console.log("Cancel");
-        
-        return;
-      }
 
 
-      try {
-        console.log("Yes okay");
-        // Fetch the appointment
-        const appointmentRes = await fetch(`http://127.0.0.1:8000/appointment/list/${id}/`);
-        const appointment = await appointmentRes.json();
-        
-        console.log(appointment, appointment.appointment_Version);
-        // Proceed only if it's a "New" patient version
-        if (appointment.appointment_Version === "New") {
-          const patientRes = await fetch("http://127.0.0.1:8000/patientIDName/list/");
-          const patients = await patientRes.json();
+      // Delete Appointment
+      // function del(id) {
 
-          // Normalize types: convert both to string before comparison
-          const matchedPatient = patients.find(
-            p => p.PatientID === parseInt(appointment.PatientID)
-          );
-          console.log(matchedPatient, matchedPatient.id, matchedPatient.PatientID, appointment.PatientID);
+      //   if (confirm('Delete this appointment?')) {
+      //     fetch(API + id + '/', { method: 'DELETE' }).then(() => renderAppointments());
+      //   }
+      // }
+      async function del(id) {
+        if (!confirm('Delete this appointment?')) {
 
-          if (matchedPatient) {
-            await fetch(`http://127.0.0.1:8000/patientIDName/list/${matchedPatient.id}/`, {
-              method: 'DELETE'
-            });
-          }
+          console.log("Cancel");
+
+          return;
         }
 
-        // Delete the appointment
-        await fetch(`http://127.0.0.1:8000/appointment/list/${id}/`, {
-          method: 'DELETE'
-        });
 
-        // Refresh UI
+        try {
+          console.log("Yes okay");
+          // Fetch the appointment
+          const appointmentRes = await fetch(`http://127.0.0.1:8000/appointment/list/${id}/`);
+          const appointment = await appointmentRes.json();
+
+          console.log(appointment, appointment.appointment_Version);
+          // Proceed only if it's a "New" patient version
+          if (appointment.appointment_Version === "New") {
+            const patientRes = await fetch("http://127.0.0.1:8000/patientIDName/list/");
+            const patients = await patientRes.json();
+
+            // Normalize types: convert both to string before comparison
+            const matchedPatient = patients.find(
+              p => p.PatientID === parseInt(appointment.PatientID)
+            );
+            console.log(matchedPatient, matchedPatient.id, matchedPatient.PatientID, appointment.PatientID);
+
+            if (matchedPatient) {
+              await fetch(`http://127.0.0.1:8000/patientIDName/list/${matchedPatient.id}/`, {
+                method: 'DELETE'
+              });
+            }
+          }
+
+          // Delete the appointment
+          await fetch(`http://127.0.0.1:8000/appointment/list/${id}/`, {
+            method: 'DELETE'
+          });
+
+          // Refresh UI
+          renderAppointments();
+
+        } catch (error) {
+          console.error("Error deleting appointment or patient:", error);
+        }
+      }
+
+
+      // Set default filter to today
+      function setDefaultDate() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('filterDate').value = today;
+      }
+
+      // Total Fee Calculation for ADD form
+      function calculateAddTotal() {
+        const visit = parseFloat(document.querySelector('#addForm [name="visit_fee"]').value) || 0;
+        const medicine = parseFloat(document.querySelector('#addForm [name="medicine_cost"]').value) || 0;
+        const others = parseFloat(document.querySelector('#addForm [name="others_cost"]').value) || 0;
+        const total = visit + medicine + others;
+        document.getElementById('addTotalFeeDisplay').textContent = `Total: $${total.toFixed(2)}`;
+      }
+
+      // Total Fee Calculation for EDIT form
+      function calculateEditTotal() {
+        const visit = parseFloat(document.querySelector('#editForm [name="visit_fee"]').value) || 0;
+        const medicine = parseFloat(document.querySelector('#editForm [name="medicine_cost"]').value) || 0;
+        const others = parseFloat(document.querySelector('#editForm [name="others_cost"]').value) || 0;
+        const total = visit + medicine + others;
+        document.getElementById('totalFeeDisplay').textContent = `Total: $${total.toFixed(2)}`;
+      }
+
+      // Input Listeners for Total Calculation
+      ['visit_fee', 'medicine_cost', 'others_cost'].forEach(name => {
+        document.querySelector(`#editForm [name="${name}"]`).addEventListener('input', calculateEditTotal);
+      });
+
+      // Load Everything
+      window.onload = () => {
+        setDefaultDate();
+        loadDoctorFilter();
+        loadTimeFilter();
+        loadStatusFilter();
+        loadTypeFilter();
+        loadVersionFilter();
         renderAppointments();
 
-      } catch (error) {
-        console.error("Error deleting appointment or patient:", error);
-      }
-    }
+        fillSelect(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
+        fillSelect(TIME, document.querySelector('#addForm [name="time"]'));
+        fillSelect(DOCTOR, document.querySelector('#editForm [name="doctor"]'));
+        fillSelect(TIME, document.querySelector('#editForm [name="time"]'));
+      };
 
-    
-    // Set default filter to today
-    function setDefaultDate() {
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('filterDate').value = today;
-    }
-    
-    // Total Fee Calculation for ADD form
-    function calculateAddTotal() {
-      const visit = parseFloat(document.querySelector('#addForm [name="visit_fee"]').value) || 0;
-      const medicine = parseFloat(document.querySelector('#addForm [name="medicine_cost"]').value) || 0;
-      const others = parseFloat(document.querySelector('#addForm [name="others_cost"]').value) || 0;
-      const total = visit + medicine + others;
-      document.getElementById('addTotalFeeDisplay').textContent = `Total: $${total.toFixed(2)}`;
-    }
-    
-    // Total Fee Calculation for EDIT form
-    function calculateEditTotal() {
-      const visit = parseFloat(document.querySelector('#editForm [name="visit_fee"]').value) || 0;
-      const medicine = parseFloat(document.querySelector('#editForm [name="medicine_cost"]').value) || 0;
-      const others = parseFloat(document.querySelector('#editForm [name="others_cost"]').value) || 0;
-      const total = visit + medicine + others;
-      document.getElementById('totalFeeDisplay').textContent = `Total: $${total.toFixed(2)}`;
-    }
-    
-    // Input Listeners for Total Calculation
-    ['visit_fee', 'medicine_cost', 'others_cost'].forEach(name => {
-      document.querySelector(`#editForm [name="${name}"]`).addEventListener('input', calculateEditTotal);
-    });
-    
-    // Load Everything
-    window.onload = () => {
-      setDefaultDate();
-      loadDoctorFilter();
-      loadTimeFilter();
-      loadStatusFilter();
-      loadTypeFilter();
-      loadVersionFilter();
-      renderAppointments();
-      
-      fillSelect(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
-      fillSelect(TIME, document.querySelector('#addForm [name="time"]'));
-      fillSelect(DOCTOR, document.querySelector('#editForm [name="doctor"]'));
-      fillSelect(TIME, document.querySelector('#editForm [name="time"]'));
-    };
-    
-    // Change Label for Filter Date
-    function updateLabel() {
-      const filterDate = document.getElementById('filterDate');
-      const label = document.getElementById('filterDateLabel');
-      if (filterDate.value) {
-        label.textContent = "Date";
-      } else {
-        label.textContent = "Today";
+      // Change Label for Filter Date
+      function updateLabel() {
+        const filterDate = document.getElementById('filterDate');
+        const label = document.getElementById('filterDateLabel');
+        if (filterDate.value) {
+          label.textContent = "Date";
+        } else {
+          label.textContent = "Today";
+        }
       }
-    }
-    updateLabel();
+      updateLabel();
     </script>
-    
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
 
-  <script src="./logout.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"
-    integrity="..."
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js"
-    crossorigin="anonymous"
-    defer
-  ></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
-<!-- <script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+
+    <script src="./logout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js" integrity="..."></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
+      defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
+    <!-- <script>
   function pdfForPrintTable() {
     const element = document.getElementById('printSection');
     const opt = {
@@ -1119,30 +1046,31 @@ function toHourMinute(timeStr) {
     html2pdf().set(opt).from(element).save();
   }
 </script> -->
-<script>
-  function pdfForPrintTable() {
-    const element = document.getElementById('printSection');
-    const opt = {
-      margin: 0.5,
-      filename: 'appointment-list.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
-    };
+    <script>
+      function pdfForPrintTable() {
+        const element = document.getElementById('printSection');
+        const opt = {
+          margin: 0.5,
+          filename: 'appointment-list.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+        };
 
-    // Create PDF and open in new tab
-    html2pdf().set(opt).from(element).outputPdf('blob')
-      .then(function(pdfBlob) {
-        const blobUrl = URL.createObjectURL(pdfBlob);
-        window.open(blobUrl);
-      });
-  }
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        // Create PDF and open in new tab
+        html2pdf().set(opt).from(element).outputPdf('blob')
+          .then(function (pdfBlob) {
+            const blobUrl = URL.createObjectURL(pdfBlob);
+            window.open(blobUrl);
+          });
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 
 
 </body>
 
 <!-- Mirrored from preschool.dreamguystech.com/html-template/add-events.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:12:21 GMT -->
+
 </html>
