@@ -2,376 +2,317 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Appointment Management</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <title>Appointment Management</title>
 
-<link rel="shortcut icon" href="assets/img/logo.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
+  <link rel="shortcut icon" href="assets/img/logo.png">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
 
-<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
 
-<link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link 
-      href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css"
-      rel="stylesheet"
-      crossorigin="anonymous"
-    />
+
+  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
 
 
-    <link rel="stylesheet" href="assets/css/style2.css" />
+  <link rel="stylesheet" href="assets/css/style2.css" />
 </head>
+
 <body>
 
-<div class="main-wrapper">
+  <div class="main-wrapper">
 
-<div class="header">
+    <div class="header">
 
-<div style="display: flex; justify-content: center;" class="header-left">
-<a href="index.html" class="logo">
-<img src="assets/img/logoo.png" alt="Logo">
-</a>
-<a href="index.html" class="logo logo-small">
-<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
-</a>
-</div>
+      <div style="display: flex; justify-content: center;" class="header-left">
+        <a href="index.html" class="logo">
+          <img src="assets/img/logoo.png" alt="Logo">
+        </a>
+        <a href="index.html" class="logo logo-small">
+          <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+        </a>
+      </div>
 
-<a href="javascript:void(0);" id="toggle_btn">
-<i class="fas fa-align-left"></i>
-</a>
+      <a href="javascript:void(0);" id="toggle_btn">
+        <i class="fas fa-align-left"></i>
+      </a>
 
-<div class="top-nav-search">
-<form>
-<input type="text" class="form-control" placeholder="Search here">
-<button class="btn" type="submit"><i class="fas fa-search"></i></button>
-</form>
-</div>
-
-
-<a class="mobile_btn" id="mobile_btn">
-<i class="fas fa-bars"></i>
-</a>
+      <div class="top-nav-search">
+        <form>
+          <input type="text" class="form-control" placeholder="Search here">
+          <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
 
 
-<ul class="nav user-menu">
-
-<li class="nav-item dropdown noti-dropdown">
-<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-<i class="far fa-bell"></i> <span class="badge badge-pill">3</span>
-</a>
-<div class="dropdown-menu notifications">
-<div class="topnav-dropdown-header">
-<span class="notification-title">Notifications</span>
-<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-</div>
-<div class="noti-content">
-<ul class="notification-list">
-<li class="notification-message">
-<a href="#">
-<div class="media">
-<span class="avatar avatar-sm">
-<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
-</span>
-<div class="media-body">
-<p class="noti-details"><span class="noti-title">Carlson Tech</span> has approved <span class="noti-title">your estimate</span></p>
-<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
-</div>
-</div>
-</a>
-</li>
-<li class="notification-message">
-<a href="#">
-<div class="media">
-<span class="avatar avatar-sm">
-<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-11.jpg">
-</span>
-<div class="media-body">
-<p class="noti-details"><span class="noti-title">International Software Inc</span> has sent you a invoice in the amount of <span class="noti-title">$218</span></p>
-<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
-</div>
-</div>
-</a>
-</li>
-<li class="notification-message">
-<a href="#">
-<div class="media">
-<span class="avatar avatar-sm">
-<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-17.jpg">
-</span>
- <div class="media-body">
-<p class="noti-details"><span class="noti-title">John Hendry</span> sent a cancellation request <span class="noti-title">Apple iPhone XR</span></p>
-<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
-</div>
-</div>
-</a>
-</li>
-<li class="notification-message">
-<a href="#">
-<div class="media">
-<span class="avatar avatar-sm">
-<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-13.jpg">
-</span>
-<div class="media-body">
-<p class="noti-details"><span class="noti-title">Mercury Software Inc</span> added a new product <span class="noti-title">Apple MacBook Pro</span></p>
-<p class="noti-time"><span class="notification-time">12 mins ago</span></p>
-</div>
-</div>
-</a>
-</li>
-</ul>
-</div>
-<div class="topnav-dropdown-footer">
-<a href="#">View all Notifications</a>
-</div>
-</div>
-</li>
+      <a class="mobile_btn" id="mobile_btn">
+        <i class="fas fa-bars"></i>
+      </a>
 
 
-<li class="nav-item dropdown has-arrow">
-<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-  <span class="user-img"><img style="border: 2px solid #18AEFA; border-radius: 50%;padding: 2px;" class="rounded-circle " src="assets/img/profiles/rrr.png" width="31" alt="Ryan Taylor"></span>
-</a>
-<div class="dropdown-menu">
-<div class="user-header">
-<div class="avatar avatar-sm">
-<img src="assets/img/profiles/rrr.png" alt="User Image" class="avatar-img rounded-circle">
-</div>
-<div class="user-text">
-<!-- <h6>Ryan Taylor</h6>
+      <ul class="nav user-menu">
+
+        
+
+
+        <li class="nav-item dropdown has-arrow">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <span class="user-img"><img style="border: 2px solid #18AEFA; border-radius: 50%;padding: 2px;"
+                class="rounded-circle " src="assets/img/profiles/rrr.png" width="31" alt="Ryan Taylor"></span>
+          </a>
+          <div class="dropdown-menu">
+            <div class="user-header">
+              <div class="avatar avatar-sm">
+                <img src="assets/img/profiles/rrr.png" alt="User Image" class="avatar-img rounded-circle">
+              </div>
+              <div class="user-text">
+                <!-- <h6>Ryan Taylor</h6>
 <p class="text-muted mb-0">Administrator</p> -->
-</div>
-</div>
-<a class="dropdown-item" href="profile.html">My Profile</a>
-<a class="dropdown-item" href="inbox.html">Inbox</a>
-<a class="dropdown-item" onclick="handlelogOut()" href="#">Logout</a>
-</div>
-</li>
-
-</ul>
-
-</div>
-
-
-<div class="sidebar" id="sidebar">
-<div class="sidebar-inner slimscroll">
-<div id="sidebar-menu" class="sidebar-menu">
-<ul>
-<li class="menu-title">
-<span>Main Menu</span>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="index.html">Admin Dashboard</a></li>
-<li><a href="teacher-dashboard.html">Doctor Dashboard</a></li>
-<li><a href="student-dashboard.html">Accounts Dashboard</a></li>
-</ul>
-</li>
-<li class="submenu ">
-<a href="#"><i class="fas fa-user-graduate"></i> <span> Doctors</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="add-Doctors.html" >Doctor List</a></li>
-<li><a href="doctorsCard.html">Doctor View</a></li>
-<li><a href="add-student.html">Doctor Add</a></li>
-<li><a href="edit-student.html">Doctor Edit</a></li>
-<li><a href="add_designation.html">Add designation</a></li>
-<li><a href="add_specialization.html">Add specialization</a></li>
-<li><a href="add_availableTime.html">Add availableTime</a></li>
-</ul>
-</li>
-<li class="submenu active">
-<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients Appointments</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="add_appointment.html" class="active">Add Appointment</a></li>
-<li><a href="all_appointment.html">Appointment List</a></li>
-<li><a href="teacher-details.html">Patients View</a></li>
-<li><a href="add-teacher.html">Patients Add</a></li>
-<li><a href="edit-teacher.html">Patients Edit</a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients </span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="teachers.html">Patients List</a></li>
-<li><a href="teacher-details.html">Patients View</a></li>
-<li><a href="add-teacher.html">Patients Add</a></li>
-<li><a href="edit-teacher.html">Patients Edit</a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="departments.html">Department List</a></li>
-<li><a href="add-department.html">Department Add</a></li>
-<li><a href="edit-department.html">Department Edit</a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="subjects.html">Subject List</a></li>
-<li><a href="add-subject.html">Subject Add</a></li>
-<li><a href="edit-subject.html">Subject Edit</a></li>
-</ul>
-</li>
-<li class="menu-title">
-<span>Management</span>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
-<li><a href="acc.html">Expenses & Income</a></li>
-<li><a href="salary.html">Salary</a></li>
-<li><a href="amountType.html" >Add Amount Types</a></li>
-<li><a href="accountHead.html">Add Account Head</a></li>
-<li><a href="accSingles.html">Add Account single</a></li>
-<li><a href="add-expenses.html">Add Expenses</a></li>
-<li><a href="add-salary.html">Add Salary</a></li>
-</ul>
-</li>
-<li>
-<a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
-</li>
-<li>
-<a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
-</li>
-<li>
-<a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
-</li>
-<li>
-<a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
-</li>
-<li>
-<a href="time-table.html"><i class="fas fa-table"></i> <span>Time Table</span></a>
-</li>
-<li>
-<a href="library.html"><i class="fas fa-book"></i> <span>Library</span></a>
-</li>
-<li class="menu-title">
-<span>Pages</span>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-shield-alt"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="login.html">Login</a></li>
-<li><a href="register.html">Register</a></li>
-<li><a href="forgot-password.html">Forgot Password</a></li>
-<li><a href="error-404.html">Error Page</a></li>
-</ul>
-</li>
-<li>
-<a href="blank-page.html"><i class="fas fa-file"></i> <span>Blank Page</span></a>
-</li>
-<li class="menu-title">
-<span>Others</span>
-</li>
-<li>
-<a href="sports.html"><i class="fas fa-baseball-ball"></i> <span>Sports</span></a>
-</li>
-<li>
-<a href="hostel.html"><i class="fas fa-hotel"></i> <span>Hostel</span></a>
-</li>
-<li>
-<a href="transport.html"><i class="fas fa-bus"></i> <span>Transport</span></a>
-</li>
-<li class="menu-title">
-<span>UI Interface</span>
-</li>
-<li>
-<a href="components.html"><i class="fas fa-vector-square"></i> <span>Components</span></a>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-columns"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="form-basic-inputs.html">Basic Inputs </a></li>
-<li><a href="form-input-groups.html">Input Groups </a></li>
-<li><a href="form-horizontal.html">Horizontal Form </a></li>
-<li><a href="form-vertical.html"> Vertical Form </a></li>
-<li><a href="form-mask.html"> Form Mask </a></li>
-<li><a href="form-validation.html"> Form Validation </a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="#"><i class="fas fa-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="tables-basic.html">Basic Tables </a></li>
-<li><a href="data-tables.html">Data Table </a></li>
-</ul>
-</li>
-<li class="submenu">
-<a href="javascript:void(0);"><i class="fas fa-code"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
-<ul>
-<li class="submenu">
-<a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="javascript:void(0);"><span>Level 2</span></a></li>
-<li class="submenu">
-<a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="javascript:void(0);">Level 3</a></li>
-<li><a href="javascript:void(0);">Level 3</a></li>
-</ul>
-</li>
-<li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
-</ul>
-</li>
-<li>
-<a href="javascript:void(0);"> <span>Level 1</span></a>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
-
-<div class="page-wrapper">
-<div class="content container-fluid mt-5">
-
-<div class="page-header">
-<div class="row align-items-center">
-<div class="col">
-<h3 class="page-title">Appointment</h3>
-<ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="add_appointment.html">Appointment</a></li>
-<li class="breadcrumb-item active">Add Appointment</li>
-</ul>
-</div>
-</div>
-</div>
-
-<div class="row">
-<div class="col-sm-12">
-<div class="card">
-<div class="card-body">
-
-<div class="row">
-<div class="col-12">
-<!-- <h5 class="form-title"><span>Event Information</span></h5> -->
-</div>
-<div class="container pb-4">
-    <div class="container">
-        <div class=" row d-flex justify-content-end">
-          <div class="col-lg-10"><h2 >Take Appointment</h2></div>
-          <div class="col-lg-2">
-            
-            <button style="border: none;" class="btn btcn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal"> Add Appointment</button>
-
+              </div>
+            </div>
+            <a class="dropdown-item" href="profile.html">My Profile</a>
+            <a class="dropdown-item" href="inbox.html">Inbox</a>
+            <a class="dropdown-item" onclick="handlelogOut()" href="#">Logout</a>
           </div>
+        </li>
 
+      </ul>
+
+    </div>
+
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+          <ul>
+            <li class="menu-title">
+              <span>Main Menu</span>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="index.html">Admin Dashboard</a></li>
+                <li><a href="teacher-dashboard.html">Doctor Dashboard</a></li>
+                <li><a href="student-dashboard.html">Accounts Dashboard</a></li>
+              </ul>
+            </li>
+            <li class="submenu ">
+              <a href="#"><i class="fas fa-user-graduate"></i> <span> Doctors</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="add-Doctors.html">Doctor List</a></li>
+                <li><a href="doctorsCard.html">Doctor View</a></li>
+                <li><a href="add-student.html">Doctor Add</a></li>
+                <li><a href="edit-student.html">Doctor Edit</a></li>
+                <li><a href="add_designation.html">Add designation</a></li>
+                <li><a href="add_specialization.html">Add specialization</a></li>
+                <li><a href="add_availableTime.html">Add availableTime</a></li>
+              </ul>
+            </li>
+            <li class="submenu active">
+              <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients Appointments</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="add_appointment.html" class="active">Add Appointment</a></li>
+                <li><a href="all_appointment.html">Appointment List</a></li>
+                <li><a href="teacher-details.html">Patients View</a></li>
+                <li><a href="add-teacher.html">Patients Add</a></li>
+                <li><a href="edit-teacher.html">Patients Edit</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients </span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="teachers.html">Patients List</a></li>
+                <li><a href="teacher-details.html">Patients View</a></li>
+                <li><a href="add-teacher.html">Patients Add</a></li>
+                <li><a href="edit-teacher.html">Patients Edit</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="departments.html">Department List</a></li>
+                <li><a href="add-department.html">Department Add</a></li>
+                <li><a href="edit-department.html">Department Edit</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="subjects.html">Subject List</a></li>
+                <li><a href="add-subject.html">Subject Add</a></li>
+                <li><a href="edit-subject.html">Subject Edit</a></li>
+              </ul>
+            </li>
+            <li class="menu-title">
+              <span>Management</span>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
+                <li><a href="acc.html">Expenses & Income</a></li>
+                <li><a href="salary.html">Salary</a></li>
+                <li><a href="amountType.html">Add Amount Types</a></li>
+                <li><a href="accountHead.html">Add Account Head</a></li>
+                <li><a href="accSingles.html">Add Account single</a></li>
+                <li><a href="add-expenses.html">Add Expenses</a></li>
+                <li><a href="add-salary.html">Add Salary</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
+            </li>
+            <li>
+              <a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
+            </li>
+            <li>
+              <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+            </li>
+            <li>
+              <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
+            </li>
+            <li>
+              <a href="time-table.html"><i class="fas fa-table"></i> <span>Time Table</span></a>
+            </li>
+            <li>
+              <a href="library.html"><i class="fas fa-book"></i> <span>Library</span></a>
+            </li>
+            <li class="menu-title">
+              <span>Pages</span>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-shield-alt"></i> <span> Authentication </span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="forgot-password.html">Forgot Password</a></li>
+                <li><a href="error-404.html">Error Page</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="blank-page.html"><i class="fas fa-file"></i> <span>Blank Page</span></a>
+            </li>
+            <li class="menu-title">
+              <span>Others</span>
+            </li>
+            <li>
+              <a href="sports.html"><i class="fas fa-baseball-ball"></i> <span>Sports</span></a>
+            </li>
+            <li>
+              <a href="hostel.html"><i class="fas fa-hotel"></i> <span>Hostel</span></a>
+            </li>
+            <li>
+              <a href="transport.html"><i class="fas fa-bus"></i> <span>Transport</span></a>
+            </li>
+            <li class="menu-title">
+              <span>UI Interface</span>
+            </li>
+            <li>
+              <a href="components.html"><i class="fas fa-vector-square"></i> <span>Components</span></a>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-columns"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
+                <li><a href="form-input-groups.html">Input Groups </a></li>
+                <li><a href="form-horizontal.html">Horizontal Form </a></li>
+                <li><a href="form-vertical.html"> Vertical Form </a></li>
+                <li><a href="form-mask.html"> Form Mask </a></li>
+                <li><a href="form-validation.html"> Form Validation </a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="tables-basic.html">Basic Tables </a></li>
+                <li><a href="data-tables.html">Data Table </a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"><i class="fas fa-code"></i> <span>Multi Level</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li class="submenu">
+                  <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
+                  <ul>
+                    <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
+                    <li class="submenu">
+                      <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
+                      <ul>
+                        <li><a href="javascript:void(0);">Level 3</a></li>
+                        <li><a href="javascript:void(0);">Level 3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:void(0);"> <span>Level 1</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="page-wrapper">
+      <div class="content container-fluid mt-5">
+
+        <div class="page-header">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="page-title">Appointment</h3>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="add_appointment.html">Appointment</a></li>
+                <li class="breadcrumb-item active">Add Appointment</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div id="alertPlaceholder"></div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
 
-        <!-- <table class="table table-bordered">
+                <div class="row">
+                  <div class="col-12">
+                    <!-- <h5 class="form-title"><span>Event Information</span></h5> -->
+                  </div>
+                  <div class="container pb-4">
+                    <div class="container">
+                      <div class=" row d-flex justify-content-end">
+                        <div class="col-lg-10">
+                          <h2>Take Appointment</h2>
+                        </div>
+                        <div class="col-lg-2">
+
+                          <button style="border: none;" class="btn btcn btn-primary mb-3" data-bs-toggle="modal"
+                            data-bs-target="#addModal"> Add Appointment</button>
+
+                        </div>
+
+                      </div>
+
+                      <div id="alertPlaceholder"></div>
+
+                      <!-- <table class="table table-bordered">
           <thead>
             <tr>
               <th>Patient</th>
@@ -386,141 +327,142 @@
           </thead>
           <tbody id="appointmentTableBody"></tbody>
         </table> -->
-        
-      
-        
-      
-        <div class="container">
-          <div class="row" id="doctorCardBody"></div>
-        </div>
-        
-      </div>
-      
-    
 
-</div>
 
-    <!-- Add Modal -->
-    <div class="modal fade" id="addModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content p-3">
-          <h5>Add Appointment</h5>
-          <form id="addForm">
-            <div class="row">
-              <div class="col-md-6 mb-2">
-                <label>Appointment Version</label>
-                <select name="appointment_Version" class="form-select" id="versionSelect">
-                  <option value="New">New</option>
-                  <option value="Old">Old</option>
-                </select>
-              </div>
-    
-              <!-- New patient input fields -->
-              <div class="col-md-6 mb-2 version-new">
-                <label>Patient Name</label>
-                <input name="patient_name" class="form-control" id="patientNameInput">
-              </div>
-              <div class="col-md-6 mb-2 version-new d-none">
-                <label>Patient ID</label>
-                <input name="PatientID" class="form-control " id="patientIDInput">
-              </div>
-    
-              <!-- Old patient select fields -->
-              <!-- <div class="col-md-6 mb-2 version-old d-none">
+
+
+                      <div class="container">
+                        <div class="row" id="doctorCardBody"></div>
+                      </div>
+
+                    </div>
+
+
+
+                  </div>
+
+                  <!-- Add Modal -->
+                  <div class="modal fade" id="addModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content p-3">
+                        <h5>Add Appointment</h5>
+                        <form id="addForm">
+                          <div class="row">
+                            <div class="col-md-6 mb-2">
+                              <label>Appointment Version</label>
+                              <select name="appointment_Version" class="form-select" id="versionSelect">
+                                <option value="New">New</option>
+                                <option value="Old">Old</option>
+                              </select>
+                            </div>
+
+                            <!-- New patient input fields -->
+                            <div class="col-md-6 mb-2 version-new">
+                              <label>Patient Name</label>
+                              <input name="patient_name" class="form-control" id="patientNameInput">
+                            </div>
+                            <div class="col-md-6 mb-2 version-new d-none">
+                              <label>Patient ID</label>
+                              <input name="PatientID" class="form-control " id="patientIDInput">
+                            </div>
+
+                            <!-- Old patient select fields -->
+                            <!-- <div class="col-md-6 mb-2 version-old d-none">
                 <label>Select Patient</label>
                 <select name="existing_patient" class="form-select" id="existingPatientSelect"></select>
               </div> -->
-              <div class="col-md-6 mb-2 version-old d-none">
-                <label>Type & Select Patient ID</label>
-                <input list="existingPatientList" id="existingPatientInput" class="form-control" name="existing_patient" />
-                <datalist id="existingPatientList"></datalist>
-              </div>
+                            <div class="col-md-6 mb-2 version-old d-none">
+                              <label>Type & Select Patient ID</label>
+                              <input list="existingPatientList" id="existingPatientInput" class="form-control"
+                                name="existing_patient" />
+                              <datalist id="existingPatientList"></datalist>
+                            </div>
 
-    
-              <div class="col-md-6 mb-2">
-                <label>Doctor</label>
-                <select name="doctor" class="form-select" required></select>
-              </div>
-              <div class="col-md-6 mb-2">
-                <label>Type</label>
-                <select name="appointment_Types" class="form-select">
-                  <option value="Online">Online</option>
-                  <option value="Offline">Offline</option>
-                </select>
-              </div>
-              <div class="col-md-6 mb-2">
-                <label>Phone</label>
-                <input name="phone_no" class="form-control" required>
-              </div>
-              <div class="col-md-6 mb-2">
-                <label>Appointment Date</label>
-                <input type="date" name="appointment_date" class="form-control" required>
-              </div>
-              <div class="col-md-6 mb-2">
-                <label>Time</label>
-                <select name="time" class="form-select" required></select>
-              </div>
-              <div class="col-md-4 mb-2">
-                <label>Visit Fee</label>
-                <input name="visit_fee" type="number" class="form-control">
+
+                            <div class="col-md-6 mb-2">
+                              <label>Doctor</label>
+                              <select name="doctor" class="form-select" required></select>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                              <label>Type</label>
+                              <select name="appointment_Types" class="form-select">
+                                <option value="Online">Online</option>
+                                <option value="Offline">Offline</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                              <label>Phone</label>
+                              <input name="phone_no" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                              <label>Appointment Date</label>
+                              <input type="date" name="appointment_date" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                              <label>Time</label>
+                              <select name="time" class="form-select" required></select>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                              <label>Visit Fee</label>
+                              <input name="visit_fee" type="number" class="form-control">
+                            </div>
+                          </div>
+                          <button class="btn btcn mt-2" type="submit">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="py-2">
+                    <hr>
+                  </div>
+                </div>
               </div>
             </div>
-            <button class="btn btcn mt-2" type="submit">Submit</button>
-          </form>
+          </div>
         </div>
       </div>
+
     </div>
-    
-    <div class="py-2">
-      <hr>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
 
 
-<script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
 
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-<script src="assets/js/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    const API_URL = 'http://127.0.0.1:8000/doctor/';
-    const designationURL = API_URL + 'designation/';
-    const specializationURL = API_URL + 'specialization/';
-    const availableTimeURL = API_URL + 'availableTime/';
-    
-    async function fetchOptions(url, select) {
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const API_URL = 'http://127.0.0.1:8000/doctor/';
+      const designationURL = API_URL + 'designation/';
+      const specializationURL = API_URL + 'specialization/';
+      const availableTimeURL = API_URL + 'availableTime/';
+
+      async function fetchOptions(url, select) {
         const res = await fetch(url);
         const data = await res.json();
         select.innerHTML = '';
         data.forEach(item => {
-            const opt = document.createElement('option');
-            opt.value = item.id;
-            opt.text = item.name;
-            select.appendChild(opt);
+          const opt = document.createElement('option');
+          opt.value = item.id;
+          opt.text = item.name;
+          select.appendChild(opt);
         });
-    }
-    
-    async function fetchDoctors() {
-      const res = await fetch(API_URL + 'list/');
-      const data = await res.json();
-      const container = document.getElementById('doctorCardBody');
-      container.innerHTML = '';
+      }
 
-      data.results.forEach(d => {
-        const card = document.createElement('div');
-        card.className = 'col-md-4 mb-3 ';
-        card.innerHTML = `
+      async function fetchDoctors() {
+        const res = await fetch(API_URL + 'list/');
+        const data = await res.json();
+        const container = document.getElementById('doctorCardBody');
+        container.innerHTML = '';
+
+        data.results.forEach(d => {
+          const card = document.createElement('div');
+          card.className = 'col-md-4 mb-3 ';
+          card.innerHTML = `
           <div class="card shadow ">
            
               <img src="${d.image}" class=" card-img-top  mt-3 mx-auto" alt="${d.doctor_name}" style="height: 70px; width:70px; border-radius:50%;">
@@ -534,352 +476,347 @@
             </div>
           </div>
         `;
-        container.appendChild(card);
-      });
-    }
-    function selectDoctor(doctorId) {
-      const select = document.querySelector('#addForm [name="doctor"]');
-      if (!select.options.length) {
-        // Wait until doctors are populated, then try again
-        setTimeout(() => selectDoctor(doctorId), 300);
-      } else {
-        select.value = doctorId;
+          container.appendChild(card);
+        });
       }
-    }
-    function selectDoctorfee(doctorfee) {
-      const select = document.querySelector('#addForm [name="visit_fee"]');
-      if (!select) return;
-      
-      if (select.tagName === 'INPUT') {
-        select.value = doctorfee;
-      } else if (!select.options.length) {
-        setTimeout(() => selectDoctorfee(doctorfee), 300);
-      } else {
-        select.value = doctorfee;
-      }
-    }
-
-function formatTime24to12(timeStr) {
-  const [hour, minute] = timeStr.split(':');
-  const date = new Date();
-  date.setHours(hour);
-  date.setMinutes(minute);
-  return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-}
-
-    
-  
-  const API = 'http://127.0.0.1:8000/appointment/list/';
-  const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
-  const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
-  
-  function fillSelect(url, select) {
-    fetch(url).then(res => res.json()).then(data => {
-      select.innerHTML = '';
-      (data.results || data).forEach(d => {
-        let opt = document.createElement('option');
-        opt.value = d.id;
-        opt.textContent = d.doctor_name || d.name;
-        select.appendChild(opt);
-      });
-    });
-  }
-
-  function fillSelect2(url, select) {
-    fetch(url).then(res => res.json()).then(data => {
-      select.innerHTML = '';
-      (data.results || data).forEach(d => {
-        let opt = document.createElement('option');
-        opt.value = d.id ; // Use d if it's just a time string
-        if (select.name === 'time') {
-          // d might be a string like "14:00" or an object with .available_time
-          let timeStr = d.available_time || d.name ;
-          opt.value = d.id;
-          opt.textContent = formatTime24to12(timeStr);
+      function selectDoctor(doctorId) {
+        const select = document.querySelector('#addForm [name="doctor"]');
+        if (!select.options.length) {
+          // Wait until doctors are populated, then try again
+          setTimeout(() => selectDoctor(doctorId), 300);
         } else {
-          opt.textContent = d.doctor_name || d.name;
+          select.value = doctorId;
         }
-        select.appendChild(opt);
-      });
-    });
-  }
-  
-  // function renderAppointments(date=null) {
-  //   let url = API;
-  //   if (date) {
-  //     url += `?date=${date}`;
-  //   }
-  
-  
-  //   fetch(API ).then(res => res.json()).then(data => {
-      
-  //     let tbody = document.getElementById('appointmentTableBody');
-  //     tbody.innerHTML = '';
-  //     data.forEach(a => {
-        
-  //       tbody.innerHTML += `
-  //         <tr>
-  //           <td>${a.patient_name}</td>
-  //           <td>${a.doctor_display}</td>
-  //           <td>${a.appointment_Status}</td>
-  //           <td>${a.appointment_Types}</td>
-  //           <td>${a.phone_no}</td>
-  //           <td>${a.appointment_date}</td>
-  //           <td>${a.time_display}</td>
-  //           <td>${a.total_amount}</td>
-  //           <td>
-  //             <button class="btn btn-sm btcn" onclick="edit(${a.id})">Edit</button>
-  //             <button class="btn btn-sm btc" onclick="del(${a.id})">Delete</button>
-  //           </td>
-  //         </tr>
-  //       `;
-  //     });
-  //   });
-  // }
+      }
+      function selectDoctorfee(doctorfee) {
+        const select = document.querySelector('#addForm [name="visit_fee"]');
+        if (!select) return;
 
-  const patientURL = 'http://127.0.0.1:8000/patientIDName/list/';
-
-// Show/Hide patient input/select based on version
-document.getElementById('versionSelect').addEventListener('change', e => {
-  const isNew = e.target.value === 'New';
-  document.querySelectorAll('.version-new').forEach(el => el.classList.toggle('d-none', !isNew));
-  document.querySelectorAll('.version-old').forEach(el => el.classList.toggle('d-none', isNew));
-});
-
-// Fill old patient dropdown
-// function fetchPatients() {
-//   fetch(patientURL).then(res => res.json()).then(data => {
-//     console.log(data);
-//     const select = document.getElementById('existingPatientSelect');
-//     select.innerHTML = '';
-//     data.forEach(p => {
-//       const opt = document.createElement('option');
-//       opt.value = JSON.stringify(p); // we stringify to get both name and PatientID
-//       opt.text = `${p.name} (ID: ${p.PatientID})`;
-//       select.appendChild(opt);
-//     });
-//   });
-// }
-function fetchPatients() {
-  fetch(patientURL)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      const dataList = document.getElementById('existingPatientList');
-      dataList.innerHTML = '';
-
-      data.forEach(p => {
-        const opt = document.createElement('option');
-        opt.value = `${p.PatientID} - ${p.name}`;
-        opt.setAttribute('data-patient', JSON.stringify(p));
-        dataList.appendChild(opt);
-      });
-
-      // Store patients in a map for lookup
-      window.patientMap = {};
-      data.forEach(p => {
-        window.patientMap[`${p.PatientID} - ${p.name}`] = p;
-      });
-    });
-}
-
-  
-  function getData(form) {
-    let fd = new FormData(form);
-    let obj = Object.fromEntries(fd.entries());
-    obj.visit_fee = parseInt(obj.visit_fee) || 0;
-    obj.medicine_cost = parseFloat(obj.medicine_cost) || 0;
-    obj.others_cost = parseFloat(obj.others_cost) || 0;
-    obj.payment = obj.payment === 'true';
-    // obj.cancel = obj.cancel === 'true';
-    return obj;
-  }
-  
- 
-  // Modify form submit to handle both versions
-document.getElementById('addForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const form = e.target;
-  const version = form.appointment_Version.value;
-
-  let patientData = {};
- 
-  if (version === 'New') {
-  // Get current date in YYYYMMDD format
-    // const today = new Date();
-    // const dateStr = today.toISOString().split('T')[0].replace(/-/g, '');
-    const today = new Date();
-    const isoDate = today.toISOString().split('T')[0]; // "2025-05-08"
-    const year = isoDate.slice(2, 4); // "25"
-    const month = isoDate.slice(5, 7); // "05"
-    const day = isoDate.slice(8, 10); // "08"
-    const dateStr = `${year}${month}${day}`; // "250508"
-
-    console.log(dateStr);
-
-
-    const res = await fetch(API);
-      const appointments = await res.json();
-
-      let lastId = 0;
-      if (appointments.length > 0) {
-        const sortedAppointments = appointments.sort((a, b) => b.id - a.id);
-        lastId = sortedAppointments[0].id;
+        if (select.tagName === 'INPUT') {
+          select.value = doctorfee;
+        } else if (!select.options.length) {
+          setTimeout(() => selectDoctorfee(doctorfee), 300);
+        } else {
+          select.value = doctorfee;
+        }
       }
 
-    const nextAppointmentId = lastId + 1;
-    console.log(nextAppointmentId);
+      function formatTime24to12(timeStr) {
+        const [hour, minute] = timeStr.split(':');
+        const date = new Date();
+        date.setHours(hour);
+        date.setMinutes(minute);
+        return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      }
 
-    // Construct PatientID
-    const generatedPatientID = parseInt(`${dateStr}${nextAppointmentId}`);
-      console.log(generatedPatientID);
-    // Create new patient object
-    patientData = {
-      name: form.patient_name.value,
-      PatientID: generatedPatientID
-    };
-    
-    console.log(patientData);
 
-    // POST to patient API
-    const patientRes = await fetch(patientURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(patientData)
-    });
 
-    if (!patientRes.ok) {
-      return showAlert('Failed to create new patient', 'danger');
-    }
-  }
+      const API = 'http://127.0.0.1:8000/appointment/list/';
+      const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
+      const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
 
-  
-  // Prepare appointment data
-  let appointmentData = getData(form);
-  console.log(appointmentData);
-  // appointmentData.patient_name = patientData.name;
-  // appointmentData.PatientID = patientData.PatientID;
-  // if (appointmentData.appointment_Version === 'Old') {
-  //   const selectedOption = form.existing_patient.value;
-  //   if (!selectedOption) {
-  //     return showAlert('Please select a patient.', 'warning');
-  //   }
-  //   const existing_patient = JSON.parse(selectedOption);
-  //   console.log(existing_patient);
-  //   appointmentData.patient_name = existing_patient.name;
-  //   appointmentData.PatientID = existing_patient.PatientID;
-  // } 
-  
-  if (appointmentData.appointment_Version === 'Old') {
-    const typedValue = form.existing_patient.value;
-    const existing_patient = window.patientMap[typedValue];
+      function fillSelect(url, select) {
+        fetch(url).then(res => res.json()).then(data => {
+          select.innerHTML = '';
+          (data.results || data).forEach(d => {
+            let opt = document.createElement('option');
+            opt.value = d.id;
+            opt.textContent = d.doctor_name || d.name;
+            select.appendChild(opt);
+          });
+        });
+      }
 
-    if (!existing_patient) {
-      return showAlert('Please select a valid patient from the suggestions.', 'warning');
-    }
+      function fillSelect2(url, select) {
+        fetch(url).then(res => res.json()).then(data => {
+          select.innerHTML = '';
+          (data.results || data).forEach(d => {
+            let opt = document.createElement('option');
+            opt.value = d.id; // Use d if it's just a time string
+            if (select.name === 'time') {
+              // d might be a string like "14:00" or an object with .available_time
+              let timeStr = d.available_time || d.name;
+              opt.value = d.id;
+              opt.textContent = formatTime24to12(timeStr);
+            } else {
+              opt.textContent = d.doctor_name || d.name;
+            }
+            select.appendChild(opt);
+          });
+        });
+      }
 
-    appointmentData.patient_name = existing_patient.name;
-    appointmentData.PatientID = existing_patient.PatientID;
-  }
-  else {
-    // For New patient
-    appointmentData.patient_name = patientData.name;
-    appointmentData.PatientID = patientData.PatientID;
-  }
-  console.log(appointmentData.patient_name, appointmentData.PatientID);
+      // function renderAppointments(date=null) {
+      //   let url = API;
+      //   if (date) {
+      //     url += `?date=${date}`;
+      //   }
 
-  // delete appointmentData.existing_patient;
 
-  // Post appointment
-  fetch(API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(appointmentData)
-    
-  })
-  .then(response => {
-    if (!response.ok) throw new Error('Failed to add appointment');
-    return response.json();
-  })
-  .then(appointment => {
-    bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
-    form.reset();
-    showAlert(`Appointment Number ${appointment.id} added successfully!`, 'success');
-    // renderAppointments();
-    setTimeout(() => location.reload(), 1500);
-  })
-  .catch(err => {
-    showAlert(err.message, 'danger');
-  });
-});
+      //   fetch(API ).then(res => res.json()).then(data => {
 
-  function showAlert(message, type = 'success') {
-    const alertPlaceholder = document.getElementById('alertPlaceholder');
-    alertPlaceholder.innerHTML = `
+      //     let tbody = document.getElementById('appointmentTableBody');
+      //     tbody.innerHTML = '';
+      //     data.forEach(a => {
+
+      //       tbody.innerHTML += `
+      //         <tr>
+      //           <td>${a.patient_name}</td>
+      //           <td>${a.doctor_display}</td>
+      //           <td>${a.appointment_Status}</td>
+      //           <td>${a.appointment_Types}</td>
+      //           <td>${a.phone_no}</td>
+      //           <td>${a.appointment_date}</td>
+      //           <td>${a.time_display}</td>
+      //           <td>${a.total_amount}</td>
+      //           <td>
+      //             <button class="btn btn-sm btcn" onclick="edit(${a.id})">Edit</button>
+      //             <button class="btn btn-sm btc" onclick="del(${a.id})">Delete</button>
+      //           </td>
+      //         </tr>
+      //       `;
+      //     });
+      //   });
+      // }
+
+      const patientURL = 'http://127.0.0.1:8000/patientIDName/list/';
+
+      // Show/Hide patient input/select based on version
+      document.getElementById('versionSelect').addEventListener('change', e => {
+        const isNew = e.target.value === 'New';
+        document.querySelectorAll('.version-new').forEach(el => el.classList.toggle('d-none', !isNew));
+        document.querySelectorAll('.version-old').forEach(el => el.classList.toggle('d-none', isNew));
+      });
+
+      // Fill old patient dropdown
+      // function fetchPatients() {
+      //   fetch(patientURL).then(res => res.json()).then(data => {
+      //     console.log(data);
+      //     const select = document.getElementById('existingPatientSelect');
+      //     select.innerHTML = '';
+      //     data.forEach(p => {
+      //       const opt = document.createElement('option');
+      //       opt.value = JSON.stringify(p); // we stringify to get both name and PatientID
+      //       opt.text = `${p.name} (ID: ${p.PatientID})`;
+      //       select.appendChild(opt);
+      //     });
+      //   });
+      // }
+      function fetchPatients() {
+        fetch(patientURL)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            const dataList = document.getElementById('existingPatientList');
+            dataList.innerHTML = '';
+
+            data.forEach(p => {
+              const opt = document.createElement('option');
+              opt.value = `${p.PatientID} - ${p.name}`;
+              opt.setAttribute('data-patient', JSON.stringify(p));
+              dataList.appendChild(opt);
+            });
+
+            // Store patients in a map for lookup
+            window.patientMap = {};
+            data.forEach(p => {
+              window.patientMap[`${p.PatientID} - ${p.name}`] = p;
+            });
+          });
+      }
+
+
+      function getData(form) {
+        let fd = new FormData(form);
+        let obj = Object.fromEntries(fd.entries());
+        obj.visit_fee = parseInt(obj.visit_fee) || 0;
+        obj.medicine_cost = parseFloat(obj.medicine_cost) || 0;
+        obj.others_cost = parseFloat(obj.others_cost) || 0;
+        obj.payment = obj.payment === 'true';
+        // obj.cancel = obj.cancel === 'true';
+        return obj;
+      }
+
+
+      // Modify form submit to handle both versions
+      document.getElementById('addForm').addEventListener('submit', async e => {
+        e.preventDefault();
+        const form = e.target;
+        const version = form.appointment_Version.value;
+
+        let patientData = {};
+
+        if (version === 'New') {
+          // Get current date in YYYYMMDD format
+          // const today = new Date();
+          // const dateStr = today.toISOString().split('T')[0].replace(/-/g, '');
+          const today = new Date();
+          const isoDate = today.toISOString().split('T')[0]; // "2025-05-08"
+          const year = isoDate.slice(2, 4); // "25"
+          const month = isoDate.slice(5, 7); // "05"
+          const day = isoDate.slice(8, 10); // "08"
+          const dateStr = `${year}${month}${day}`; // "250508"
+
+          console.log(dateStr);
+
+
+          const res = await fetch(API);
+          const appointments = await res.json();
+
+          let lastId = 0;
+          if (appointments.length > 0) {
+            const sortedAppointments = appointments.sort((a, b) => b.id - a.id);
+            lastId = sortedAppointments[0].id;
+          }
+
+          const nextAppointmentId = lastId + 1;
+          console.log(nextAppointmentId);
+
+          // Construct PatientID
+          const generatedPatientID = parseInt(`${dateStr}${nextAppointmentId}`);
+          console.log(generatedPatientID);
+          // Create new patient object
+          patientData = {
+            name: form.patient_name.value,
+            PatientID: generatedPatientID
+          };
+
+          console.log(patientData);
+
+          // POST to patient API
+          const patientRes = await fetch(patientURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(patientData)
+          });
+
+          if (!patientRes.ok) {
+            return showAlert('Failed to create new patient', 'danger');
+          }
+        }
+
+
+        // Prepare appointment data
+        let appointmentData = getData(form);
+        console.log(appointmentData);
+        // appointmentData.patient_name = patientData.name;
+        // appointmentData.PatientID = patientData.PatientID;
+        // if (appointmentData.appointment_Version === 'Old') {
+        //   const selectedOption = form.existing_patient.value;
+        //   if (!selectedOption) {
+        //     return showAlert('Please select a patient.', 'warning');
+        //   }
+        //   const existing_patient = JSON.parse(selectedOption);
+        //   console.log(existing_patient);
+        //   appointmentData.patient_name = existing_patient.name;
+        //   appointmentData.PatientID = existing_patient.PatientID;
+        // } 
+
+        if (appointmentData.appointment_Version === 'Old') {
+          const typedValue = form.existing_patient.value;
+          const existing_patient = window.patientMap[typedValue];
+
+          if (!existing_patient) {
+            return showAlert('Please select a valid patient from the suggestions.', 'warning');
+          }
+
+          appointmentData.patient_name = existing_patient.name;
+          appointmentData.PatientID = existing_patient.PatientID;
+        }
+        else {
+          // For New patient
+          appointmentData.patient_name = patientData.name;
+          appointmentData.PatientID = patientData.PatientID;
+        }
+        console.log(appointmentData.patient_name, appointmentData.PatientID);
+
+        // delete appointmentData.existing_patient;
+
+        // Post appointment
+        fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(appointmentData)
+
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to add appointment');
+            return response.json();
+          })
+          .then(appointment => {
+            bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
+            form.reset();
+            showAlert(`Appointment Number ${appointment.id} added successfully!`, 'success');
+            // renderAppointments();
+            setTimeout(() => location.reload(), 1500);
+          })
+          .catch(err => {
+            showAlert(err.message, 'danger');
+          });
+      });
+
+      function showAlert(message, type = 'success') {
+        const alertPlaceholder = document.getElementById('alertPlaceholder');
+        alertPlaceholder.innerHTML = `
       <div class="alert alert-${type} alert-dismissible fade show mt-2" role="alert">
         ${message}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>`;
-  }
-
-  
-  
-  
-  window.onload = async () => {
-      await fetchDoctors();
-      await fetchPatients(); // Load old patients
-      await fillSelect2(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
-      await fillSelect2(TIME, document.querySelector('#addForm [name="time"]'));
-      await fetchOptions(designationURL, document.querySelector('#addDoctorForm [name="designation"]'));
-      await fetchOptions(specializationURL, document.querySelector('#addDoctorForm [name="specialization"]'));
-      await fetchOptions(availableTimeURL, document.querySelector('#addDoctorForm [name="available_time"]'));
-      // renderAppointments();
-  };
+      }
 
 
-function calculateTotal() {
-const visit = parseFloat(document.querySelector('[name="visit_fee"]').value) || 0;
-const medicine = parseFloat(document.querySelector('[name="medicine_cost"]').value) || 0;
-const others = parseFloat(document.querySelector('[name="others_cost"]').value) || 0;
-
-const total = visit + medicine + others;
-
-document.getElementById('totalFeeDisplay').textContent = `Total: $${total.toFixed(2)}`;
-}
 
 
-['visit_fee', 'medicine_cost', 'others_cost'].forEach(name => {
-document.querySelector(`[name="${name}"]`).addEventListener('input', calculateTotal);
-});
+      window.onload = async () => {
+        await fetchDoctors();
+        await fetchPatients(); // Load old patients
+        await fillSelect2(DOCTOR, document.querySelector('#addForm [name="doctor"]'));
+        await fillSelect2(TIME, document.querySelector('#addForm [name="time"]'));
+        await fetchOptions(designationURL, document.querySelector('#addDoctorForm [name="designation"]'));
+        await fetchOptions(specializationURL, document.querySelector('#addDoctorForm [name="specialization"]'));
+        await fetchOptions(availableTimeURL, document.querySelector('#addDoctorForm [name="available_time"]'));
+        // renderAppointments();
+      };
 
-document.addEventListener('click', function(e) {
-if (e.target.classList.contains('take-appointment-btn')) {
-  const doctorId = e.target.getAttribute('data-doctor-id');
-  const fee = e.target.getAttribute('data-fee');
 
-  const doctorSelect = document.querySelector('#addForm [name="doctor"]');
-  const feeInput = document.querySelector('#addForm [name="visit_fee"]');
+      function calculateTotal() {
+        const visit = parseFloat(document.querySelector('[name="visit_fee"]').value) || 0;
+        const medicine = parseFloat(document.querySelector('[name="medicine_cost"]').value) || 0;
+        const others = parseFloat(document.querySelector('[name="others_cost"]').value) || 0;
 
-  doctorSelect.value = doctorId;
-  feeInput.value = fee;
+        const total = visit + medicine + others;
 
-  calculateTotal(); // Trigger total fee update
-}
-}); 
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+        document.getElementById('totalFeeDisplay').textContent = `Total: $${total.toFixed(2)}`;
+      }
 
-  <script src="./logout.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"
-    integrity="..."
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js"
-    crossorigin="anonymous"
-    defer
-  ></script>
+
+      ['visit_fee', 'medicine_cost', 'others_cost'].forEach(name => {
+        document.querySelector(`[name="${name}"]`).addEventListener('input', calculateTotal);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('take-appointment-btn')) {
+          const doctorId = e.target.getAttribute('data-doctor-id');
+          const fee = e.target.getAttribute('data-fee');
+
+          const doctorSelect = document.querySelector('#addForm [name="doctor"]');
+          const feeInput = document.querySelector('#addForm [name="visit_fee"]');
+
+          doctorSelect.value = doctorId;
+          feeInput.value = fee;
+
+          calculateTotal(); // Trigger total fee update
+        }
+      }); 
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+
+    <script src="./logout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js" integrity="..."></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
+      defer></script>
 </body>
 
 <!-- Mirrored from preschool.dreamguystech.com/html-template/add-events.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:12:21 GMT -->
+
 </html>
