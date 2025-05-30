@@ -134,7 +134,7 @@
                 <li><a href="edit-teacher.html">Patients Edit</a></li>
               </ul>
             </li>
-             
+
             <li class="menu-title">
               <span>Management</span>
             </li>
@@ -152,8 +152,8 @@
                 <li><a href="add-salary.html">Add Salary</a></li>
               </ul>
             </li>
-             
-             
+
+
           </ul>
         </div>
       </div>
@@ -396,7 +396,11 @@
             app.appointment_Status === 'Completed'
           );
 
-          const total = completed.reduce((sum, app) => sum + parseFloat(app.visit_fee || 0), 0);
+          //const total = completed.reduce((sum, app) => sum + parseFloat(app.visit_fee || 0), 0);
+          const total = completed.reduce((sum, app) =>
+            sum + parseFloat(app.visit_fee || 0) + (0.15 * parseFloat(app.medicine_cost || 0)),
+            0);
+
 
           lifetimeBox.classList.remove('d-none');
           lifetimeBox.innerHTML = `
@@ -590,7 +594,9 @@
             .filter(
               (app) => app.doctor == doctorId && app.appointment_Status === "Completed"
             )
-            .reduce((sum, app) => sum + parseFloat(app.visit_fee || 0), 0);
+            // .reduce((sum, app) => sum + parseFloat(app.visit_fee || 0), 0);
+            .reduce((sum, app) => sum + parseFloat(app.visit_fee || 0) + (0.15 * parseFloat(app.medicine_cost || 0)), 
+0);
 
           const receivingRes = await fetch("http://127.0.0.1:8000/appointment/ReceiveMoney/");
           const receivings = await receivingRes.json();
