@@ -114,9 +114,10 @@ const handleRegistration = (event) => {
   
               localStorage.setItem("username", userData.username);
               if (userData.is_superuser) {
-                window.location.href = "index.html";
+                window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/";
               } else {
-                window.location.href = "login.html";
+                // window.location.href = "login.html";
+                window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/login.html";
                 
               }
             })
