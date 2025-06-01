@@ -114,7 +114,7 @@ const handleRegistration = (event) => {
   
               localStorage.setItem("username", userData.username);
               if (userData.is_superuser) {
-                window.location.href = "add_appointment.html";
+                window.location.href = "index.html";
               } else {
                 window.location.href = "login.html";
                 
