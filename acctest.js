@@ -1,7 +1,7 @@
  // Constants
-    const API = 'http://127.0.0.1:8000/appointment/list/';
-    const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
-    const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
+    const API = 'https://hospital-wine-alpha.vercel.app/appointment/list/';
+    const DOCTOR = 'https://hospital-wine-alpha.vercel.app/doctor/list/';
+    const TIME = 'https://hospital-wine-alpha.vercel.app/doctor/availableTime/';
     
     // Fill options into a select
     function fillSelect(url, select, selectedId = null) {

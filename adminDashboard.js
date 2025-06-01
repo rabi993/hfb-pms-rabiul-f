@@ -1,7 +1,7 @@
 
-const doctorListURL = 'http://127.0.0.1:8000/doctor/list/';
-const appointmentListURL = 'http://127.0.0.1:8000/appointment/list/';
-const userListURL = 'http://127.0.0.1:8000/users/';
+const doctorListURL = 'https://hospital-wine-alpha.vercel.app/doctor/list/';
+const appointmentListURL = 'https://hospital-wine-alpha.vercel.app/appointment/list/';
+const userListURL = 'https://hospital-wine-alpha.vercel.app/users/';
 
 async function loadDashboardStats() {
     try {

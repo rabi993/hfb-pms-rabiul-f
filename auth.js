@@ -24,7 +24,7 @@ const handleRegistration = (event) => {
       ) {
         console.log(info);
   
-        fetch("http://127.0.0.1:8000/patient/register/", {
+        fetch("https://hospital-wine-alpha.vercel.app/patient/register/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(info),
@@ -71,7 +71,7 @@ const handleRegistration = (event) => {
     }
   
     // API call for login
-    fetch("http://127.0.0.1:8000/patient/login/", {
+    fetch("https://hospital-wine-alpha.vercel.app/patient/login/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -96,7 +96,7 @@ const handleRegistration = (event) => {
   
           // Use `user_id` to fetch user details
           const userId = data.user_id;
-          fetch(`http://127.0.0.1:8000/users/${userId}/`, {
+          fetch(`https://hospital-wine-alpha.vercel.app/users/${userId}/`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",

@@ -1,6 +1,6 @@
 async function fetchAppointments() {
   try {
-    const res = await fetch('http://127.0.0.1:8000/appointment/list/');
+    const res = await fetch('https://hospital-wine-alpha.vercel.app/appointment/list/');
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     
     const appointments = await res.json();

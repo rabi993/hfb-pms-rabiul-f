@@ -13,7 +13,7 @@
     
     const token = localStorage.getItem("token");
   
-    fetch("http://127.0.0.1:8000/patient/logout/", {
+    fetch("https://hospital-wine-alpha.vercel.app/patient/logout/", {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,

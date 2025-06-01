@@ -386,9 +386,9 @@
 
     <script>
       // Constants
-      const API = 'http://127.0.0.1:8000/appointment/list/';
-      const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
-      const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
+      const API = 'https://hospital-wine-alpha.vercel.app/appointment/list/';
+      const DOCTOR = 'https://hospital-wine-alpha.vercel.app/doctor/list/';
+      const TIME = 'https://hospital-wine-alpha.vercel.app/doctor/availableTime/';
 
       // Fill options into a select
       function fillSelect(url, select, selectedId = null) {
@@ -724,7 +724,7 @@
                 const selectedTime24 = toHourMinute(data.time_display || data.start_time_display);
 
                 // Step 1: Fetch all available times to get IDs
-                fetch("http://127.0.0.1:8000/doctor/availableTime/")
+                fetch("https://hospital-wine-alpha.vercel.app/doctor/availableTime/")
                   .then(res => res.json())
                   .then(allTimes => {
                     doctor.available_time.forEach(timeStr => {
@@ -837,7 +837,7 @@
                 const selectedTime24 = toHourMinute(data.time_display || data.start_time_display);
 
                 // Step 1: Fetch all available times to get IDs
-                fetch("http://127.0.0.1:8000/doctor/availableTime/")
+                fetch("https://hospital-wine-alpha.vercel.app/doctor/availableTime/")
                   .then(res => res.json())
                   .then(allTimes => {
                     doctor.available_time.forEach(timeStr => {
@@ -923,13 +923,13 @@
         try {
           console.log("Yes okay");
           // Fetch the appointment
-          const appointmentRes = await fetch(`http://127.0.0.1:8000/appointment/list/${id}/`);
+          const appointmentRes = await fetch(`https://hospital-wine-alpha.vercel.app/appointment/list/${id}/`);
           const appointment = await appointmentRes.json();
 
           console.log(appointment, appointment.appointment_Version);
           // Proceed only if it's a "New" patient version
           if (appointment.appointment_Version === "New") {
-            const patientRes = await fetch("http://127.0.0.1:8000/patientIDName/list/");
+            const patientRes = await fetch("https://hospital-wine-alpha.vercel.app/patientIDName/list/");
             const patients = await patientRes.json();
 
             // Normalize types: convert both to string before comparison
@@ -939,14 +939,14 @@
             console.log(matchedPatient, matchedPatient.id, matchedPatient.PatientID, appointment.PatientID);
 
             if (matchedPatient) {
-              await fetch(`http://127.0.0.1:8000/patientIDName/list/${matchedPatient.id}/`, {
+              await fetch(`https://hospital-wine-alpha.vercel.app/patientIDName/list/${matchedPatient.id}/`, {
                 method: 'DELETE'
               });
             }
           }
 
           // Delete the appointment
-          await fetch(`http://127.0.0.1:8000/appointment/list/${id}/`, {
+          await fetch(`https://hospital-wine-alpha.vercel.app/appointment/list/${id}/`, {
             method: 'DELETE'
           });
 

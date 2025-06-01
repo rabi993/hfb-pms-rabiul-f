@@ -322,7 +322,7 @@
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      const API_URL = 'http://127.0.0.1:8000/doctor/';
+      const API_URL = 'https://hospital-wine-alpha.vercel.app/doctor/';
       const designationURL = API_URL + 'designation/';
       const specializationURL = API_URL + 'specialization/';
       const availableTimeURL = API_URL + 'availableTime/';
@@ -390,9 +390,9 @@
 
 
 
-      const API = 'http://127.0.0.1:8000/appointment/list/';
-      const DOCTOR = 'http://127.0.0.1:8000/doctor/list/';
-      const TIME = 'http://127.0.0.1:8000/doctor/availableTime/';
+      const API = 'https://hospital-wine-alpha.vercel.app/appointment/list/';
+      const DOCTOR = 'https://hospital-wine-alpha.vercel.app/doctor/list/';
+      const TIME = 'https://hospital-wine-alpha.vercel.app/doctor/availableTime/';
 
       function fillSelect(url, select) {
         fetch(url).then(res => res.json()).then(data => {
@@ -439,7 +439,7 @@
       //   });
       // }
 
-      const patientURL = 'http://127.0.0.1:8000/patientIDName/list/';
+      const patientURL = 'https://hospital-wine-alpha.vercel.app/patientIDName/list/';
 
       // Show/Hide patient input/select based on version
       document.getElementById('versionSelect').addEventListener('change', e => {

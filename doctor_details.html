@@ -285,8 +285,8 @@
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      const DOCTOR_API = 'http://127.0.0.1:8000/doctor/list';
-      const APPOINTMENT_API = 'http://127.0.0.1:8000/appointment/list/';
+      const DOCTOR_API = 'https://hospital-wine-alpha.vercel.app/doctor/list';
+      const APPOINTMENT_API = 'https://hospital-wine-alpha.vercel.app/appointment/list/';
 
       function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -441,7 +441,7 @@
         const selectedDoctorId = getDoctorIdFromURL();
 
         try {
-          const response = await fetch("http://127.0.0.1:8000/appointment/ReceiveMoney/");
+          const response = await fetch("https://hospital-wine-alpha.vercel.app/appointment/ReceiveMoney/");
           const data = await response.json();
 
           let todayTotal = 0;
@@ -506,7 +506,7 @@
         };
 
         try {
-          const response = await fetch('http://127.0.0.1:8000/appointment/ReceiveMoney/', {
+          const response = await fetch('https://hospital-wine-alpha.vercel.app/appointment/ReceiveMoney/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -558,7 +558,7 @@
 
           console.log(earnings);
 
-          const receivingRes = await fetch("http://127.0.0.1:8000/appointment/ReceiveMoney/");
+          const receivingRes = await fetch("https://hospital-wine-alpha.vercel.app/appointment/ReceiveMoney/");
           const receivings = await receivingRes.json();
 
           const totalReceived = receivings
@@ -598,7 +598,7 @@
             .reduce((sum, app) => sum + parseFloat(app.visit_fee || 0) + (0.15 * parseFloat(app.medicine_cost || 0)), 
 0);
 
-          const receivingRes = await fetch("http://127.0.0.1:8000/appointment/ReceiveMoney/");
+          const receivingRes = await fetch("https://hospital-wine-alpha.vercel.app/appointment/ReceiveMoney/");
           const receivings = await receivingRes.json();
 
           const totalReceivings = receivings
