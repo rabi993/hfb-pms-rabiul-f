@@ -36,6 +36,7 @@
   
         // Redirect to login page
         window.location.href = "login.html"; // Redirect to the login page
+        // window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/login.html"; // Redirect to the login page
       })
       .catch((err) => {
         console.error("Logout failed:", err);
