@@ -136,7 +136,7 @@
                 <li><a href="edit-teacher.html">Patients Edit</a></li>
               </ul>
             </li>
-             
+
             <li class="menu-title">
               <span>Management</span>
             </li>
@@ -154,8 +154,8 @@
                 <li><a href="add-salary.html">Add Salary</a></li>
               </ul>
             </li>
-             
-             
+
+
           </ul>
         </div>
       </div>
@@ -376,36 +376,116 @@
       }
 
 
-      function getFormData(form) {
-        const formData = new FormData();
-        formData.append('doctor_name', form.doctor_name.value);
-        if (form.image.files.length > 0) {
-          formData.append('image', form.image.files[0]);
-        }
-        formData.append('phone_no', form.phone_no.value);
-        formData.append('doctor_email', form.doctor_email.value);
-        formData.append('fee', form.fee.value);
+      // function getFormData(form) {
+      //   const formData = new FormData();
+      //   formData.append('doctor_name', form.doctor_name.value);
+      //   if (form.image.files.length > 0) {
+      //     formData.append('image', form.image.files[0]);
+      //   }
+      //   // Upload image to imgbb if selected
+      //   // if (form.image.files.length > 0) {
+      //   //   const imageFile = form.image.files[0];
+      //   //   const imgbbAPIKey = "6b0c007afbf8da08520a75fb493991aa"; // Replace with your actual API key
+      //   //   const imgbbFormData = new FormData();
+      //   //   imgbbFormData.append("image", imageFile);
 
-        ['designation', 'specialization', 'available_time'].forEach(field => {
-          [...form[field].selectedOptions].forEach(opt => {
-            formData.append(field, opt.value);
-          });
-        });
+      //   //   const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbAPIKey}`, {
+      //   //     method: "POST",
+      //   //     body: imgbbFormData,
+      //   //   });
 
-        return formData;
-      }
+      //   //   if (!imgbbResponse.ok) {
+      //   //     throw new Error("Failed to upload image to imgbb.");
+      //   //   }
 
+      //   //   const imgbbData = await imgbbResponse.json();
+      //   //   const imageUrl = imgbbData.data.url;
+
+      //   //   formData.append('image', imageUrl); // Append image URL instead of file
+      //   // }
+      //   formData.append('phone_no', form.phone_no.value);
+      //   formData.append('doctor_email', form.doctor_email.value);
+      //   formData.append('fee', form.fee.value);
+
+      //   ['designation', 'specialization', 'available_time'].forEach(field => {
+      //     [...form[field].selectedOptions].forEach(opt => {
+      //       formData.append(field, opt.value);
+      //     });
+      //   });
+      //   return formData;
+      // }
+
+
+      // document.getElementById('addDoctorForm').addEventListener('submit', async e => {
+      //   e.preventDefault();
+      //   const formData = getFormData(e.target);
+      //   await fetch(API_URL + 'list/', {
+      //     method: 'POST',
+      //     body: formData
+      //   });
+      //   bootstrap.Modal.getInstance(document.getElementById('addDoctorModal')).hide();
+      //   fetchDoctors();
+      // });
+
+
+      const imgbbAPIKey = "6b0c007afbf8da08520a75fb493991aa";
 
       document.getElementById('addDoctorForm').addEventListener('submit', async e => {
         e.preventDefault();
-        const formData = getFormData(e.target);
-        await fetch(API_URL + 'list/', {
+        const form = e.target;
+
+        let imageUrl = "";
+        if (form.image.files.length > 0) {
+          const imageFile = form.image.files[0];
+          const imgbbFormData = new FormData();
+          imgbbFormData.append("image", imageFile);
+
+          const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbAPIKey}`, {
+            method: "POST",
+            body: imgbbFormData,
+          });
+
+          if (!imgbbResponse.ok) {
+            alert("Image upload failed.");
+            return;
+          }
+
+          const imgbbData = await imgbbResponse.json();
+          imageUrl = imgbbData.data.url;
+        }
+
+        // Create the JSON data object
+        const data = {
+          doctor_name: form.doctor_name.value,
+          image: imageUrl,
+          phone_no: form.phone_no.value,
+          doctor_email: form.doctor_email.value,
+          fee: parseInt(form.fee.value),
+          designation: Array.from(form.designation.selectedOptions).map(opt => parseInt(opt.value)),
+          specialization: Array.from(form.specialization.selectedOptions).map(opt => parseInt(opt.value)),
+          available_time: Array.from(form.available_time.selectedOptions).map(opt => parseInt(opt.value)),
+        };
+
+        // Send JSON data to API
+        const response = await fetch(API_URL + 'list/', {
           method: 'POST',
-          body: formData
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
         });
-        bootstrap.Modal.getInstance(document.getElementById('addDoctorModal')).hide();
-        fetchDoctors();
+
+        if (response.ok) {
+          bootstrap.Modal.getInstance(document.getElementById('addDoctorModal')).hide();
+          fetchDoctors(); // refresh doctor list
+        } else {
+          const err = await response.json();
+          console.error("Error adding doctor:", err);
+          alert("Failed to add doctor.");
+        }
       });
+
+
 
 
       async function fillEditForm(id) {
@@ -430,19 +510,79 @@
 
 
 
+      // document.getElementById('editDoctorForm').addEventListener('submit', async e => {
+      //   e.preventDefault();
+      //   const form = e.target;
+      //   const id = form.id.value;
+      //   const formData = getFormData(form);
+
+      //   await fetch(API_URL + 'list/' + id + '/', {
+      //     method: 'PATCH',
+      //     body: formData
+      //   });
+
+      //   bootstrap.Modal.getInstance(document.getElementById('editDoctorModal')).hide();
+      //   fetchDoctors();
+      // });
       document.getElementById('editDoctorForm').addEventListener('submit', async e => {
         e.preventDefault();
         const form = e.target;
-        const id = form.id.value;
-        const formData = getFormData(form);
 
-        await fetch(API_URL + 'list/' + id + '/', {
+        let imageUrl = ""; // default empty
+
+        if (form.image.files.length > 0) {
+          const imageFile = form.image.files[0];
+          const imgbbFormData = new FormData();
+          imgbbFormData.append("image", imageFile);
+
+          const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbAPIKey}`, {
+            method: "POST",
+            body: imgbbFormData,
+          });
+
+          if (!imgbbResponse.ok) {
+            alert("Image upload failed.");
+            return;
+          }
+
+          const imgbbData = await imgbbResponse.json();
+          imageUrl = imgbbData.data.url;
+        }
+
+        // Construct the updated doctor data
+        const data = {
+          doctor_name: form.doctor_name.value,
+          phone_no: form.phone_no.value,
+          doctor_email: form.doctor_email.value,
+          fee: parseInt(form.fee.value),
+          designation: Array.from(form.designation.selectedOptions).map(opt => parseInt(opt.value)),
+          specialization: Array.from(form.specialization.selectedOptions).map(opt => parseInt(opt.value)),
+          available_time: Array.from(form.available_time.selectedOptions).map(opt => parseInt(opt.value)),
+        };
+
+        // Only include image if a new one was uploaded
+        if (imageUrl) {
+          data.image = imageUrl;
+        }
+
+        const id = form.id.value;
+
+        const response = await fetch(API_URL + 'list/' + id + '/', {
           method: 'PATCH',
-          body: formData
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
         });
 
-        bootstrap.Modal.getInstance(document.getElementById('editDoctorModal')).hide();
-        fetchDoctors();
+        if (response.ok) {
+          bootstrap.Modal.getInstance(document.getElementById('editDoctorModal')).hide();
+          fetchDoctors(); // refresh
+        } else {
+          const err = await response.json();
+          console.error("Error updating doctor:", err);
+          alert("Failed to update doctor.");
+        }
       });
 
 
