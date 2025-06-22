@@ -58,79 +58,182 @@ const handleRegistration = (event) => {
   
   
   
-  const handleLogin = (event) => {
-    event.preventDefault();
+  // const handleLogin = (event) => {
+  //   event.preventDefault();
   
-    const username = getValue("login-username");
-    const password = getValue("login-password");
+  //   const username = getValue("login-username");
+  //   const password = getValue("login-password");
   
-    // Validate inputs
-    if (!username || !password) {
-      alert("Please provide both username and password.");
-      return;
-    }
+  //   // Validate inputs
+  //   if (!username || !password) {
+  //     alert("Please provide both username and password.");
+  //     return;
+  //   }
   
-    // API call for login
-    fetch("https://hospital-wine-alpha.vercel.app/patient/login/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          if (res.status === 401) {
-            throw new Error("Invalid username or password.");
-          } else {
-            throw new Error("Login failed. Please try again later.");
-          }
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
+  //   // API call for login
+  //   fetch("https://hospital-wine-alpha.vercel.app/patient/login/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ username, password }),
+  //   })
+  //     .then((res) => {
+  //       if (!res.ok) {
+  //         if (res.status === 401) {
+  //           throw new Error("Invalid username or password.");
+  //         } else {
+  //           throw new Error("Login failed. Please try again later.");
+  //         }
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
   
-        if (data.token && data.user_id) {
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("user_id", data.user_id);
+  //       if (data.token && data.user_id) {
+  //         localStorage.setItem("token", data.token);
+  //         localStorage.setItem("user_id", data.user_id);
           
   
-          // Use `user_id` to fetch user details
-          const userId = data.user_id;
-          fetch(`https://hospital-wine-alpha.vercel.app/users/${userId}/`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${data.token}`, // Use token for authentication
-            },
-          })
-            .then((res) => {
-              if (!res.ok) {
-                throw new Error("Failed to fetch user details.");
-              }
-              return res.json();
-            })
-            .then((userData) => {
-              console.log(userData);
+  //         // Use `user_id` to fetch user details
+  //         const userId = data.user_id;
+  //         fetch(`https://hospital-wine-alpha.vercel.app/users/${userId}/`, {
+  //           method: "GET",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${data.token}`, // Use token for authentication
+  //           },
+  //         })
+  //           .then((res) => {
+  //             if (!res.ok) {
+  //               throw new Error("Failed to fetch user details.");
+  //             }
+  //             return res.json();
+  //           })
+  //           .then((userData) => {
+  //             console.log(userData);
   
-              localStorage.setItem("username", userData.username);
-              if (userData.is_superuser) {
-                window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/";
-              } else {
-                // window.location.href = "login.html";
-                window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/login.html";
+  //             localStorage.setItem("username", userData.username);
+
+
+  //             if (userData.is_superuser) {
+  //               window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/";
+  //             } else {
+  //               // window.location.href = "login.html";
+  //               window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/login.html";
                 
-              }
-            })
-            .catch((error) => {
-              console.error("Error fetching user details:", error);
-              alert("Failed to retrieve user details. Please try again.");
-            });
+  //             }
+  //           })
+  //           .catch((error) => {
+  //             console.error("Error fetching user details:", error);
+  //             alert("Failed to retrieve user details. Please try again.");
+  //           });
+  //       } else {
+  //         alert("Unexpected response from the server. Please try again.");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Login error:", error);
+  //       alert(error.message);
+  //     });
+  // };
+
+
+  const handleLogin = (event) => {
+  event.preventDefault();
+
+  const username = getValue("login-username");
+  const password = getValue("login-password");
+
+  if (!username || !password) {
+    alert("Please provide both username and password.");
+    return;
+  }
+
+  fetch("https://hospital-wine-alpha.vercel.app/patient/login/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        if (res.status === 401) {
+          throw new Error("Invalid username or password.");
         } else {
-          alert("Unexpected response from the server. Please try again.");
+          throw new Error("Login failed. Please try again later.");
         }
-      })
-      .catch((error) => {
-        console.error("Login error:", error);
-        alert(error.message);
-      });
-  };
+      }
+      return res.json();
+    })
+    .then((data) => {
+      if (data.token && data.user_id) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user_id", data.user_id);
+
+        const userId = data.user_id;
+
+        fetch(`https://hospital-wine-alpha.vercel.app/users/${userId}/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${data.token}`,
+          },
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error("Failed to fetch user details.");
+            }
+            return res.json();
+          })
+          .then((userData) => {
+            localStorage.setItem("username", userData.username);
+
+            // Now fetch patient list and find the matching patient
+            fetch("https://hospital-wine-alpha.vercel.app/patient/list/", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${data.token}`,
+              },
+            })
+              .then((res) => {
+                if (!res.ok) {
+                  throw new Error("Failed to fetch patient list.");
+                }
+                return res.json();
+              })
+              .then((patients) => {
+                const user_id = parseInt(localStorage.getItem("user_id"));
+                const patient = patients.find((p) => p.user === user_id);
+                if (patient) {
+                  localStorage.setItem("patientid", patient.id);
+                }
+
+                // Redirect based on role
+                if (userData.is_superuser) {
+                  window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/";
+                  // window.location.href = "http://127.0.0.1:5501/index.html";
+                } else if (localStorage.getItem("patientid")) {
+                  window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/";
+                  // window.location.href = "http://127.0.0.1:5501/index.html";
+                } else {
+                  window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/login.html";
+                }
+              })
+              .catch((error) => {
+                console.error("Error fetching patient list:", error);
+                alert("Could not fetch patient information.");
+              });
+          })
+          .catch((error) => {
+            console.error("Error fetching user details:", error);
+            alert("Failed to retrieve user details. Please try again.");
+          });
+      } else {
+        alert("Unexpected response from the server. Please try again.");
+      }
+    })
+    .catch((error) => {
+      console.error("Login error:", error);
+      alert(error.message);
+    });
+};

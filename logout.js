@@ -31,6 +31,7 @@
         localStorage.removeItem("token");
         localStorage.removeItem("user_id");
         localStorage.removeItem("username");
+        localStorage.removeItem("patientid");
   
         console.log("LocalStorage cleared successfully.");
   
