@@ -24,6 +24,7 @@
 
 
   <link rel="stylesheet" href="assets/css/style2.css" />
+
 </head>
 
 <body>
@@ -33,10 +34,10 @@
     <div class="header">
 
       <div style="display: flex; justify-content: center;" class="header-left">
-        <a href="index.html" class="logo">
+        <a href="indexp.html" class="logo">
           <img src="assets/img/logoo.png" alt="Logo">
         </a>
-        <a href="index.html" class="logo logo-small">
+        <a href="indexp.html" class="logo logo-small">
           <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
         </a>
       </div>
@@ -95,11 +96,11 @@
             <li class="menu-title">
               <span>Main Menu</span>
             </li>
-            <li class="submenu">
+            <li class="submenu ">
               <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span
                   class="menu-arrow"></span></a>
               <ul>
-                <li><a href="index.html">Admin Dashboard</a></li>
+                <li><a href="indexp.html">Admin Dashboard</a></li>
 
 
               </ul>
@@ -108,19 +109,15 @@
               <a href="#"><i class="fas fa-user-graduate"></i> <span> Doctors</span> <span
                   class="menu-arrow"></span></a>
               <ul>
-                <li><a href="add-Doctors.html">Doctor List</a></li>
-                <li><a href="doctorsCard.html">Doctor View</a></li>
-                <li><a href="add_designation.html">Add designation</a></li>
-                <li><a href="add_specialization.html">Add specialization</a></li>
-                <li><a href="add_availableTime.html">Add availableTime</a></li>
+                <li><a href="empdoctorsCard.html">Doctor View</a></li>
               </ul>
             </li>
             <li class="submenu active">
               <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients Appointments</span> <span
                   class="menu-arrow"></span></a>
               <ul>
-                <li><a href="add_appointment.html">Add Appointment</a></li>
-                <li><a href="all_appointment.html" class="active">Appointment List</a></li>
+                <li><a href="empadd_appointment.html">Add Appointment</a></li>
+                <li><a href="empall_appointment.html" class="active">Appointment List</a></li>
               </ul>
             </li>
             <li class="submenu">
@@ -128,24 +125,6 @@
                   class="menu-arrow"></span></a>
               <ul>
                 <li><a href="teachers.html">Patients List</a></li>
-              </ul>
-            </li>
-
-            <li class="menu-title">
-              <span>Management</span>
-            </li>
-            <li class="submenu">
-              <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span
-                  class="menu-arrow"></span></a>
-              <ul>
-                <li><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
-                <li><a href="acc.html">Expenses & Income</a></li>
-
-                <li><a href="amountType.html">Add Amount Types</a></li>
-                <li><a href="accountHead.html">Add Account Head</a></li>
-                <li><a href="accSingles.html">Add Account single</a></li>
-
-
               </ul>
             </li>
 
@@ -164,7 +143,7 @@
             <div class="col col-lg-11">
               <h3 class="page-title">Appointment List</h3>
               <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="all_appointment.html">Appointment</a></li>
+                <li class="breadcrumb-item"><a href="empall_appointment.html">Appointment</a></li>
                 <li class="breadcrumb-item active">Appointment List</li>
               </ul>
             </div>
@@ -184,7 +163,7 @@
                     <!-- <h5 class="form-title"><span>Event Information</span></h5> -->
                   </div>
                   <div class="container pb-4">
-                    <div class="container" >
+                    <div class="container">
                       <div class=" row d-flex justify-content-center w-100 m-auto">
                         <!-- <div class="col-lg-3"><h2 >All Appointment</h2></div> -->
                         <div class="d-flex gap-2 py-4 mb-3 col align-items-center w-100 m-auto">
@@ -215,17 +194,13 @@
                           </select>
                           <button class="btn btcn" onclick="renderAppointments()">Filter</button>
                         </div>
-                        <!-- <div class="col-lg-2 text-end">
-              
-              <button style="border: none;" class="btn btcn mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Appointment</button>
-            </div> -->
-                        <!-- <button class="btn btcn" onclick="pdfForPrintTable()">Ready to Print</button> -->
+
 
 
                       </div>
 
                       <!-- <div id="printSection"> -->
-                      <table class="table table-bordered"  id="printSection">
+                      <table class="table table-bordered" id="printSection">
                         <thead>
                           <tr>
                             <td>Serial</td>
@@ -448,43 +423,11 @@
         fillSelectf(DOCTOR, 'filterDoctor', 'doctor_name');
       }
 
-      // Load Time Filter Options
-      // function loadTimeFilter() {
-      //   fillSelectf(TIME, 'filterTime', 'name');
-      // }
       function loadTimeFilter() {
         fillSelectf(TIME, 'filterTime', 'name', null, formatTime12Hour);
       }
 
-      // function loadDoctorFilter() {
-      //   fetch(DOCTOR)
-      //     .then(res => res.json())
-      //     .then(data => {
-      //       let select = document.getElementById('filterDoctor');
-      //       select.innerHTML = '<option value="">All Doctor</option>'; // Optional "All" option
-      //       data.results.forEach(doctor => {
-      //         let opt = document.createElement('option');
-      //         opt.value = doctor.id;
-      //         opt.textContent = doctor.doctor_name;
-      //         select.appendChild(opt);
-      //       });
-      //     });
-      // }
-      //  // Load Time Filter Options 
-      //  function loadTimeFilter() { 
-      //   fetch(TIME )
-      //     .then(res => res.json())
-      //     .then(data => {
-      //       let select = document.getElementById('filterTime'); 
-      //       select.innerHTML = '<option value="">All Time</option>';  
-      //       data.results.forEach(time=> { 
-      //         let opt = document.createElement('option');
-      //         opt.value = time.id;
-      //         opt.textContent = time.name; 
-      //         select.appendChild(opt);
-      //       });
-      //     });
-      // } 
+
       // Load Status Filter
       function loadStatusFilter() {
         const appointment_Status = {
@@ -632,51 +575,6 @@
       });
 
 
-
-      // Edit Appointment
-      // function editt(id) {
-      //   fetch(API + id + '/')
-      //     .then(res => res.json())
-      //     .then(data => {
-      //       let form = document.getElementById('editForm');
-      //       form.id.value = data.id;
-      //       form.patient_name.value = data.patient_name;
-      //       form.phone_no.value = data.phone_no;
-      //       form.appointment_date.value = data.appointment_date;
-      //       form.visit_fee.value = data.visit_fee;
-      //       form.medicine_cost.value = data.medicine_cost;
-      //       form.others_cost.value = data.others_cost;
-      //       form.payment.value = data.payment.toString();
-      //       form.appointment_Types.value = data.appointment_Types;
-      //       form.appointment_Status.value = data.appointment_Status;
-
-      //       // Important: Fill doctor and time with selection
-      //       fillSelect(DOCTOR, form.doctor, data.doctor);
-      //       // fillSelect(TIME, form.time, data.time);
-
-      //       fetch(`${DOCTOR}${data.doctor}/`)
-      //         .then(res => res.json())
-      //         .then(doctor => {
-      //           const timeSelect = form.time;
-      //           timeSelect.innerHTML = '';
-
-      //           doctor.available_time.forEach(time => {
-      //             const opt = document.createElement('option');
-      //             opt.value = time;
-      //             opt.textContent = formatTime12Hour(time);
-      //             if (time === data.time_display || time === data.start_time_display) {
-      //               opt.selected = true;
-      //             }
-      //             timeSelect.appendChild(opt);
-      //           });
-      //       });
-
-
-      //       calculateEditTotal(); // Update total fee in edit form
-
-      //       new bootstrap.Modal(document.getElementById('editModal')).show();
-      //     });
-      // }
       function edit(id) {
         fetch(API + id + '/')
           .then(res => res.json())
@@ -694,24 +592,6 @@
             form.appointment_Status.value = data.appointment_Status;
             form.doctor.value = data.doctor;
 
-            // form.time.value = data.time;
-            // fetch(`${DOCTOR}${data.doctor}/`)
-            //   .then(res => res.json())
-            //   .then(doctor => {
-            //     const timeSelect = form.time;
-            //     timeSelect.innerHTML = '';
-
-            //     doctor.available_time.forEach(time => {
-
-            //       const opt = document.createElement('option');
-            //       opt.value = time;
-            //       opt.textContent = formatTime12Hour(time);
-            //       if (time === data.time_display || time === data.start_time_display) {
-            //         opt.selected = true;
-            //       }
-            //       timeSelect.appendChild(opt);
-            //     });
-            // });
 
 
             fetch(`${DOCTOR}${data.doctor}/`)
@@ -800,32 +680,13 @@
             form.payment.value = data.payment.toString();
             form.appointment_Types.value = data.appointment_Types;
 
-            // form.appointment_Status.value = data.appointment_Status;
-            // Important difference: status set to "Completed"
+
             form.appointment_Status.value = "Completed";
 
             // Important: Fill doctor and time with selection
             fillSelect(DOCTOR, form.doctor, data.doctor);
 
-            // fillSelect(TIME, form.time, data.time);
-            // form.time.value = data.time;
 
-            // fetch(`${DOCTOR}${data.doctor}/`)
-            //   .then(res => res.json())
-            //   .then(doctor => {
-            //     const timeSelect = form.time;
-            //     timeSelect.innerHTML = '';
-
-            //     doctor.available_time.forEach(time => {
-            //       const opt = document.createElement('option');
-            //       opt.value = time;
-            //       opt.textContent = formatTime12Hour(time);
-            //       if (time === data.time_display || time === data.start_time_display) {
-            //         opt.selected = true;
-            //       }
-            //       timeSelect.appendChild(opt);
-            //     });
-            // });
 
             fetch(`${DOCTOR}${data.doctor}/`)
               .then(res => res.json())
@@ -881,35 +742,7 @@
           renderAppointments();
         });
       });
-      // Update Appointment
-      // document.getElementById('editForm').addEventListener('submit', e => {
-      //   e.preventDefault();
-      //   let data = getData(e.target);
-      //   const id = data.id;
-      //   delete data.id; // remove id from payload
 
-      //   fetch(API + id + '/', {
-      //     method: 'PUT',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify(data)
-      //   }).then(() => {
-      //     bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
-      //     e.target.reset();
-      //     renderAppointments();
-      //   });
-      // });
-
-
-
-
-
-      // Delete Appointment
-      // function del(id) {
-
-      //   if (confirm('Delete this appointment?')) {
-      //     fetch(API + id + '/', { method: 'DELETE' }).then(() => renderAppointments());
-      //   }
-      // }
       async function del(id) {
         if (!confirm('Delete this appointment?')) {
 
@@ -1024,20 +857,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
       defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
-    <!-- <script>
-  function pdfForPrintTable() {
-    const element = document.getElementById('printSection');
-    const opt = {
-      margin:       0.5,
-      filename:     'appointment-list.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
-    };
-    html2pdf().set(opt).from(element).save();
-  }
-</script> -->
+
     <script>
       // function pdfForPrintTable() {
       //   const element = document.getElementById('printSection');
@@ -1056,6 +876,7 @@
       //       window.open(blobUrl);
       //     });
       // }
+
     </script>
     <script>
       function pdfForPrintTable() {
@@ -1130,12 +951,90 @@
           });
       }
     </script>
+
+    <!-- <script>
+      function pdfForPrintTable() {
+        const table = document.getElementById('printSection');
+
+        // Clone the table to modify for PDF
+        const clonedTable = table.cloneNode(true);
+
+        // Remove the "Actions" <th> from the header
+        const headerRow = clonedTable.querySelector('thead tr');
+        if (headerRow.lastElementChild.textContent.trim() === "Actions") {
+          headerRow.removeChild(headerRow.lastElementChild);
+        }
+
+        // Remove the last <td> from each <tr> in the <tbody>
+        clonedTable.querySelectorAll('tbody tr').forEach(row => {
+          row.removeChild(row.lastElementChild);
+        });
+
+        const opt = {
+          margin: 0.5,
+          filename: 'appointment-list.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+        };
+
+        // Render the cloned and cleaned table off-screen
+        const container = document.createElement('div');
+        container.style.position = 'fixed';
+        container.style.top = '-10000px';
+        container.appendChild(clonedTable);
+        document.body.appendChild(container);
+
+        html2pdf().set(opt).from(clonedTable).outputPdf('blob')
+          .then(function (pdfBlob) {
+            document.body.removeChild(container); // Clean up
+            const blobUrl = URL.createObjectURL(pdfBlob);
+            window.open(blobUrl);
+          });
+      }
+    </script> -->
+
+    <!-- <script>
+      function pdfForPrintTable() {
+        const table = document.getElementById('printSection');
+
+        // Clone the table to modify safely without changing the live DOM
+        const clonedTable = table.cloneNode(true);
+
+        // Replace buttons in the cloned table with plain text
+        clonedTable.querySelectorAll('td:last-child').forEach(cell => {
+          cell.innerHTML = 'Visit | Edit | Delete';
+        });
+
+        const opt = {
+          margin: 0.5,
+          filename: 'appointment-list.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+        };
+
+        // Create temporary container to render the cloned table
+        const container = document.createElement('div');
+        container.style.position = 'fixed';
+        container.style.top = '-10000px';
+        container.appendChild(clonedTable);
+        document.body.appendChild(container);
+
+        html2pdf().set(opt).from(clonedTable).outputPdf('blob')
+          .then(function (pdfBlob) {
+            document.body.removeChild(container); // Clean up
+            const blobUrl = URL.createObjectURL(pdfBlob);
+            window.open(blobUrl);
+          });
+      }
+    </script> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 
 
 </body>
 
-<!-- Mirrored from preschool.dreamguystech.com/html-template/add-events.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:12:21 GMT -->
 
 </html>
