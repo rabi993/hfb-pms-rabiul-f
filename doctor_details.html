@@ -309,7 +309,7 @@
             <p><strong>Specializations:</strong> ${doctor.specialization.join(', ')}</p>
             <p><strong>Available Times:</strong> ${doctor.available_time.join(', ')}</p>
             <p><strong>Phone:</strong> ${doctor.phone_no}</p>
-            <p><strong>Fee: $${doctor.fee}</strong></p>
+            <p><strong>Fee: ${doctor.fee} Taka</strong></p>
             
           </div>
         `;
@@ -344,7 +344,7 @@
           earningsBox.classList.remove('d-none');
           earningsBox.innerHTML = `
           <strong>${filtered.length}</strong> Visited appointment(s) on <strong>${selectedDate}</strong>.<br/>
-          Total visit fee earned: <strong>$${total.toFixed(2)}</strong>
+          Total visit fee earned: <strong>${total.toFixed(2)} Taka</strong>
         `;
         } catch (error) {
           console.error('Error filtering earnings:', error);
@@ -397,7 +397,7 @@
           lifetimeBox.classList.remove('d-none');
           lifetimeBox.innerHTML = `
             <strong>${completed.length}</strong> completed appointment(s) in total.<br/>
-            Lifetime visit fee earned: <strong>$${total.toFixed(2)}</strong>
+            Lifetime visit fee earned: <strong>${total.toFixed(2)} Taka</strong>
             `;
         } catch (error) {
           console.error('Error loading lifetime earnings:', error);
@@ -451,10 +451,10 @@
           const todayDiv = document.getElementById("receiveMoneybydate");
           const lifetimeDiv = document.getElementById("receiveMoneyLifetime");
 
-          todayDiv.innerHTML = `<strong>Receiving on ${dateInput}: $${todayTotal}</strong>`;
+          todayDiv.innerHTML = `<strong>Receiving on ${dateInput}: ${todayTotal} Taka</strong>`;
           todayDiv.classList.remove("d-none");
 
-          lifetimeDiv.innerHTML = `<strong>Total Lifetime Receivings: $${lifetimeTotal}</strong>`;
+          lifetimeDiv.innerHTML = `<strong>Total Lifetime Receivings: ${lifetimeTotal} Taka</strong>`;
           lifetimeDiv.classList.remove("d-none");
 
         } catch (error) {
@@ -566,7 +566,7 @@
           console.log(due);
 
           dueBox.classList.remove("d-none");
-          dueBox.innerHTML = `<strong>Due on ${selectedDate}: $${due.toFixed(2)}</strong>`;
+          dueBox.innerHTML = `<strong>Due on ${selectedDate}: ${due.toFixed(2)} Taka</strong>`;
         } catch (error) {
           console.error("Error calculating datewise due:", error);
           dueBox.classList.remove("d-none");
@@ -600,7 +600,7 @@
           const lifetimeDue = totalEarnings - totalReceivings;
 
           lifetimeDueBox.classList.remove("d-none");
-          lifetimeDueBox.innerHTML = `<strong>Lifetime Due: $${lifetimeDue.toFixed(2)}</strong>`;
+          lifetimeDueBox.innerHTML = `<strong>Lifetime Due: ${lifetimeDue.toFixed(2)} Taka</strong>`;
         } catch (error) {
           console.error("Error calculating lifetime due:", error);
           lifetimeDueBox.classList.remove("d-none");

@@ -377,7 +377,7 @@
               <h5 class="fs-5">${d.doctor_name}</h5>
               <p style="font-size:12px;"><strong>Specialization:</strong> ${d.specialization.join(', ')}</p>
               <p style="font-size:12px;"><strong>Available Time:</strong> ${d.available_time.map(formatTime24to12).join(', ')}</p>
-              <p style="font-size:12px;"><strong>Fee:</strong> ${d.fee}</p>
+              <p style="font-size:12px;"><strong>Fee:</strong> ${d.fee} Taka</p>
               <button style="font-size:12px;" class="btn btcn" data-bs-toggle="modal" data-bs-target="#addModal" onclick="selectDoctor(${d.id});selectDoctorfee(${d.fee});">Take Appointment</button>
             </div>
           </div>

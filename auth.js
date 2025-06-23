@@ -213,8 +213,8 @@ const handleRegistration = (event) => {
                   window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/";
                   // window.location.href = "http://127.0.0.1:5501/index.html";
                 } else if (localStorage.getItem("patientid")) {
-                  window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/";
-                  // window.location.href = "http://127.0.0.1:5501/index.html";
+                  window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/indexp.html";
+                  // window.location.href = "http://127.0.0.1:5501/indexp.html";
                 } else {
                   window.location.href = "https://rabi993.github.io/hfb-pms-rabiul-f/login.html";
                 }
