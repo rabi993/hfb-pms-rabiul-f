@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-  <title>Doctors Card</title>
+  <title>Profile Management</title>
 
   <link rel="shortcut icon" href="assets/img/logo.png">
   <link rel="stylesheet"
@@ -16,9 +16,23 @@
   <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
 
   <link rel="stylesheet" href="assets/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet"
-    crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .profile-card {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px;
+      background: #f5f5f5;
+    }
+
+    .profile-card h2 {
+      margin-bottom: 20px;
+    }
+  </style>
 
   <link rel="stylesheet" href="assets/css/style2.css" />
 </head>
@@ -30,10 +44,10 @@
     <div class="header">
 
       <div style="display: flex; justify-content: center;" class="header-left">
-        <a href="indexp.html" class="logo">
+        <a href="index.html" class="logo">
           <img src="assets/img/logoo.png" alt="Logo">
         </a>
-        <a href="indexp.html" class="logo logo-small">
+        <a href="index.html" class="logo logo-small">
           <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
         </a>
       </div>
@@ -92,28 +106,32 @@
             <li class="menu-title">
               <span>Main Menu</span>
             </li>
-            <li class="submenu ">
+            <li class="submenu">
               <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span
                   class="menu-arrow"></span></a>
               <ul>
-                <li><a href="indexp.html" >Admin Dashboard</a></li>
+                <li><a href="index.html">Admin Dashboard</a></li>
                  
                  
               </ul>
             </li>
-            <li class="submenu active">
+            <li class="submenu ">
               <a href="#"><i class="fas fa-user-graduate"></i> <span> Doctors</span> <span
                   class="menu-arrow"></span></a>
               <ul>
-                <li><a href="empdoctorsCard.html" class="active">Doctor View</a></li> 
+                <li><a href="add-Doctors.html">Doctor List</a></li>
+                <li><a href="doctorsCard.html">Doctor View</a></li> 
+                <li><a href="add_designation.html">Add designation</a></li>
+                <li><a href="add_specialization.html">Add specialization</a></li>
+                <li><a href="add_availableTime.html">Add availableTime</a></li>
               </ul>
             </li>
             <li class="submenu ">
               <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients Appointments</span> <span
                   class="menu-arrow"></span></a>
               <ul>
-                <li><a href="empadd_appointment.html">Add Appointment</a></li>
-                <li><a href="empall_appointment.html">Appointment List</a></li> 
+                <li><a href="add_appointment.html">Add Appointment</a></li>
+                <li><a href="all_appointment.html">Appointment List</a></li> 
               </ul>
             </li>
             <li class="submenu">
@@ -121,6 +139,24 @@
                   class="menu-arrow"></span></a>
               <ul>
                 <li><a href="teachers.html">Patients List</a></li> 
+              </ul>
+            </li>
+             
+            <li class="menu-title">
+              <span>Management</span>
+            </li>
+            <li class="submenu">
+              <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span
+                  class="menu-arrow"></span></a>
+              <ul>
+                <li><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
+                <li><a href="acc.html">Expenses & Income</a></li>
+                 
+                <li><a href="amountType.html">Add Amount Types</a></li>
+                <li><a href="accountHead.html">Add Account Head</a></li>
+                <li><a href="accSingles.html">Add Account single</a></li>
+                 
+                 
               </ul>
             </li>
              
@@ -137,10 +173,10 @@
         <div class="page-header">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="page-title">Doctors View</h3>
+              <h3 class="page-title">Profile</h3>
               <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="empdoctorsCard.html">Doctors View</a></li>
-                <li class="breadcrumb-item active">Doctors Card </li>
+                <li class="breadcrumb-item"><a href="empprofile.html">Profile</a></li>
+                <li class="breadcrumb-item active">My Profile</li>
               </ul>
             </div>
           </div>
@@ -157,11 +193,22 @@
                   </div>
                   <div class="container pb-4">
                     <div class="container">
+                      <div class="profile-card">
+                        <h2 class="text-center">My Profile</h2>
+                        <div class="w-100 m-auto">
+                          <img style="border: 5px solid grey; border-radius: 50%; height: 100px; width: 100px; "
+                            class=" img-fluid p-1" src="./assets/img/profiles/rrr.jpg" alt="Profile">
+                        </div>
+                        <div id="profile-details" class="mt-4">
+                          <p><strong>Username:</strong> <span id="profile-username">Loading...</span></p>
+                          <p><strong>First Name:</strong> <span id="profile-firstname">Loading...</span></p>
+                          <p><strong>Last Name:</strong> <span id="profile-lastname">Loading...</span></p>
+                          <p><strong>Email:</strong> <span id="profile-email">Loading...</span></p>
+                          <p><strong>Role:</strong> <span id="profile-role">Loading...</span></p>
+                        </div>
 
-                      <div id="alertPlaceholder"></div>
-                      <div class="row" id="doctorCardBody"></div>
+                      </div>
                     </div>
-
 
 
 
@@ -188,82 +235,46 @@
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      const API_URL = 'https://hospital-wine-alpha.vercel.app/doctor/';
+      // Load user profile from API
+      document.addEventListener("DOMContentLoaded", () => {
+        const userId = localStorage.getItem("user_id");
+        const token = localStorage.getItem("token");
 
-      async function fetchDoctors() {
-        try {
-          const res = await fetch(API_URL + 'list/');
-          if (!res.ok) throw new Error("Failed to fetch doctors");
-          const data = await res.json();
-
-          const container = document.getElementById('doctorCardBody');
-          container.innerHTML = '';
-
-          data.results.forEach(d => {
-            const card = document.createElement('div');
-            card.className = 'col-md-4 mb-3';
-            card.innerHTML = `
-            <div class="card shadow">
-              <img src="${d.image}" class="card-img-top mt-3 mx-auto" alt="${d.doctor_name}" style="height: 70px; width:70px; border-radius:50%;">
-              <div class="card-body">
-                <h5 class="fs-5">${d.doctor_name}</h5>
-                <p class="small"><strong>Specialization:</strong> ${d.specialization.join(', ')}</p>
-                <p class="small"><strong>Available Time:</strong> ${d.available_time.join(', ')}</p>
-                <p class="small"><strong>Fee:</strong> ${d.fee} Taka</p>
-                
-              </div>
-            </div>
-          `;
-            container.appendChild(card);
-          });
-
-        } catch (error) {
-          document.getElementById('alertPlaceholder').innerHTML = `
-          <div class="alert alert-danger" role="alert">
-            ${error.message}
-          </div>`;
+        if (!userId || !token) {
+          alert("You are not logged in.");
+          window.location.href = "login.html";
+          return;
         }
-      }
 
-      function calculateTotal() {
-        const visit = parseFloat(document.querySelector('[name="visit_fee"]')?.value || 0);
-        const medicine = parseFloat(document.querySelector('[name="medicine_cost"]')?.value || 0);
-        const others = parseFloat(document.querySelector('[name="others_cost"]')?.value || 0);
-        const total = visit + medicine + others;
-
-        const display = document.getElementById('totalFeeDisplay');
-        if (display) display.textContent = `Total: $${total.toFixed(2)}`;
-      }
-
-      document.addEventListener('DOMContentLoaded', () => {
-        fetchDoctors();
-
-        ['visit_fee', 'medicine_cost', 'others_cost'].forEach(name => {
-          const input = document.querySelector(`[name="${name}"]`);
-          if (input) input.addEventListener('input', calculateTotal);
-        });
+        fetch(`https://hospital-wine-alpha.vercel.app/users/${userId}/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(res => {
+            if (!res.ok) {
+              throw new Error("Failed to fetch user profile.");
+            }
+            return res.json();
+          })
+          .then(user => {
+            document.getElementById("profile-username").textContent = user.username;
+            document.getElementById("profile-firstname").textContent = user.first_name || "-";
+            document.getElementById("profile-lastname").textContent = user.last_name || "-";
+            document.getElementById("profile-email").textContent = user.email;
+            document.getElementById("profile-role").textContent = user.is_superuser ? "Admin" : "User";
+          })
+          .catch(err => {
+            console.error(err);
+            alert("Error loading profile.");
+          });
       });
 
-      // Dummy placeholders
-      function selectDoctor(id) {
-        alert(`Doctor ID selected: ${id}`);
-      }
 
-      function selectDoctorfee(fee) {
-        alert(`Doctor Fee: $${fee}`);
-      }
-
-      function viewDoctorDetails(doctorId) {
-        window.location.href = `doctor_details.html?id=${doctorId}`;
-      }
     </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
-    <script src="./logout.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
-      defer></script>
-
+    <script src="logout.js"></script>
 </body>
 
 <!-- Mirrored from preschool.dreamguystech.com/html-template/add-events.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:12:21 GMT -->
