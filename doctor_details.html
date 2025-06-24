@@ -97,8 +97,8 @@
               <ul>
                 <li><a href="index.html">Admin Dashboard</a></li>
                 <li><a href="add_patient.html">Employee</a></li>
-                 
-                 
+
+
               </ul>
             </li>
             <li class="submenu active">
@@ -106,7 +106,7 @@
                   class="menu-arrow"></span></a>
               <ul>
                 <li><a href="add-Doctors.html">Doctor List</a></li>
-                <li><a href="doctorsCard.html" class="active">Doctor View</a></li> 
+                <li><a href="doctorsCard.html" class="active">Doctor View</a></li>
                 <li><a href="add_designation.html">Add designation</a></li>
                 <li><a href="add_specialization.html">Add specialization</a></li>
                 <li><a href="add_availableTime.html">Add availableTime</a></li>
@@ -117,14 +117,14 @@
                   class="menu-arrow"></span></a>
               <ul>
                 <li><a href="add_appointment.html">Add Appointment</a></li>
-                <li><a href="all_appointment.html">Appointment List</a></li> 
+                <li><a href="all_appointment.html">Appointment List</a></li>
               </ul>
             </li>
             <li class="submenu">
               <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients </span> <span
                   class="menu-arrow"></span></a>
               <ul>
-                <li><a href="teachers.html">Patients List</a></li> 
+                <li><a href="teachers.html">Patients List</a></li>
               </ul>
             </li>
 
@@ -137,12 +137,12 @@
               <ul>
                 <li><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
                 <li><a href="acc.html">Expenses & Income</a></li>
-                 
+
                 <li><a href="amountType.html">Add Amount Types</a></li>
                 <li><a href="accountHead.html">Add Account Head</a></li>
                 <li><a href="accSingles.html">Add Account single</a></li>
-                 
-                 
+
+
               </ul>
             </li>
 
@@ -340,12 +340,22 @@
             app.appointment_date === selectedDate
           );
 
-          const total = filtered.reduce((sum, app) => sum + parseFloat(app.visit_fee || 0), 0);
+          const response = await fetch(`https://hospital-wine-alpha.vercel.app/doctor/list/${doctorId}`);
+          const data = await response.json();
+          const commision = data.medicine_commision || 0;
+
+          // const total = filtered.reduce((sum, app) => sum + parseFloat(app.visit_fee || 0), 0);
+          const total = filtered.reduce((sum, app) =>
+            sum +
+            parseFloat(app.visit_fee || 0) +
+            ((commision * 0.01) * parseFloat(app.medicine_cost || 0)),
+            0
+          );
 
           earningsBox.classList.remove('d-none');
           earningsBox.innerHTML = `
           <strong>${filtered.length}</strong> Visited appointment(s) on <strong>${selectedDate}</strong>.<br/>
-          Total visit fee earned: <strong>${total.toFixed(2)} Taka</strong>
+          Total visit+commision fee earned: <strong>${total.toFixed(2)} Taka</strong>
         `;
         } catch (error) {
           console.error('Error filtering earnings:', error);
@@ -389,16 +399,20 @@
             app.appointment_Status === 'Completed'
           );
 
+          const response = await fetch(`https://hospital-wine-alpha.vercel.app/doctor/list/${doctorId}`);
+          const data = await response.json();
+          const commision = data.medicine_commision || 0;
+
           //const total = completed.reduce((sum, app) => sum + parseFloat(app.visit_fee || 0), 0);
           const total = completed.reduce((sum, app) =>
-            sum + parseFloat(app.visit_fee || 0) + (0.15 * parseFloat(app.medicine_cost || 0)),
+            sum + parseFloat(app.visit_fee || 0) + ((commision * 0.01) * parseFloat(app.medicine_cost || 0)),
             0);
 
 
           lifetimeBox.classList.remove('d-none');
           lifetimeBox.innerHTML = `
             <strong>${completed.length}</strong> completed appointment(s) in total.<br/>
-            Lifetime visit fee earned: <strong>${total.toFixed(2)} Taka</strong>
+            Lifetime visit+commision fee earned: <strong>${total.toFixed(2)} Taka</strong>
             `;
         } catch (error) {
           console.error('Error loading lifetime earnings:', error);
@@ -583,13 +597,19 @@
           const appointmentRes = await fetch(APPOINTMENT_API);
           const appointments = await appointmentRes.json();
 
+          const response = await fetch(`https://hospital-wine-alpha.vercel.app/doctor/list/${doctorId}`);
+          const data = await response.json();
+          const commision = data.medicine_commision || 0;
+
           const totalEarnings = appointments
             .filter(
               (app) => app.doctor == doctorId && app.appointment_Status === "Completed"
             )
+
+
             // .reduce((sum, app) => sum + parseFloat(app.visit_fee || 0), 0);
-            .reduce((sum, app) => sum + parseFloat(app.visit_fee || 0) + (0.15 * parseFloat(app.medicine_cost || 0)), 
-0);
+            .reduce((sum, app) => sum + parseFloat(app.visit_fee || 0) + ((commision * 0.01) * parseFloat(app.medicine_cost || 0)),
+              0);
 
           const receivingRes = await fetch("https://hospital-wine-alpha.vercel.app/appointment/ReceiveMoney/");
           const receivings = await receivingRes.json();

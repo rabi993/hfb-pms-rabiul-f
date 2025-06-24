@@ -204,7 +204,7 @@
                           <th>Specializations</th>
                           <th>Available Time</th>
                           <th>Phone</th>
-                          <!-- <th>Email</th> -->
+                          <th>MC(%)</th>
                           <th>Fee</th>
                           <th>Actions</th>
                         </tr>
@@ -248,6 +248,10 @@
                             <div class="col-md-6 mb-2">
                               <label>Email</label>
                               <input type="email" name="doctor_email" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                              <label>Commision</label>
+                              <input name="medicine_commision" type="number" class="form-control" >
                             </div>
                             <div class="col-md-6 mb-2">
                               <label>Fee</label>
@@ -295,6 +299,10 @@
                             <div class="col-md-6 mb-2">
                               <label>Email</label>
                               <input type="email" name="doctor_email" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                              <label>Commision</label>
+                              <input name="medicine_commision" type="number" class="form-control" >
                             </div>
                             <div class="col-md-6 mb-2">
                               <label>Fee</label>
@@ -357,6 +365,7 @@
                 <td>${d.specialization.join(', ')}</td>
                 <td>${d.available_time.join(', ')}</td>
                 <td>${d.phone_no}</td>
+                <td>${d.medicine_commision}</td>
                 <td>${d.fee}</td>
                 <td>
                     <button class="btn btn-sm btcn" onclick="fillEditForm(${d.id})">Edit</button>
@@ -433,6 +442,7 @@
           image: imageUrl,
           phone_no: form.phone_no.value,
           doctor_email: form.doctor_email.value,
+          medicine_commision: parseInt(form.medicine_commision.value),
           fee: parseInt(form.fee.value),
           designation: Array.from(form.designation.selectedOptions).map(opt => parseInt(opt.value)),
           specialization: Array.from(form.specialization.selectedOptions).map(opt => parseInt(opt.value)),
@@ -469,6 +479,7 @@
         form.doctor_name.value = d.doctor_name;
         form.phone_no.value = d.phone_no;
         form.doctor_email.value = d.doctor_email;
+        form.medicine_commision.value = d.medicine_commision;
         form.fee.value = d.fee;
 
         ['designation', 'specialization', 'available_time'].forEach(field => {
@@ -527,6 +538,7 @@
           doctor_name: form.doctor_name.value,
           phone_no: form.phone_no.value,
           doctor_email: form.doctor_email.value,
+          medicine_commision: parseInt(form.medicine_commision.value),
           fee: parseInt(form.fee.value),
           designation: Array.from(form.designation.selectedOptions).map(opt => parseInt(opt.value)),
           specialization: Array.from(form.specialization.selectedOptions).map(opt => parseInt(opt.value)),
