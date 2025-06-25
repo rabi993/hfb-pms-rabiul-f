@@ -99,8 +99,8 @@
               <ul>
                 <li><a href="index.html">Admin Dashboard</a></li>
                 <li><a href="add_patient.html">Employee</a></li>
-                 
-                 
+
+
               </ul>
             </li>
             <li class="submenu active">
@@ -108,7 +108,7 @@
                   class="menu-arrow"></span></a>
               <ul>
                 <li><a href="add-Doctors.html" class="active">Doctor List</a></li>
-                <li><a href="doctorsCard.html">Doctor View</a></li> 
+                <li><a href="doctorsCard.html">Doctor View</a></li>
                 <li><a href="add_designation.html">Add designation</a></li>
                 <li><a href="add_specialization.html">Add specialization</a></li>
                 <li><a href="add_availableTime.html">Add availableTime</a></li>
@@ -119,14 +119,14 @@
                   class="menu-arrow"></span></a>
               <ul>
                 <li><a href="add_appointment.html">Add Appointment</a></li>
-                <li><a href="all_appointment.html">Appointment List</a></li> 
+                <li><a href="all_appointment.html">Appointment List</a></li>
               </ul>
             </li>
             <li class="submenu">
               <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Patients </span> <span
                   class="menu-arrow"></span></a>
               <ul>
-                <li><a href="teachers.html">Patients List</a></li> 
+                <li><a href="teachers.html">Patients List</a></li>
               </ul>
             </li>
 
@@ -139,12 +139,12 @@
               <ul>
                 <li><a href="accReceiveMoneyDoctor.html">Doctor Receive Money</a></li>
                 <li><a href="acc.html">Expenses & Income</a></li>
-                 
+
                 <li><a href="amountType.html">Add Amount Types</a></li>
                 <li><a href="accountHead.html">Add Account Head</a></li>
                 <li><a href="accSingles.html">Add Account single</a></li>
-                 
-                 
+
+
               </ul>
             </li>
 
@@ -251,7 +251,7 @@
                             </div>
                             <div class="col-md-6 mb-2">
                               <label>Commision</label>
-                              <input name="medicine_commision" type="number" class="form-control" >
+                              <input name="medicine_commision" type="number" class="form-control">
                             </div>
                             <div class="col-md-6 mb-2">
                               <label>Fee</label>
@@ -302,7 +302,7 @@
                             </div>
                             <div class="col-md-6 mb-2">
                               <label>Commision</label>
-                              <input name="medicine_commision" type="number" class="form-control" >
+                              <input name="medicine_commision" type="number" class="form-control">
                             </div>
                             <div class="col-md-6 mb-2">
                               <label>Fee</label>
@@ -569,6 +569,169 @@
           alert("Failed to update doctor.");
         }
       });
+
+
+      // ///////////////////////////////////////////////////////////////
+
+      // document.getElementById('addDoctorForm').addEventListener('submit', async e => {
+      //   e.preventDefault();
+      //   const form = e.target;
+
+      //   // Create FormData object to handle file and other fields
+      //   const formData = new FormData();
+
+      //   formData.append('doctor_name', form.doctor_name.value);
+      //   formData.append('image', form.image.files[0]);
+      //   formData.append('phone_no', form.phone_no.value);
+      //   formData.append('doctor_email', form.doctor_email.value);
+      //   formData.append('medicine_commision', form.medicine_commision.value || 0);
+      //   formData.append('fee', form.fee.value);
+
+      //   // Handle multiple selections
+      //   Array.from(form.designation.selectedOptions).forEach(opt => {
+      //     formData.append('designation', opt.value);
+      //   });
+      //   Array.from(form.specialization.selectedOptions).forEach(opt => {
+      //     formData.append('specialization', opt.value);
+      //   });
+      //   Array.from(form.available_time.selectedOptions).forEach(opt => {
+      //     formData.append('available_time', opt.value);
+      //   });
+
+      //   try {
+      //     const response = await fetch(API_URL + 'list/', {
+      //       method: 'POST',
+      //       body: formData
+      //     });
+
+      //     if (response.ok) {
+      //       bootstrap.Modal.getInstance(document.getElementById('addDoctorModal')).hide();
+      //       fetchDoctors(); // refresh doctor list
+      //     } else {
+      //       const err = await response.json();
+      //       console.error("Error adding doctor:", err);
+      //       alert("Failed to add doctor.");
+      //     }
+      //   } catch (error) {
+      //     console.error("Request error:", error);
+      //     alert("An error occurred while adding the doctor.");
+      //   }
+      // });
+
+
+
+
+
+      // async function fillEditForm(id) {
+      //   const res = await fetch(API_URL + 'list/' + id + '/');
+      //   const d = await res.json();
+      //   const form = document.getElementById('editDoctorForm');
+      //   form.id.value = d.id;
+      //   form.doctor_name.value = d.doctor_name;
+      //   form.phone_no.value = d.phone_no;
+      //   form.doctor_email.value = d.doctor_email;
+      //   form.medicine_commision.value = d.medicine_commision;
+      //   form.fee.value = d.fee;
+
+      //   // ['designation', 'specialization', 'available_time'].forEach(field => {
+      //   //   const select = form[field];
+      //   //   for (let opt of select.options) {
+      //   //     opt.selected = d[field].includes(opt.text);
+      //   //   }
+      //   // });
+      //   ['designation', 'specialization'].forEach(field => {
+      //     const select = form[field];
+      //     for (let opt of select.options) {
+      //       opt.selected = d[field].includes(opt.text);
+      //     }
+      //   });
+      //   ['available_time'].forEach(field => {
+      //     const select = form[field];
+      //     const selectedValues = d[field]; // list of strings or IDs
+
+      //     for (let opt of select.options) {
+      //       opt.selected = selectedValues.some(val => opt.text.startsWith(val));
+
+      //     }
+      //   });
+
+
+
+
+
+
+      //   new bootstrap.Modal(document.getElementById('editDoctorModal')).show();
+      // }
+
+
+
+      // // document.getElementById('editDoctorForm').addEventListener('submit', async e => {
+      // //   e.preventDefault();
+      // //   const form = e.target;
+      // //   const id = form.id.value;
+      // //   const formData = getFormData(form);
+
+      // //   await fetch(API_URL + 'list/' + id + '/', {
+      // //     method: 'PATCH',
+      // //     body: formData
+      // //   });
+
+      // //   bootstrap.Modal.getInstance(document.getElementById('editDoctorModal')).hide();
+      // //   fetchDoctors();
+      // // });
+      // document.getElementById('editDoctorForm').addEventListener('submit', async e => {
+      //   e.preventDefault();
+      //   const form = e.target;
+
+      //   let imageUrl = ""; // default empty
+
+      //   if (form.image.files.length > 0) {
+      //     const imageFile = form.image.files[0];
+
+      //     imageUrl = imageFile;
+      //   }
+
+
+      //   // Construct the updated doctor data
+      //   const data = {
+      //     doctor_name: form.doctor_name.value,
+      //     phone_no: form.phone_no.value,
+      //     doctor_email: form.doctor_email.value,
+      //     medicine_commision: parseInt(form.medicine_commision.value),
+      //     fee: parseInt(form.fee.value),
+      //     designation: Array.from(form.designation.selectedOptions).map(opt => parseInt(opt.value)),
+      //     specialization: Array.from(form.specialization.selectedOptions).map(opt => parseInt(opt.value)),
+      //     available_time: Array.from(form.available_time.selectedOptions).map(opt => parseInt(opt.value)),
+      //   };
+
+      //   // Only include image if a new one was uploaded
+      //   if (imageUrl) {
+      //     data.image = imageUrl;
+      //   }
+      //   // if (available_time) {
+      //   //   data.available_time = available_time;
+      //   // }
+
+      //   const id = form.id.value;
+
+      //   const response = await fetch(API_URL + 'list/' + id + '/', {
+      //     method: 'PATCH',
+      //     headers: {
+      //       'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify(data)
+      //   });
+
+      //   if (response.ok) {
+      //     bootstrap.Modal.getInstance(document.getElementById('editDoctorModal')).hide();
+      //     fetchDoctors(); // refresh
+      //   } else {
+      //     const err = await response.json();
+      //     console.error("Error updating doctor:", err);
+      //     alert("Failed to update doctor.");
+      //   }
+      // });
+//////////////////////////////////////////////
 
 
 
